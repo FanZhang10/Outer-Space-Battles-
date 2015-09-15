@@ -1,0 +1,50 @@
+| Feature List |
+ --------------
+
+* Phase 1 - Basic Tech *
+
+- A Player
+- Stationary Asteroids
+- Player Movement
+- Camera tracking
+
+
+* Phase 2 - Basic Functionality *
+
+- Program Architecture
+- Asteroid Movement
+- Asteroid/Player Collision
+- Shooting
+- Shields/Health
+- Bounding Cube
+
+
+* Phase 3 - Expanded Features *
+
+- Player Death
+- Bullet Collision
+- Upgrades/Currency
+- Upgrade Menu
+- Main Menu
+- Multi-Tiered Asteroids
+
+
+* Phase 4 - Optional Expanded Features *
+
+- Multiple Levels
+- Mining weapons
+- Mineral Collection
+- Energy System
+- Boost
+- Sounds
+- Skybox
+- Meshes
+- Level Select
+
+
+* Phase 5 - Other *
+
+- Saving and loading
+- runtime configs
+- Controller input
+- Pause/controls menu

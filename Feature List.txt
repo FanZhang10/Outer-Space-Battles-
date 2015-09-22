@@ -48,3 +48,25 @@
 - runtime configs
 - Controller input
 - Pause/controls menu
+
+
+
+
+Manager List:
+
+Updating Managers
+- Player
+- Asteroid
+- Projectile
+- VFX
+- Menu
+
+Side Managers
+- Collision
+- Level
+- Asset
+- Sound
+
+
+
+

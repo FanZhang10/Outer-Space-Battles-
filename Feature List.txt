@@ -1,22 +1,22 @@
 | Feature List |
  --------------
 
-* Phase 1 - Basic Tech *
+* Phase 1 - Basic Tech * 				DONE
 
-- A Player
-- Stationary Asteroids
-- Player Movement
-- Camera tracking
+- A Player										DONE
+- Stationary Asteroids						DONE
+- Player Movement							DONE
+- Camera tracking							DONE
 
 
-* Phase 2 - Basic Functionality *
+* Phase 2 - Basic Functionality *		IN PROGRESS
 
-- Program Architecture
+- Program Architecture					Max
 - Asteroid Movement
-- Asteroid/Player Collision
+- Asteroid/Player Collision				Fan
 - Shooting
-- Shields/Health
-- Bounding Cube
+- Shields/Health 
+- Bounding Cube							
 
 
 * Phase 3 - Expanded Features *

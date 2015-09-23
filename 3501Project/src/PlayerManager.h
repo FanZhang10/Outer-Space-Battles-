@@ -30,13 +30,15 @@ namespace AsteroidGame{
 		OgreApplication* iApplication;
 		Player* iPlayer;
 
+		Ogre::SceneNode* iCameraNode;
+
 		//
 		//Public Methods
 	public:
 		PlayerManager(OgreApplication* aApplication);
-		void init();
+		void init(Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
-
+		void updateCamera();
 		//
 		//Private Methods
 	private:

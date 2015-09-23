@@ -13,4 +13,8 @@ namespace AsteroidGame{
 		iApplication = aApplication;
 	}
 
+	void ProjectileManager::update(){
+
+	}
+
 }

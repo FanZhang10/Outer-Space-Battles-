@@ -30,6 +30,8 @@ namespace AsteroidGame {
 	/* A useful type to define */
 	typedef std::vector<Ogre::String> Strings;
 
+	enum GameState {StartMenu, Paused, Running, Loading};
+
 	/* Our exception type */
 	class OgreAppException: public std::exception
     {
@@ -69,14 +71,9 @@ namespace AsteroidGame {
             // Main Ogre window
             Ogre::RenderWindow* ogre_window_;
 
-			// For animating an object
-			bool space_down_; // Whether space key was pressed
-
 			// Input managers
 			OIS::InputManager *input_manager_;
 			OIS::Mouse *mouse_;
-			int iOldMouseX;
-			int iOldMouseY;
 			OIS::Keyboard *keyboard_;
 
 			//Managers
@@ -89,6 +86,9 @@ namespace AsteroidGame {
 			ProjectileManager* iProjectileManager;
 			SoundManager* iSoundManager;
 			VFXManager* iVFXManager;
+
+			//GameState
+			GameState iGameState;
 
 			/* Methods to initialize the application */
 			void InitRootNode(void);

@@ -62,12 +62,15 @@ namespace AsteroidGame {
 		//Public Methods
 		Player::Player();
 
-		//Constructors
-
 		void setChassisNode(Ogre::SceneNode* aNode);
 		Ogre::SceneNode* getChassisNode();
 
+		double getSpeed();
+
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
+
+		void updateOrientation(OIS::Keyboard* ,OIS::Mouse*);
+		void updatePosition(OIS::Keyboard* ,OIS::Mouse*);
 
 
 	};

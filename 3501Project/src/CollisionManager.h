@@ -31,6 +31,8 @@ namespace AsteroidGame{
 		//Public Methods
 	public:
 		CollisionManager(OgreApplication* aApplication);
+
+
 		//
 		//Private Methods
 	private:

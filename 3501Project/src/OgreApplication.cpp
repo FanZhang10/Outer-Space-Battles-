@@ -36,7 +36,7 @@ const Ogre::String material_directory_g = (MATERIAL_DIRECTORY  "/src");
 
 
 OgreApplication::OgreApplication(void){
-    /* Don't do work in the constructor, leave it for the Init() function */
+   iGameState = GameState::Loading;
 }
 
 
@@ -58,6 +58,8 @@ void OgreApplication::Init(void){
 	InitManagers();
 
 	createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
+
+	iGameState = GameState::Running;
 }
 
 
@@ -266,8 +268,10 @@ void OgreApplication::InitManagers(void) {
 	iSoundManager = new SoundManager(this);
 	iVFXManager = new VFXManager(this);
 
-	iAssetManager->init(ogre_root_->getSceneManager("MySceneManager"));
-	iPlayerManager->init();
+	Ogre::SceneManager* lSceneManager = ogre_root_->getSceneManager("MySceneManager");
+
+	iAssetManager->init(lSceneManager);
+	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
 }
 
 
@@ -332,24 +336,15 @@ bool OgreApplication::frameRenderingQueued(const Ogre::FrameEvent& fe){
 	keyboard_->capture();
 	mouse_->capture();
 
-	/* Handle specific key events */
-
-	Ogre::SceneManager* scene_manager = ogre_root_->getSceneManager("MySceneManager");
-
-	iPlayerManager->update(scene_manager,keyboard_,mouse_);
-
-
-	if (keyboard_->isKeyDown(OIS::KC_SPACE)){
-		space_down_ = true;
-	}
-	if ((!keyboard_->isKeyDown(OIS::KC_SPACE)) && space_down_){
-		space_down_ = false;
-	}
-
-	if (keyboard_->isKeyDown(OIS::KC_ESCAPE)){
-		ogre_root_->shutdown();
-		ogre_window_->destroy();
-		return false;
+	//Update Managers
+	if(iGameState == GameState::Running){
+		Ogre::SceneManager* scene_manager = ogre_root_->getSceneManager("MySceneManager");
+		iPlayerManager->update(scene_manager,keyboard_,mouse_);
+		iAsteroidManager->update();
+		iProjectileManager->update();
+		iVFXManager->update();
+	}else if(iGameState == GameState::StartMenu){
+		iMenuManager->update();
 	}
 
     return true;

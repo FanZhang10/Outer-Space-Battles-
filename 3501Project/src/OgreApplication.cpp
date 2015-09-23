@@ -53,14 +53,11 @@ void OgreApplication::Init(void){
     InitViewport();
 	InitEvents();
 	InitOIS();
-	InitManagers();
 	LoadMaterials();
 
-	ResourceFactory::createPlayerModel(ogre_root_->getSceneManager("MySceneManager"));
-	ResourceFactory::createTargetModel(ogre_root_->getSceneManager("MySceneManager")); 
+	InitManagers();
 
-
-	ResourceFactory::createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
+	createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
 }
 
 
@@ -259,17 +256,17 @@ void OgreApplication::InitOIS(void){
 
 
 void OgreApplication::InitManagers(void) {
-	iAssetManager = new AssetManager();
-	iAsteroidManager = new AsteroidManager();
-	iCollisionManager = new CollisionManager();
-	iLevelManager = new LevelManager();
-	iMenuManager = new MenuManager();
-	iPlayerManager = new PlayerManager();
-	iProjectileManager = new ProjectileManager();
-	iSoundManager = new SoundManager();
-	iVFXManager = new VFXManager();
+	iAssetManager = new AssetManager(this);
+	iAsteroidManager = new AsteroidManager(this);
+	iCollisionManager = new CollisionManager(this);
+	iLevelManager = new LevelManager(this);
+	iMenuManager = new MenuManager(this);
+	iPlayerManager = new PlayerManager(this);
+	iProjectileManager = new ProjectileManager(this);
+	iSoundManager = new SoundManager(this);
+	iVFXManager = new VFXManager(this);
 
-
+	iAssetManager->init(ogre_root_->getSceneManager("MySceneManager"));
 	iPlayerManager->init();
 }
 

@@ -51,6 +51,18 @@ namespace AsteroidGame {
             void Init(void); // Call Init() before running the main loop
 			void MainLoop(void); // Keep application active
 
+
+						//Manager Getters
+			AssetManager* getAssetManager(void){return iAssetManager;}
+			AsteroidManager* getAsteroidManager(void){return iAsteroidManager;}
+			CollisionManager* getCollisionManager(void){return iCollisionManager;}
+			LevelManager* getLevelManager(void){return iLevelManager;}
+			MenuManager* getMenuManager(void){return iMenuManager;}
+			PlayerManager* getPlayerManager(void){return iPlayerManager;}
+			ProjectileManager* getProjectileManager(void){return iProjectileManager;}
+			SoundManager* getSoundManager(void){return iSoundManager;}
+			VFXManager* getVFXManager(void){return iVFXManager;}
+
         private:
 			// Create root that allows us to access Ogre commands
             std::auto_ptr<Ogre::Root> ogre_root_;
@@ -77,17 +89,6 @@ namespace AsteroidGame {
 			ProjectileManager* iProjectileManager;
 			SoundManager* iSoundManager;
 			VFXManager* iVFXManager;
-
-			//Manager Getters
-			AssetManager* getAssetManager(void){return iAssetManager;}
-			AsteroidManager* getAsteroidManager(void){return iAsteroidManager;}
-			CollisionManager* getCollisionManager(void){return iCollisionManager;}
-			LevelManager* getLevelManager(void){return iLevelManager;}
-			MenuManager* getMenuManager(void){return iMenuManager;}
-			PlayerManager* getPlayerManager(void){return iPlayerManager;}
-			ProjectileManager* getProjectileManager(void){return iProjectileManager;}
-			SoundManager* getSoundManager(void){return iSoundManager;}
-			VFXManager* getVFXManager(void){return iVFXManager;}
 
 			/* Methods to initialize the application */
 			void InitRootNode(void);

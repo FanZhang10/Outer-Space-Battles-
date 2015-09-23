@@ -15,6 +15,8 @@
 #include "OIS/OIS.h"
 
 namespace AsteroidGame{
+	class OgreApplication; //Forward Declaration
+
 	class SoundManager{
 		//
 		//Public Variables
@@ -23,10 +25,12 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
+		OgreApplication* iApplication;
 
 		//
 		//Public Methods
 	public:
+		SoundManager(OgreApplication* aApplication);
 
 		//
 		//Private Methods

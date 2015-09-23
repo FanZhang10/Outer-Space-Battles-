@@ -15,11 +15,13 @@
 #include "OIS/OIS.h"
 
 namespace AsteroidGame{
+	class OgreApplication; //Forward Declaration
+
 	class AsteroidManager{
 		//
 		//Public Variables
 	public:
-
+		OgreApplication* iApplication;
 		//
 		//Private Variables
 	private:
@@ -27,6 +29,7 @@ namespace AsteroidGame{
 		//
 		//Public Methods
 	public:
+		AsteroidManager(OgreApplication* aApplication);
 		void update(void);
 		//
 		//Private Methods

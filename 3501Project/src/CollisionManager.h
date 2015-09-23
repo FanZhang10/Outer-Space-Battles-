@@ -15,6 +15,8 @@
 #include "OIS/OIS.h"
 
 namespace AsteroidGame{
+	class OgreApplication; //Forward Declaration
+
 	class CollisionManager{
 		//
 		//Public Variables
@@ -23,11 +25,12 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
+		OgreApplication* iApplication;
 
 		//
 		//Public Methods
 	public:
-
+		CollisionManager(OgreApplication* aApplication);
 		//
 		//Private Methods
 	private:

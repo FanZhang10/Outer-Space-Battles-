@@ -16,6 +16,8 @@
 #include "Player.h"
 
 namespace AsteroidGame{
+	class OgreApplication; //Forward Declaration
+
 	class PlayerManager{
 
 		//
@@ -25,11 +27,13 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
+		OgreApplication* iApplication;
 		Player* iPlayer;
 
 		//
 		//Public Methods
 	public:
+		PlayerManager(OgreApplication* aApplication);
 		void init();
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 

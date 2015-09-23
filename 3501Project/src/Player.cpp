@@ -156,4 +156,8 @@ namespace AsteroidGame{
 
 	}
 
+	void Player::setChassisNode(Ogre::SceneNode* aSceneNode){
+		iChassisNode = aSceneNode;
+	}
+
 }

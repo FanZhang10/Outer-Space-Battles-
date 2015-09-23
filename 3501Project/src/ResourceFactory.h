@@ -12,7 +12,10 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
-namespace ResourceFactory {
+
+namespace AsteroidGame {
+
+	class OgreApplication;
 
 	const std::string iPlayerName = "Player";
 	const std::string iPlayerMaterial = "ObjectMaterial";
@@ -24,7 +27,7 @@ namespace ResourceFactory {
 	std::string getNewAsteroidName();
 	const std::string iAsteroidMaterial = "ObjectMaterial";
 
-	void createPlayerModel(Ogre::SceneManager*);
+	Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
 	void createTargetModel(Ogre::SceneManager*);
 	Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
 
@@ -32,16 +35,6 @@ namespace ResourceFactory {
 	
 	void createAsteroidField(Ogre::SceneManager*, int aNumAsteroids, Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds, int aStartingSize);
 
-
-	/* Our exception type */
-	class OgreAppException: public std::exception
-    {
-		private:
-		    std::string message_;
-	    public:
-			OgreAppException(std::string message) : message_(message) {};
-			virtual const char* what() const throw() { return message_.c_str(); };
-	};
 }
 
 #endif //RESOURCE_FACTORY_H_

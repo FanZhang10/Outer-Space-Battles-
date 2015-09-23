@@ -4,8 +4,9 @@
 //
 #include "ResourceFactory.h"
 #include "bin/path_config.h"
+#include "OgreApplication.h"
 
-namespace ResourceFactory{
+namespace AsteroidGame{
 
 	void createTargetModel(Ogre::SceneManager* aSceneManager){
 		try {
@@ -152,7 +153,7 @@ namespace ResourceFactory{
 
 
 
-	void createPlayerModel(Ogre::SceneManager* aSceneManager){
+	Ogre::SceneNode* createPlayerModel(Ogre::SceneManager* aSceneManager){
 		try {
 			float loop_radius = 0.6f;
 			float circle_radius = 0.2f;
@@ -240,6 +241,7 @@ namespace ResourceFactory{
 			//scene_node->rotate(Ogre::Vector3(1, 0, 0), Ogre::Degree(30));
 			//scene_node->translate(0.0, 0.0, 0.0);
 			scene_node->setPosition(0,0,0);
+			return scene_node;
 		}
 		catch (Ogre::Exception &e){
 			throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));

@@ -13,7 +13,7 @@
 
 - Program Architecture					Max
 - Asteroid Movement
-- Asteroid/Player Collision				Fan
+- Asteroid/Player Collision				
 - Shooting
 - Shields/Health 
 - Bounding Cube							

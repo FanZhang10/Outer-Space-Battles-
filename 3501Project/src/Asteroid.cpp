@@ -6,7 +6,7 @@
 #include "Asteroid.h"
 #include "bin/path_config.h"
 
-namespace Asteroid{
+namespace AsteroidGame{
 
 	Asteroid::Asteroid(int aTier, int aValue, int aHealth, double aRadius, Ogre::SceneNode* aNode){
 		iTier = aTier;

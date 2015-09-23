@@ -12,9 +12,19 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 #include "ResourceFactory.h"
-#include "Player.h"
 
-namespace ogre_application {
+//Managers
+#include "AssetManager.h"
+#include "AsteroidManager.h"
+#include "CollisionManager.h"
+#include "LevelManager.h"
+#include "MenuManager.h"
+#include "PlayerManager.h"
+#include "ProjectileManager.h"
+#include "SoundManager.h"
+#include "VFXManager.h"
+
+namespace AsteroidGame {
 
 
 	/* A useful type to define */
@@ -57,8 +67,27 @@ namespace ogre_application {
 			int iOldMouseY;
 			OIS::Keyboard *keyboard_;
 
-			//Objects
-			Player::Player* iPlayer;
+			//Managers
+			AssetManager* iAssetManager;
+			AsteroidManager* iAsteroidManager;
+			CollisionManager* iCollisionManager;
+			LevelManager* iLevelManager;
+			MenuManager* iMenuManager;
+			PlayerManager* iPlayerManager;
+			ProjectileManager* iProjectileManager;
+			SoundManager* iSoundManager;
+			VFXManager* iVFXManager;
+
+			//Manager Getters
+			AssetManager* getAssetManager(void){return iAssetManager;}
+			AsteroidManager* getAsteroidManager(void){return iAsteroidManager;}
+			CollisionManager* getCollisionManager(void){return iCollisionManager;}
+			LevelManager* getLevelManager(void){return iLevelManager;}
+			MenuManager* getMenuManager(void){return iMenuManager;}
+			PlayerManager* getPlayerManager(void){return iPlayerManager;}
+			ProjectileManager* getProjectileManager(void){return iProjectileManager;}
+			SoundManager* getSoundManager(void){return iSoundManager;}
+			VFXManager* getVFXManager(void){return iVFXManager;}
 
 			/* Methods to initialize the application */
 			void InitRootNode(void);
@@ -69,6 +98,7 @@ namespace ogre_application {
 			void InitEvents(void);
 			void InitOIS(void);
 			void LoadMaterials(void);
+			void InitManagers(void);
 
 
 			/* Methods to handle events */
@@ -77,6 +107,6 @@ namespace ogre_application {
 
     }; // class OgreApplication
 
-} // namespace ogre_application;
+} // namespace AsteroidGame;
 
 #endif // OGRE_APPLICATION_H_

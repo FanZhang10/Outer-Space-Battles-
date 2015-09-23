@@ -15,7 +15,7 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
-namespace Player {
+namespace AsteroidGame {
 
 	class Player{
 

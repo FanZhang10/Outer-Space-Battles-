@@ -30,77 +30,77 @@ namespace ResourceFactory{
 			lVertexNormal = Ogre::Vector3(0,0,1);
 			lVertexColor = Ogre::ColourValue(1.0,0.0,0.0);
 
-			lVertexPosition = Ogre::Vector3(0,0.2,1);
+			lVertexPosition = Ogre::Vector3(0,0.2f,1);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
 
-			lVertexPosition = Ogre::Vector3(0,-0.2,1);
+			lVertexPosition = Ogre::Vector3(0,-0.2f,1);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
 
-			lVertexPosition = Ogre::Vector3(0,0,0.2);
+			lVertexPosition = Ogre::Vector3(0,0,0.2f);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,1,0.2);
+			lVertexPosition = Ogre::Vector3(0,1,0.2f);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,1,-0.2);
+			lVertexPosition = Ogre::Vector3(0,1,-0.2f);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,0.2,0);
+			lVertexPosition = Ogre::Vector3(0,0.2f,0);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,0.2,-1);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
-			object->colour(lVertexColor); 
-
-
-			lVertexPosition = Ogre::Vector3(0,-0.2,-1);
+			lVertexPosition = Ogre::Vector3(0,0.2f,-1);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
 
-			lVertexPosition = Ogre::Vector3(0,0,-0.2);
+			lVertexPosition = Ogre::Vector3(0,-0.2f,-1);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,-1,0.2);
+
+			lVertexPosition = Ogre::Vector3(0,0,-0.2f);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,-1,-0.2);
+			lVertexPosition = Ogre::Vector3(0,-1,0.2f);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexPosition = Ogre::Vector3(0,-0.2,0);
+			lVertexPosition = Ogre::Vector3(0,-1,-0.2f);
+
+			object->position(lVertexPosition);
+			object->normal(lVertexNormal);
+			object->colour(lVertexColor); 
+
+			lVertexPosition = Ogre::Vector3(0,-0.2f,0);
 
 			object->position(lVertexPosition);
 			object->normal(lVertexNormal);
@@ -154,8 +154,8 @@ namespace ResourceFactory{
 
 	void createPlayerModel(Ogre::SceneManager* aSceneManager){
 		try {
-			float loop_radius = 0.6;
-			float circle_radius = 0.2;
+			float loop_radius = 0.6f;
+			float circle_radius = 0.2f;
 			int num_loop_samples = 90;
 			int num_circle_samples = 30;
 			/* Create a torus
@@ -178,7 +178,7 @@ namespace ResourceFactory{
 			Ogre::ColourValue lVertexColor;
 			
 			lVertexNormal = Ogre::Vector3(0,0,1);
-			lVertexColor = Ogre::ColourValue(0.8,0.0,0.0);
+			lVertexColor = Ogre::ColourValue(0.8f,0.0,0.0);
 
 			lVertexPosition = Ogre::Vector3(1,0,0);
 
@@ -186,7 +186,7 @@ namespace ResourceFactory{
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexColor = Ogre::ColourValue(0.7,0.7,0.7);
+			lVertexColor = Ogre::ColourValue(0.7f,0.7f,0.7f);
 
 			lVertexPosition = Ogre::Vector3(-1,0.5,0.0);
 
@@ -194,7 +194,7 @@ namespace ResourceFactory{
 			object->normal(lVertexNormal);
 			object->colour(lVertexColor); 
 
-			lVertexColor = Ogre::ColourValue(0.5,0.5,0.5);
+			lVertexColor = Ogre::ColourValue(0.5f,0.5f,0.5f);
 
 			lVertexPosition = Ogre::Vector3(-1,0,1);
 
@@ -252,7 +252,6 @@ namespace ResourceFactory{
 
 	std::string getNewAsteroidName(){
 		std::string r = ("Asteroid" + std::to_string(iNextAsteroidNum));
-		std::cout << r;
 		iNextAsteroidNum++;
 		return r;
 	}
@@ -297,7 +296,7 @@ namespace ResourceFactory{
 			Ogre::ColourValue lVertexColor;
 			
 			lVertexNormal = Ogre::Vector3(0,0,1);
-			lVertexColor = Ogre::ColourValue(0.5,0.4,0.3);
+			lVertexColor = Ogre::ColourValue(0.5f,0.4f,0.3f);
 
 			lVertexPosition = Ogre::Vector3(aRadius,0,0);
 

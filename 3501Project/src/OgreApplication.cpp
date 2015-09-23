@@ -1,7 +1,7 @@
-#include "ogre_application.h"
+#include "OgreApplication.h"
 #include "bin/path_config.h"
 
-namespace ogre_application {
+namespace AsteroidGame {
 
 /* Some configuration constants */
 /* They are written here as global variables, but ideally they should be loaded from a configuration file */
@@ -25,7 +25,7 @@ float viewport_left_g = (1.0f - viewport_width_g) * 0.5f;
 float viewport_top_g = (1.0f - viewport_height_g) * 0.5f;
 unsigned short viewport_z_order_g = 100;
 const Ogre::ColourValue viewport_background_color_g(0.0, 0.0, 0.0);
-float camera_near_clip_distance_g = 0.01;
+float camera_near_clip_distance_g = 0.01f;
 float camera_far_clip_distance_g = 100.0;
 Ogre::Vector3 camera_position_g(-5.0, 2.0, 0.0);
 Ogre::Vector3 camera_look_at_g(0.0, 0.0, 0.0);
@@ -36,15 +36,11 @@ const Ogre::String material_directory_g = (MATERIAL_DIRECTORY  "/src");
 
 
 OgreApplication::OgreApplication(void){
-
     /* Don't do work in the constructor, leave it for the Init() function */
 }
 
 
 void OgreApplication::Init(void){
-
-	/* Set default values for the variables */
-	space_down_ = false;
 	input_manager_ = NULL;
 	keyboard_ = NULL;
 	mouse_ = NULL;
@@ -57,11 +53,11 @@ void OgreApplication::Init(void){
     InitViewport();
 	InitEvents();
 	InitOIS();
+	InitManagers();
 	LoadMaterials();
 
 	ResourceFactory::createPlayerModel(ogre_root_->getSceneManager("MySceneManager"));
 	ResourceFactory::createTargetModel(ogre_root_->getSceneManager("MySceneManager")); 
-	iPlayer = new Player::Player();
 
 
 	ResourceFactory::createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
@@ -262,6 +258,22 @@ void OgreApplication::InitOIS(void){
 }
 
 
+void OgreApplication::InitManagers(void) {
+	iAssetManager = new AssetManager();
+	iAsteroidManager = new AsteroidManager();
+	iCollisionManager = new CollisionManager();
+	iLevelManager = new LevelManager();
+	iMenuManager = new MenuManager();
+	iPlayerManager = new PlayerManager();
+	iProjectileManager = new ProjectileManager();
+	iSoundManager = new SoundManager();
+	iVFXManager = new VFXManager();
+
+
+	iPlayerManager->init();
+}
+
+
 void OgreApplication::LoadMaterials(void){
 
     try {
@@ -327,7 +339,7 @@ bool OgreApplication::frameRenderingQueued(const Ogre::FrameEvent& fe){
 
 	Ogre::SceneManager* scene_manager = ogre_root_->getSceneManager("MySceneManager");
 
-	iPlayer->update(scene_manager,keyboard_,mouse_);
+	iPlayerManager->update(scene_manager,keyboard_,mouse_);
 
 
 	if (keyboard_->isKeyDown(OIS::KC_SPACE)){
@@ -357,7 +369,7 @@ void OgreApplication::windowResized(Ogre::RenderWindow* rw){
     Ogre::Camera* camera = scene_manager->getCamera("MyCamera");
 
 	if (camera != NULL){
-		camera->setAspectRatio((double)width/height);
+		camera->setAspectRatio(Ogre::Real(width/height));
     }
 
 	const OIS::MouseState &ms = mouse_->getMouseState();

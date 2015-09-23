@@ -1,11 +1,11 @@
 //
-// Asteroid Class
-// Encapsulates data and behaviour for a single asteroid
+// Player Class
+// Encapsulates data and behaviour for the Player
 //
 #include "Player.h"
 #include "bin/path_config.h"
 
-namespace Player{
+namespace AsteroidGame{
 
 	Player::Player(){
 		iSpeed = 0;

@@ -5,17 +5,35 @@ project(3501Project)
 
 # Specify project files: header files and source files
 set(HDRS
-	./src/ogre_application.h
+	./src/OgreApplication.h
 	./src/ResourceFactory.h
 	./src/Asteroid.h
 	./src/Player.h
+	./src/PlayerManager.h
+	./src/AsteroidManager.h
+	./src/ProjectileManager.h
+	./src/VFXManager.h
+	./src/MenuManager.h
+	./src/CollisionManager.h
+	./src/LevelManager.h
+	./src/AssetManager.h
+	./src/SoundManager.h
 )
  
 set(SRCS
-	./src/ogre_application.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
+	./src/OgreApplication.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp
+	./src/PlayerManager.cpp
+	./src/AsteroidManager.cpp
+	./src/ProjectileManager.cpp
+	./src/VFXManager.cpp
+	./src/MenuManager.cpp
+	./src/CollisionManager.cpp
+	./src/LevelManager.cpp
+	./src/AssetManager.cpp
+	./src/SoundManager.cpp
 )
 
 # The rules here are specific to Windows Systems

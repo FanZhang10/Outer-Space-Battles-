@@ -340,7 +340,9 @@ namespace AsteroidGame{
 
 
 	std::string getNewAsteroidName(){
-		std::string r = ("Asteroid" + std::to_string(iNextAsteroidNum));
+		std::stringstream ss;
+		ss << iNextAsteroidNum;
+		std::string r = ("Asteroid"+ss.str());
 		iNextAsteroidNum++;
 		return r;
 	}

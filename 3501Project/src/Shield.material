@@ -41,6 +41,7 @@ material ShinyBlueMaterial
             {
             }
 			scene_blend alpha_blend
+			polygon_mode wireframe
         } 
     }
 }

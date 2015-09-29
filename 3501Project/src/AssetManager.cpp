@@ -21,4 +21,8 @@ namespace AsteroidGame{
 		return createPlayerModel(iSceneManager);
 	}
 
+	Ogre::SceneNode* AssetManager::CreatePlayerShield(){
+		return createShieldModel(iSceneManager, 1.5);
+	 }
+
 }

@@ -31,6 +31,7 @@ namespace AsteroidGame{
 		Player* iPlayer;
 
 		Ogre::SceneNode* iCameraNode;
+		Ogre::SceneNode* iShieldNode;
 
 		//
 		//Public Methods

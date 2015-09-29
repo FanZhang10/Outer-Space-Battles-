@@ -37,6 +37,7 @@ namespace AsteroidGame{
 		AssetManager(OgreApplication* aApplication);
 		void init(Ogre::SceneManager*);
 		Ogre::SceneNode* CreatePlayerChassis();
+		Ogre::SceneNode* CreatePlayerShield();
 
 		//
 		//Private Methods

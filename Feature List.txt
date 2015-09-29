@@ -11,7 +11,7 @@
 
 * Phase 2 - Basic Functionality *		IN PROGRESS
 
-- Program Architecture					Max
+- Program Architecture					Max+Jeff
 - Asteroid Movement
 - Asteroid/Player Collision				
 - Shooting

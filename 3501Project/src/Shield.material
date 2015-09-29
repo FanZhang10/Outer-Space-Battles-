@@ -1,0 +1,46 @@
+vertex_program shiny_blue_shader/vs glsl 
+{
+    source ShieldVp.glsl 
+
+    default_params
+    {
+        param_named_auto world_mat world_matrix
+        param_named_auto view_mat view_matrix
+        param_named_auto projection_mat projection_matrix
+		param_named_auto normal_mat inverse_transpose_worldview_matrix
+		param_named light_position float3 200 200 200
+    }
+}
+
+
+fragment_program shiny_blue_shader/fs glsl 
+{
+    source ShieldFp.glsl 
+
+	default_params
+	{
+		 param_named ambient_colour float4 0.0 0.0 0.1 0.5
+		 param_named diffuse_colour float4 0.0 0.0 0.5 0.1
+		 param_named specular_colour float4 0.8 0.5 0.9 0.5
+		 param_named phong_exponent float 512.0
+	}
+}
+
+
+material ShinyBlueMaterial
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref shiny_blue_shader/vs
+            {
+            }
+
+            fragment_program_ref shiny_blue_shader/fs
+            {
+            }
+			scene_blend alpha_blend
+        } 
+    }
+}

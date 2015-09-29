@@ -252,6 +252,93 @@ namespace AsteroidGame{
 	}
 
 
+
+
+	Ogre::SceneNode* createShieldModel(Ogre::SceneManager* aSceneManager, double aRadius){
+		try {
+        Ogre::SceneNode* lRootSceneNode = aSceneManager->getRootSceneNode();
+
+        /* Create the 3D object */
+        Ogre::ManualObject* object = NULL;
+        object = aSceneManager->createManualObject(iShieldName);
+        object->setDynamic(false);
+
+        /* Create triangle list for the object */
+		object->begin(iShieldMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+
+
+		int lNumLoopSamples = 32;
+		int lNumCircleSamples = 32;
+		/* Add vertices to the object */
+		float theta, phi; // Angles for circles
+		Ogre::Vector3 lLoopCenter;
+		Ogre::Vector3 vertex_position;
+		Ogre::Vector3 vertex_normal;
+		Ogre::ColourValue vertex_color;
+				
+		for (int i = 0; i < lNumLoopSamples; i++){ // large loop
+			
+			theta = Ogre::Math::TWO_PI*i/lNumLoopSamples; // loop sample (angle theta)
+			lLoopCenter = Ogre::Vector3(cos(theta), 0, 0); // centre of a small circle
+
+			for (int j = 0; j < lNumCircleSamples; j++){ // small circle
+				
+				phi = Ogre::Math::TWO_PI*j/lNumCircleSamples; // circle sample (angle phi)
+				
+				/* Define position, normal and color of vertex */
+				Ogre::Vector3 lPosition = lLoopCenter + Ogre::Vector3(0,cos(phi)*sin(theta),sin(phi)*sin(theta));
+				vertex_normal = lPosition;
+				vertex_position = lPosition*aRadius;
+				vertex_color = Ogre::ColourValue(0, .6,.8,.3);
+
+				/* Add them to the object */
+				object->position(vertex_position);
+				object->normal(vertex_normal);
+				object->colour(vertex_color); 
+			}
+		}
+
+		/* Add triangles to the object */
+		for (int i = 0; i < lNumLoopSamples; i++){
+			for (int j = 0; j < lNumCircleSamples; j++){
+				// Two triangles per quad
+				object->triangle(((i + 1) % lNumLoopSamples)*lNumCircleSamples + j, 
+							     i*lNumLoopSamples + ((j + 1) % lNumLoopSamples),
+								 i*lNumLoopSamples + j);
+				object->triangle(((i + 1) % lNumLoopSamples)*lNumCircleSamples + j,
+					             ((i + 1) % lNumLoopSamples)*lNumCircleSamples + ((j + 1) % lNumCircleSamples),
+								 i*lNumCircleSamples + ((j + 1) % lNumCircleSamples));
+			}
+		}
+		
+		/* We finished the object */
+        object->end();
+		
+        /* Convert triangle list to a mesh */
+        object->convertToMesh(iShieldName);
+
+        /* Create one instance of the torus (one entity) */
+		/* The same object can have multiple instances or entities */
+        Ogre::Entity* entity = aSceneManager->createEntity(iShieldName);
+
+		/* Create a scene node for the entity */
+		/* The scene node keeps track of the entity's position */
+        Ogre::SceneNode* scene_node = lRootSceneNode->createChildSceneNode(iShieldName);
+        scene_node->attachObject(entity);
+
+		return scene_node;
+    }
+    catch (Ogre::Exception &e){
+        throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
+    }
+    catch(std::exception &e){
+        throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
+    }
+	}
+
+
+
+
 	std::string getNewAsteroidName(){
 		std::string r = ("Asteroid" + std::to_string(iNextAsteroidNum));
 		iNextAsteroidNum++;

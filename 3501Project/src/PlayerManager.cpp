@@ -19,6 +19,8 @@ namespace AsteroidGame{
 		Ogre::SceneNode* lNewPlayerNode = iApplication->getAssetManager()->CreatePlayerChassis();
 		iPlayer->setChassisNode(lNewPlayerNode);
 
+		iShieldNode = iApplication->getAssetManager()->CreatePlayerShield();
+
 		iCameraNode = aCameraNode;
 	}
 
@@ -29,9 +31,12 @@ namespace AsteroidGame{
 
 		iPlayer->updateOrientation(aKeyboard, aMouse);
 		iPlayer->updatePosition(aKeyboard, aMouse);//to be replaced by //Movement
-
+		
 
 		updateCamera();
+
+		iShieldNode->setPosition(iPlayer->getChassisNode()->getPosition());
+		iShieldNode->setOrientation(iPlayer->getChassisNode()->getOrientation());
 	}
 
 

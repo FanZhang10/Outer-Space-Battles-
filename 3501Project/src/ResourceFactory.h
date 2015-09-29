@@ -23,6 +23,9 @@ namespace AsteroidGame {
 	const std::string iTargetName = "Target";
 	const std::string iTargetMaterial = "ObjectMaterial";
 
+	const std::string iShieldName = "Target";
+	const std::string iShieldMaterial = "ShinyBlueMaterial";
+
 	static int iNextAsteroidNum = 0; //Move to asteroid manager later
 	std::string getNewAsteroidName();
 	const std::string iAsteroidMaterial = "ObjectMaterial";
@@ -35,6 +38,7 @@ namespace AsteroidGame {
 	
 	void createAsteroidField(Ogre::SceneManager*, int aNumAsteroids, Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds, int aStartingSize);
 
+	Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
 }
 
 #endif //RESOURCE_FACTORY_H_

@@ -5,12 +5,12 @@
 
 #include "PlayerManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 
 namespace AsteroidGame{
 
-	PlayerManager::PlayerManager(OgreApplication* aApplication){
+	PlayerManager::PlayerManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

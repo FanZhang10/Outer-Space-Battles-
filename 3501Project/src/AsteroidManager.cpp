@@ -5,11 +5,11 @@
 
 #include "AsteroidManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	AsteroidManager::AsteroidManager(OgreApplication* aApplication){
+	AsteroidManager::AsteroidManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

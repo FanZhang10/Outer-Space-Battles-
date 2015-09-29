@@ -5,11 +5,11 @@
 
 #include "VFXManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	VFXManager::VFXManager(OgreApplication* aApplication){
+	VFXManager::VFXManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

@@ -5,11 +5,11 @@
 
 #include "MenuManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	MenuManager::MenuManager(OgreApplication* aApplication){
+	MenuManager::MenuManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

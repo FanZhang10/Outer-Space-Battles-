@@ -5,11 +5,11 @@
 
 #include "LevelManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	LevelManager::LevelManager(OgreApplication* aApplication){
+	LevelManager::LevelManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 }

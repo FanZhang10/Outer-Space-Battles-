@@ -16,7 +16,7 @@
 #include "ResourceFactory.h"
 
 namespace AsteroidGame{
-	class OgreApplication; //Forward Declaration
+	class AsteroidGame; //Forward Declaration
 
 	class AssetManager{
 		//
@@ -27,14 +27,14 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
-		OgreApplication* iApplication;
+		AsteroidGame* iApplication;
 		Ogre::SceneManager *iSceneManager;
 
 		//
 		//Public Methods
 	public:
 
-		AssetManager(OgreApplication* aApplication);
+		AssetManager(AsteroidGame* aApplication);
 		void init(Ogre::SceneManager*);
 		Ogre::SceneNode* CreatePlayerChassis();
 		Ogre::SceneNode* CreatePlayerShield();

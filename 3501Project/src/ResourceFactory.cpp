@@ -4,7 +4,7 @@
 //
 #include "ResourceFactory.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 

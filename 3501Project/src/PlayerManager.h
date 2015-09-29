@@ -16,7 +16,7 @@
 #include "Player.h"
 
 namespace AsteroidGame{
-	class OgreApplication; //Forward Declaration
+	class AsteroidGame; //Forward Declaration
 
 	class PlayerManager{
 
@@ -27,7 +27,7 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
-		OgreApplication* iApplication;
+		AsteroidGame* iApplication;
 		Player* iPlayer;
 
 		Ogre::SceneNode* iCameraNode;
@@ -36,7 +36,7 @@ namespace AsteroidGame{
 		//
 		//Public Methods
 	public:
-		PlayerManager(OgreApplication* aApplication);
+		PlayerManager(AsteroidGame* aApplication);
 		void init(Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 		void updateCamera();

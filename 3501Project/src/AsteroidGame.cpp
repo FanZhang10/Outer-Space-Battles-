@@ -1,4 +1,4 @@
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 #include "bin/path_config.h"
 
 namespace AsteroidGame {
@@ -35,12 +35,12 @@ Ogre::Vector3 camera_up_g(0.0, 1.0, 0.0);
 const Ogre::String material_directory_g = (MATERIAL_DIRECTORY  "/src");
 
 
-OgreApplication::OgreApplication(void){
+AsteroidGame::AsteroidGame(void){
    iGameState = GameState::Loading;
 }
 
 
-void OgreApplication::Init(void){
+void AsteroidGame::Init(void){
 	input_manager_ = NULL;
 	keyboard_ = NULL;
 	mouse_ = NULL;
@@ -63,7 +63,7 @@ void OgreApplication::Init(void){
 }
 
 
-void OgreApplication::InitRootNode(void){
+void AsteroidGame::InitRootNode(void){
 
     try {
 		
@@ -81,7 +81,7 @@ void OgreApplication::InitRootNode(void){
 }
 
 
-void OgreApplication::InitPlugins(void){
+void AsteroidGame::InitPlugins(void){
 
     try {
 
@@ -109,7 +109,7 @@ void OgreApplication::InitPlugins(void){
 }
 
 
-void OgreApplication::InitRenderSystem(void){
+void AsteroidGame::InitRenderSystem(void){
 
     try {
 
@@ -132,7 +132,7 @@ void OgreApplication::InitRenderSystem(void){
 }
 
         
-void OgreApplication::InitWindow(void){
+void AsteroidGame::InitWindow(void){
 
     try {
 
@@ -157,7 +157,7 @@ void OgreApplication::InitWindow(void){
 }
 
 
-void OgreApplication::InitViewport(void){
+void AsteroidGame::InitViewport(void){
 
     try {
 
@@ -197,7 +197,7 @@ void OgreApplication::InitViewport(void){
 }
 
 
-void OgreApplication::InitEvents(void){
+void AsteroidGame::InitEvents(void){
 
 	try {
 
@@ -217,7 +217,7 @@ void OgreApplication::InitEvents(void){
 }
 
 
-void OgreApplication::InitOIS(void){
+void AsteroidGame::InitOIS(void){
 
 	/* Initialize the Object Oriented Input System (OIS) */
 	try {
@@ -257,7 +257,7 @@ void OgreApplication::InitOIS(void){
 }
 
 
-void OgreApplication::InitManagers(void) {
+void AsteroidGame::InitManagers(void) {
 	iAssetManager = new AssetManager(this);
 	iAsteroidManager = new AsteroidManager(this);
 	iCollisionManager = new CollisionManager(this);
@@ -275,7 +275,7 @@ void OgreApplication::InitManagers(void) {
 }
 
 
-void OgreApplication::LoadMaterials(void){
+void AsteroidGame::LoadMaterials(void){
 
     try {
 		
@@ -298,7 +298,7 @@ void OgreApplication::LoadMaterials(void){
 }
 
 
-void OgreApplication::MainLoop(void){
+void AsteroidGame::MainLoop(void){
 
     try {
         /* Main loop to keep the application going */
@@ -326,7 +326,7 @@ void OgreApplication::MainLoop(void){
 
 
 
-bool OgreApplication::frameRenderingQueued(const Ogre::FrameEvent& fe){
+bool AsteroidGame::frameRenderingQueued(const Ogre::FrameEvent& fe){
   
 	/* This event is called after a frame is queued for rendering */
 	/* Do stuff in this event since the GPU is rendering and the CPU is idle */
@@ -351,7 +351,7 @@ bool OgreApplication::frameRenderingQueued(const Ogre::FrameEvent& fe){
 }
 
 
-void OgreApplication::windowResized(Ogre::RenderWindow* rw){
+void AsteroidGame::windowResized(Ogre::RenderWindow* rw){
 
 	/* Update the window and aspect ratio when the window is resized */
 	int width = rw->getWidth(); 

@@ -5,11 +5,11 @@
 
 #include "ProjectileManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	ProjectileManager::ProjectileManager(OgreApplication* aApplication){
+	ProjectileManager::ProjectileManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

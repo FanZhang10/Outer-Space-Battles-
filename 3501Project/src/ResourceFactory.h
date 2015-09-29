@@ -15,7 +15,7 @@
 
 namespace AsteroidGame {
 
-	class OgreApplication;
+	class AsteroidGame;
 
 	const std::string iPlayerName = "Player";
 	const std::string iPlayerMaterial = "ObjectMaterial";

@@ -5,11 +5,11 @@
 
 #include "AssetManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	AssetManager::AssetManager(OgreApplication* aApplication){
+	AssetManager::AssetManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

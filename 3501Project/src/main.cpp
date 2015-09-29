@@ -1,6 +1,6 @@
 #include <iostream>
 #include <exception>
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 #include "ResourceFactory.h"
 
 /* Macro for printing exceptions */
@@ -9,7 +9,7 @@
 
 /* Main function that builds and runs the application */
 int main(void){
-    AsteroidGame::OgreApplication application;
+    AsteroidGame::AsteroidGame application;
 
 	try {
 		application.Init();

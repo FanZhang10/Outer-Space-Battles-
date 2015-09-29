@@ -5,7 +5,7 @@ project(3501Project)
 
 # Specify project files: header files and source files
 set(HDRS
-	./src/OgreApplication.h
+	./src/AsteroidGame.h
 	./src/ResourceFactory.h
 	./src/Asteroid.h
 	./src/Player.h
@@ -21,7 +21,7 @@ set(HDRS
 )
  
 set(SRCS
-	./src/OgreApplication.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
+	./src/AsteroidGame.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
 	./src/ShieldVp.glsl ./src/ShieldFp.glsl ./src/Shield.material
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
 	./src/ResourceFactory.cpp

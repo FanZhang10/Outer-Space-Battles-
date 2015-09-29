@@ -5,11 +5,11 @@
 
 #include "CollisionManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	CollisionManager::CollisionManager(OgreApplication* aApplication){
+	CollisionManager::CollisionManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

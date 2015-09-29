@@ -5,11 +5,11 @@
 
 #include "SoundManager.h"
 #include "bin/path_config.h"
-#include "OgreApplication.h"
+#include "AsteroidGame.h"
 
 namespace AsteroidGame{
 
-	SoundManager::SoundManager(OgreApplication* aApplication){
+	SoundManager::SoundManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
 	}
 

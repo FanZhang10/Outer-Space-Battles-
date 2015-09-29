@@ -23,6 +23,7 @@ set(HDRS
 set(SRCS
 	./src/OgreApplication.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
 	./src/ShieldVp.glsl ./src/ShieldFp.glsl ./src/Shield.material
+	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp

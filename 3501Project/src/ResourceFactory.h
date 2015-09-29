@@ -28,7 +28,7 @@ namespace AsteroidGame {
 
 	static int iNextAsteroidNum = 0; //Move to asteroid manager later
 	std::string getNewAsteroidName();
-	const std::string iAsteroidMaterial = "ObjectMaterial";
+	const std::string iAsteroidMaterial = "AsteroidMaterial";
 
 	Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
 	void createTargetModel(Ogre::SceneManager*);

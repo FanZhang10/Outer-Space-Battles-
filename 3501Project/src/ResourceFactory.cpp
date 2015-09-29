@@ -386,43 +386,43 @@ namespace AsteroidGame{
 			Ogre::Vector3 lVertexNormal;
 			Ogre::ColourValue lVertexColor;
 			
-			lVertexNormal = Ogre::Vector3(0,0,1);
 			lVertexColor = Ogre::ColourValue(0.5f,0.4f,0.3f);
+
 
 			lVertexPosition = Ogre::Vector3(aRadius,0,0);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			lVertexPosition = Ogre::Vector3(0,0,aRadius);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			lVertexPosition = Ogre::Vector3(-aRadius,0,0);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			lVertexPosition = Ogre::Vector3(0,0,-aRadius);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			lVertexPosition = Ogre::Vector3(0,aRadius,0);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			lVertexPosition = Ogre::Vector3(0,-aRadius,0);
 
 			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
+			object->normal(lVertexPosition);
 			object->colour(lVertexColor); 
 
 			object->triangle(5,0,1);

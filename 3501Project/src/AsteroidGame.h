@@ -54,15 +54,15 @@ namespace AsteroidGame {
 			void MainLoop();
 
 			//Manager Getters
-			AssetManager* getAssetManager(){return iAssetManager;}
-			AsteroidManager* getAsteroidManager(){return iAsteroidManager;}
-			CollisionManager* getCollisionManager(){return iCollisionManager;}
-			LevelManager* getLevelManager(){return iLevelManager;}
-			MenuManager* getMenuManager(){return iMenuManager;}
-			PlayerManager* getPlayerManager(){return iPlayerManager;}
-			ProjectileManager* getProjectileManager(){return iProjectileManager;}
-			SoundManager* getSoundManager(){return iSoundManager;}
-			VFXManager* getVFXManager(){return iVFXManager;}
+			AssetManager* getAssetManager()				{return iAssetManager;}
+			AsteroidManager* getAsteroidManager()		{return iAsteroidManager;}
+			CollisionManager* getCollisionManager()		{return iCollisionManager;}
+			LevelManager* getLevelManager()				{return iLevelManager;}
+			MenuManager* getMenuManager()				{return iMenuManager;}
+			PlayerManager* getPlayerManager()			{return iPlayerManager;}
+			ProjectileManager* getProjectileManager()	{return iProjectileManager;}
+			SoundManager* getSoundManager()				{return iSoundManager;}
+			VFXManager* getVFXManager()					{return iVFXManager;}
 
         private:
 			//Application Init Functions

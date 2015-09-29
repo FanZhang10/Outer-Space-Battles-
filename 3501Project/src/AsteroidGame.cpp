@@ -39,7 +39,9 @@ AsteroidGame::AsteroidGame(void){
    iGameState = GameState::Loading;
 }
 
-
+//////////////////
+//Init Functions//
+/////////////////
 void AsteroidGame::Init(void){
 	input_manager_ = NULL;
 	keyboard_ = NULL;
@@ -62,7 +64,6 @@ void AsteroidGame::Init(void){
 	iGameState = GameState::Running;
 }
 
-
 void AsteroidGame::InitRootNode(void){
 
     try {
@@ -79,7 +80,6 @@ void AsteroidGame::InitRootNode(void){
 		throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
     }
 }
-
 
 void AsteroidGame::InitPlugins(void){
 
@@ -108,7 +108,6 @@ void AsteroidGame::InitPlugins(void){
     }
 }
 
-
 void AsteroidGame::InitRenderSystem(void){
 
     try {
@@ -130,8 +129,7 @@ void AsteroidGame::InitRenderSystem(void){
         throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
     }
 }
-
-        
+      
 void AsteroidGame::InitWindow(void){
 
     try {
@@ -155,7 +153,6 @@ void AsteroidGame::InitWindow(void){
         throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
     }
 }
-
 
 void AsteroidGame::InitViewport(void){
 
@@ -196,7 +193,6 @@ void AsteroidGame::InitViewport(void){
     }
 }
 
-
 void AsteroidGame::InitEvents(void){
 
 	try {
@@ -215,7 +211,6 @@ void AsteroidGame::InitEvents(void){
 		throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
     }
 }
-
 
 void AsteroidGame::InitOIS(void){
 
@@ -256,7 +251,6 @@ void AsteroidGame::InitOIS(void){
     }
 }
 
-
 void AsteroidGame::InitManagers(void) {
 	iAssetManager = new AssetManager(this);
 	iAsteroidManager = new AsteroidManager(this);
@@ -273,7 +267,6 @@ void AsteroidGame::InitManagers(void) {
 	iAssetManager->init(lSceneManager);
 	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
 }
-
 
 void AsteroidGame::LoadMaterials(void){
 
@@ -297,7 +290,9 @@ void AsteroidGame::LoadMaterials(void){
     }
 }
 
-
+///////////////////////
+//Main Game Functions//
+///////////////////////
 void AsteroidGame::MainLoop(void){
 
     try {
@@ -324,8 +319,6 @@ void AsteroidGame::MainLoop(void){
     }
 }
 
-
-
 bool AsteroidGame::frameRenderingQueued(const Ogre::FrameEvent& fe){
   
 	/* This event is called after a frame is queued for rendering */
@@ -349,7 +342,6 @@ bool AsteroidGame::frameRenderingQueued(const Ogre::FrameEvent& fe){
 
     return true;
 }
-
 
 void AsteroidGame::windowResized(Ogre::RenderWindow* rw){
 

@@ -28,21 +28,31 @@ namespace AsteroidGame{
 		//Private Variables
 	private:
 		AsteroidGame* iApplication;
-		Ogre::SceneManager *iSceneManager;
+		Ogre::SceneManager* iSceneManager;
+
+		ResourceFactory* iResourceFactory;
+
+		Ogre::SceneNode* iPlayerChassis;
+		Ogre::SceneNode* iPlayerShield;
 
 		//
 		//Public Methods
 	public:
-
 		AssetManager(AsteroidGame* aApplication);
+		virtual ~AssetManager();
+
 		void init(Ogre::SceneManager*);
-		Ogre::SceneNode* CreatePlayerChassis();
-		Ogre::SceneNode* CreatePlayerShield();
+		void createAsteroidField(Ogre::SceneManager*, int aNumAsteroids, Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds, int aStartingSize);
+
+		Ogre::SceneNode* getPlayerChassis() { return iPlayerChassis; }
+		Ogre::SceneNode* getPlayerShield()  { return iPlayerShield; }
 
 		//
 		//Private Methods
 	private:
+		Ogre::Vector3 createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds);
+	
 	};
 }
 
-#endif//ASSET_MANAGER_H_
+#endif //ASSET_MANAGER_H_

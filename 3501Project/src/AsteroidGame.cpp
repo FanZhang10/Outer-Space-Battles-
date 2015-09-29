@@ -59,7 +59,8 @@ void AsteroidGame::Init(void){
 
 	InitManagers();
 
-	createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
+	//Max Note: To be moved to AsteroidManager once that gets going
+	iAssetManager->createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
 
 	iGameState = GameState::Running;
 }

@@ -14,31 +14,28 @@
 
 
 namespace AsteroidGame {
+	class AsteroidGame; //Forward Declaration
 
-	class AsteroidGame;
+	class ResourceFactory {
+	public:
+		ResourceFactory();
+		virtual ~ResourceFactory();
 
-	const std::string iPlayerName = "Player";
-	const std::string iPlayerMaterial = "ObjectMaterial";
-	
-	const std::string iTargetName = "Target";
-	const std::string iTargetMaterial = "ObjectMaterial";
+		Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
+		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
+		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
+		
+	private:
+		int iNextAsteroidNum; //Move to asteroid manager later
 
-	const std::string iShieldName = "Target";
-	const std::string iShieldMaterial = "ShinyBlueMaterial";
+		const std::string iPlayerName;
+		const std::string iPlayerMaterial;
+		const std::string iShieldName;
+		const std::string iShieldMaterial;
+		const std::string iAsteroidMaterial;
 
-	static int iNextAsteroidNum = 0; //Move to asteroid manager later
-	std::string getNewAsteroidName();
-	const std::string iAsteroidMaterial = "AsteroidMaterial";
-
-	Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
-	void createTargetModel(Ogre::SceneManager*);
-	Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
-
-	Ogre::Vector3 createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds);
-	
-	void createAsteroidField(Ogre::SceneManager*, int aNumAsteroids, Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds, int aStartingSize);
-
-	Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
+		std::string getNewAsteroidName();
+	};
 }
 
 #endif //RESOURCE_FACTORY_H_

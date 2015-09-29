@@ -16,10 +16,10 @@ namespace AsteroidGame{
 
 	void PlayerManager::init(Ogre::SceneNode* aCameraNode){
 		iPlayer = new Player();
-		Ogre::SceneNode* lNewPlayerNode = iApplication->getAssetManager()->CreatePlayerChassis();
+		Ogre::SceneNode* lNewPlayerNode = iApplication->getAssetManager()->getPlayerChassis();
 		iPlayer->setChassisNode(lNewPlayerNode);
 
-		iShieldNode = iApplication->getAssetManager()->CreatePlayerShield();
+		iShieldNode = iApplication->getAssetManager()->getPlayerShield();
 
 		iCameraNode = aCameraNode;
 	}

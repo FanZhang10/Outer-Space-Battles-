@@ -153,7 +153,7 @@ namespace AsteroidGame{
 				Ogre::Vector3 lPosition = lLoopCenter + Ogre::Vector3(0,cos(phi)*sin(theta),sin(phi)*sin(theta));
 				vertex_normal = lPosition;
 				vertex_position = lPosition*aRadius;
-				vertex_color = Ogre::ColourValue(0, .6,.8,.3);
+				vertex_color = Ogre::ColourValue(0, 0.6f, 0.8f, 0.3f);
 
 				/* Add them to the object */
 				object->position(vertex_position);

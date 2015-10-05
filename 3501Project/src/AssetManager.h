@@ -42,15 +42,14 @@ namespace AsteroidGame{
 		virtual ~AssetManager();
 
 		void init(Ogre::SceneManager*);
-		void createAsteroidField(Ogre::SceneManager*, int aNumAsteroids, Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds, int aStartingSize);
-
+		
+		Ogre::SceneNode* createAsteroid(double aRadius);
 		Ogre::SceneNode* getPlayerChassis() { return iPlayerChassis; }
 		Ogre::SceneNode* getPlayerShield()  { return iPlayerShield; }
 
 		//
 		//Private Methods
 	private:
-		Ogre::Vector3 createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds);
 	
 	};
 }

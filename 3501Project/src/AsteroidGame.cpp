@@ -59,8 +59,7 @@ void AsteroidGame::Init(void){
 
 	InitManagers();
 
-	//Max Note: To be moved to AsteroidManager once that gets going
-	iAssetManager->createAsteroidField(ogre_root_->getSceneManager("MySceneManager"),20,Ogre::Vector3(50,50,50),Ogre::Vector3(-50,-50,-50),1);
+	iAsteroidManager->createAsteroidField();
 
 	iGameState = GameState::Running;
 }
@@ -290,6 +289,18 @@ void AsteroidGame::LoadMaterials(void){
         throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
     }
 }
+
+
+///////////////////////////
+//Public Helper Functions//
+///////////////////////////
+Ogre::Vector3 AsteroidGame::createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds) {
+	Ogre::Vector3 r = Ogre::Vector3((aPositiveBounds.x - aNegativeBounds.x) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.x,
+									(aPositiveBounds.y - aNegativeBounds.y) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.y,
+									(aPositiveBounds.z - aNegativeBounds.z) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.z);
+	return r;
+}
+
 
 ///////////////////////
 //Main Game Functions//

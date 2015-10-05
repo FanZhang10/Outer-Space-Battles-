@@ -22,12 +22,13 @@ namespace AsteroidGame {
 		//Variables
 	private:
 		//Private Variables
+		Ogre::SceneNode* iNode;
+		Ogre::Vector3 iVelocity;
+
 		int iTier;
 		int iValue;
 		int iHealth;
 		double iRadius;
-		Ogre::Vector3 iVelocity;
-		Ogre::SceneNode* iNode;
 
 
 	public:
@@ -43,23 +44,21 @@ namespace AsteroidGame {
 		//Public Methods
 
 		//Constructors
-		Asteroid(int aTier, int aValue, int aHealth, double aRadius, Ogre::SceneNode* aNode);
+		Asteroid(Ogre::SceneNode* aNode, int aTier);
+		Asteroid(Ogre::SceneNode* aNode, int aTier, int aValue, int aHealth, double aRadius);
 
-
-		void setNode(Ogre::SceneNode* aNode);
-		Ogre::SceneNode* getNode();
-
-		void setTier(int);
-		int getTier();
-
-		void setValue(int);
-		int getValue();
-
-		void setHealth(int);
-		int getHealth();
-
-		void setRadius(double);
-		double getRadius();
+		
+		Ogre::SceneNode* getNode() { return iNode; }
+		int getTier() { return iTier; }
+		int getValue() { return iValue; }
+		int getHealth() { return iHealth; }
+		double getRadius() { return iRadius; }
+		
+		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
+		void setTier(int aTier) { iTier = aTier; }
+		void setValue(int aValue) { iValue = aValue; }
+		void setHealth(int aHealth) { iHealth = aHealth; }
+		void setRadius(double aRadius) { iRadius = aRadius; } 
 		
 
 	};

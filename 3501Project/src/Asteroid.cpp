@@ -8,20 +8,23 @@
 
 namespace AsteroidGame{
 
-	Asteroid::Asteroid(int aTier, int aValue, int aHealth, double aRadius, Ogre::SceneNode* aNode){
-		iTier = aTier;
-		iValue = aValue;
-		iHealth = aHealth;
-		iRadius = aRadius;
-		iNode = aNode;
+	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier)
+	:	iNode(aNode),
+		iTier(aTier)
+	{
+		iVelocity = Ogre::Vector3(0,0,0);
+	}
+	
+	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier, int aValue, int aHealth, double aRadius)
+	:	iNode(aNode),
+		iTier(aTier),
+		iValue(aValue),
+		iHealth(aHealth),
+		iRadius(aRadius)
+	{
 		iVelocity = Ogre::Vector3(0,0,0);
 	}
 
-	Ogre::SceneNode* Asteroid::getNode(){
-		return iNode;
-	}
-
-
-
+	
 
 }

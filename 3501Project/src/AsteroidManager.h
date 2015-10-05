@@ -14,6 +14,10 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
+#include "Asteroid.h"
+
+#define DEFAULT_ASTEROID_NUM 25
+
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
 
@@ -22,18 +26,34 @@ namespace AsteroidGame{
 		//Public Variables
 	public:
 		AsteroidGame* iApplication;
+
+
 		//
 		//Private Variables
 	private:
+		std::map<int, double> iTierRadiusMap;
+		std::vector<Asteroid*> iAsteroids;
+
 
 		//
 		//Public Methods
 	public:
 		AsteroidManager(AsteroidGame* aApplication);
-		void update(void);
+		virtual ~AsteroidManager();
+
+		void update();
+
+		void createAsteroidField();
+
 		//
 		//Private Methods
 	private:
+		void createAsteroid(int aTier);
+		void placeAsteroid(Asteroid* aAsteroid);
+		void placeAsteroid(Asteroid* aAsteroid, Ogre::Vector3 aPosition);
+
+		bool isLegitimateTier(int aTier);
+
 	};
 }
 

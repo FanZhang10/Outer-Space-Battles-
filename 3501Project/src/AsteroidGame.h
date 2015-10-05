@@ -54,6 +54,7 @@ namespace AsteroidGame {
 			void MainLoop();
 
 			//Manager Getters
+			Ogre::SceneManager* getSceneManager()		{return ogre_root_->getSceneManager("MySceneManager");}
 			AssetManager* getAssetManager()				{return iAssetManager;}
 			AsteroidManager* getAsteroidManager()		{return iAsteroidManager;}
 			CollisionManager* getCollisionManager()		{return iCollisionManager;}
@@ -63,6 +64,9 @@ namespace AsteroidGame {
 			ProjectileManager* getProjectileManager()	{return iProjectileManager;}
 			SoundManager* getSoundManager()				{return iSoundManager;}
 			VFXManager* getVFXManager()					{return iVFXManager;}
+
+			//Public Helper Functions
+			Ogre::Vector3 createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds);
 
         private:
 			//Application Init Functions

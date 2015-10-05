@@ -29,6 +29,7 @@ namespace AsteroidGame {
 		int iValue;
 		int iHealth;
 		double iRadius;
+		double iSpeed;
 
 
 	public:
@@ -47,6 +48,7 @@ namespace AsteroidGame {
 		Asteroid(Ogre::SceneNode* aNode, int aTier);
 		Asteroid(Ogre::SceneNode* aNode, int aTier, int aValue, int aHealth, double aRadius);
 
+		void update();
 		
 		Ogre::SceneNode* getNode() { return iNode; }
 		int getTier() { return iTier; }

@@ -301,6 +301,14 @@ Ogre::Vector3 AsteroidGame::createVector3InRange(Ogre::Vector3 aPositiveBounds, 
 	return r;
 }
 
+Ogre::Vector3 AsteroidGame::generateRandomVector3() {
+	double randomX = (double)(rand() % 101 - 50) / 50.0;
+	double randomY = (double)(rand() % 101 - 50) / 50.0;
+	double randomZ = (double)(rand() % 101 - 50) / 50.0;
+
+	return Ogre::Vector3(randomX, randomY, randomZ);
+}
+
 
 ///////////////////////
 //Main Game Functions//

@@ -23,7 +23,7 @@ namespace AsteroidGame {
 	private:
 		//Private Variables
 		Ogre::SceneNode* iNode;
-		Ogre::Vector3 iVelocity;
+		Ogre::Vector3 iDirection;
 
 		int iTier;
 		int iValue;
@@ -45,8 +45,7 @@ namespace AsteroidGame {
 		//Public Methods
 
 		//Constructors
-		Asteroid(Ogre::SceneNode* aNode, int aTier);
-		Asteroid(Ogre::SceneNode* aNode, int aTier, int aValue, int aHealth, double aRadius);
+		Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection);
 
 		void update();
 		

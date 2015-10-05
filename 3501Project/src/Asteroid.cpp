@@ -8,32 +8,17 @@
 
 namespace AsteroidGame{
 
-	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier)
+	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection)
 	:	iNode(aNode),
+		iDirection(aDirection),
 		iTier(aTier),
 		iSpeed(0.01)
 	{
-		//Temporary random direction calc (-1 to 1)
-		double randomX = (double)(rand() % 101 - 50) / 50.0;
-		double randomY = (double)(rand() % 101 - 50) / 50.0;
-		double randomZ = (double)(rand() % 101 - 50) / 50.0;
-		printf("Random X Y Z = %f %f %f\n", randomX, randomY, randomZ);
-		iVelocity = Ogre::Vector3(randomX,randomY,randomZ).normalisedCopy();
-	}
-	
-	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier, int aValue, int aHealth, double aRadius)
-	:	iNode(aNode),
-		iTier(aTier),
-		iValue(aValue),
-		iHealth(aHealth),
-		iRadius(aRadius)
-	{
-		iVelocity = Ogre::Vector3(0,0,0);
 	}
 
 	void Asteroid::update() {
 		//To Do: Move and Rotate Scene Node
-		Ogre::Vector3 newPos = iNode->getPosition() + iVelocity*iSpeed;
+		Ogre::Vector3 newPos = iNode->getPosition() + iDirection*iSpeed;
 		iNode->setPosition(newPos);
 	}
 

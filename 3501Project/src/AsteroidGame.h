@@ -67,6 +67,7 @@ namespace AsteroidGame {
 
 			//Public Helper Functions
 			Ogre::Vector3 createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds);
+			Ogre::Vector3 generateRandomVector3();
 
         private:
 			//Application Init Functions

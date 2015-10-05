@@ -54,7 +54,7 @@ namespace AsteroidGame{
 		}
 
 		Ogre::SceneNode* asteroidNode = iApplication->getAssetManager()->createAsteroid(iTierRadiusMap[aTier]);
-		Asteroid* newAsteroid = new Asteroid(asteroidNode, aTier);
+		Asteroid* newAsteroid = new Asteroid(asteroidNode, aTier, iApplication->generateRandomVector3().normalisedCopy());
 
 		iAsteroids.push_back(newAsteroid);
 	}

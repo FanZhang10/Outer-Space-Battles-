@@ -299,6 +299,121 @@ namespace AsteroidGame{
 
 	}
 
+	Ogre::SceneNode* ResourceFactory::createBoundingBoxModel(Ogre::SceneManager* aSceneManager, Ogre::Vector3 aDimensions) {
+		try {
+			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
+			//std::string lAsteroidName = getNewAsteroidName();
+			/* Create the 3D object */
+			Ogre::ManualObject* object = NULL;
+			object = aSceneManager->createManualObject("Bounding Box");
+			object->setDynamic(false);
+
+			/* Create triangle list for the object */
+			object->begin(iAsteroidMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+
+			/* Add vertices to the object */
+			Ogre::Vector3 lVertexPosition;
+			Ogre::Vector3 lVertexNormal;
+			Ogre::ColourValue lVertexColor;
+			
+			lVertexColor = Ogre::ColourValue(0.9f,0.9f,0.9f);
+
+			for (int ix = -1; ix <= 1; ix+=2) {
+
+				for (int iy = -1; iy <= 1; iy+=2) {
+
+					for (int iz = -1; iz <= 1; iz+=2) {
+						
+						Ogre::Real x = ix * aDimensions.x;
+						Ogre::Real y = iy * aDimensions.y;
+						Ogre::Real z = iz * aDimensions.z;
+
+						lVertexPosition = Ogre::Vector3(x,y,z);
+
+						printf("Vertice tracked (x,y,z) = (%f,%f,%f)\n", x, y, z);
+					
+						object->position(lVertexPosition);
+						object->normal(lVertexPosition);
+						object->colour(lVertexColor); 
+					}
+
+				}
+
+			}
+
+			////Inside Rendering
+			//Front
+			object->triangle(7,5,1);
+			object->triangle(7,1,3);
+			//Left
+			object->triangle(3,1,0);
+			object->triangle(3,0,2);
+			//Right
+			object->triangle(6,4,5);
+			object->triangle(6,5,7);
+			//Top
+			object->triangle(6,7,3);
+			object->triangle(6,3,2);
+			//Bottom
+			object->triangle(5,4,0);
+			object->triangle(5,0,1);
+			//Back
+			object->triangle(4,6,2);
+			object->triangle(6,2,0);
+
+			////Outside Rendering
+			//Front
+			object->triangle(7,3,1);
+			object->triangle(7,1,5);
+			//Left
+			object->triangle(3,2,0);
+			object->triangle(3,0,1);
+			//Right
+			object->triangle(6,7,5);
+			object->triangle(6,5,4);
+			//Top
+			object->triangle(6,2,3);
+			object->triangle(6,3,7);
+			//Bottom
+			object->triangle(5,1,0);
+			object->triangle(5,0,4);
+			//Back
+			object->triangle(4,0,2);
+			object->triangle(6,2,6);
+
+		
+			/* We finished the object */
+			object->end();
+		
+			/* Convert triangle list to a mesh */
+			object->convertToMesh("Bounding Box");
+
+			/* Create one instance of the torus (one entity) */
+			/* The same object can have multiple instances or entities */
+			Ogre::Entity* entity = aSceneManager->createEntity("Bounding Box");
+			/* Apply a material to the entity to give it color */
+			/* We already did that above, so we comment it out here */
+			/* entity->setMaterialName(material_name); */
+			/* But, this call is useful if we have multiple entities with different materials */
+
+			/* Create a scene node for the entity */
+			/* The scene node keeps track of the entity's position */
+			Ogre::SceneNode* scene_node = root_scene_node->createChildSceneNode("Bounding Box");
+			scene_node->attachObject(entity);
+
+
+			return scene_node;
+		}
+		catch (Ogre::Exception &e){
+			throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
+		}
+		catch(std::exception &e){
+			throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
+		}
+		return NULL;
+
+	}
+
 	std::string ResourceFactory::getNewAsteroidName(){	
 		std::stringstream ss;
 		ss << iNextAsteroidNum;

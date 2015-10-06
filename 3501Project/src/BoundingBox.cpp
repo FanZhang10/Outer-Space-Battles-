@@ -10,8 +10,6 @@ namespace AsteroidGame {
 	BoundingBox::BoundingBox(Ogre::Vector3 aBounds)
 		: iBounds(aBounds)
 	{
-		//Get iNode data from AssetManager...
-		iNode = NULL;
 	}
 
 	BoundingBox::~BoundingBox() {

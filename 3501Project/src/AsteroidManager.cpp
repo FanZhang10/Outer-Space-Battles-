@@ -9,12 +9,17 @@
 
 namespace AsteroidGame{
 
-	AsteroidManager::AsteroidManager(AsteroidGame* aApplication) {
+	AsteroidManager::AsteroidManager(AsteroidGame* aApplication) 
+		: iTestBB(Ogre::Vector3(50,50,50))
+	{
 		iApplication = aApplication;
 
 		for (int i = 1; i <= 4; i++) {
 			iTierRadiusMap[i] = (double)(i);
 		}
+
+		//Temporary until we find a place to put BoundingBoxes!
+		iTestBB.setNode(iApplication->getAssetManager()->createBoundingBox(iTestBB.getBounds()));
 	}
 
 	AsteroidManager::~AsteroidManager() {

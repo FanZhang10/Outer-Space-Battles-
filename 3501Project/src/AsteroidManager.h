@@ -15,6 +15,7 @@
 #include "OIS/OIS.h"
 
 #include "Asteroid.h"
+#include "BoundingBox.h"
 
 #define DEFAULT_ASTEROID_NUM 25
 
@@ -33,6 +34,9 @@ namespace AsteroidGame{
 	private:
 		std::map<int, double> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
+
+		//Temporary until we find a place to put BoundingBoxes!
+		BoundingBox iTestBB;
 
 
 		//

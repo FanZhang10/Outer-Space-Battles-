@@ -32,4 +32,8 @@ namespace AsteroidGame{
 	Ogre::SceneNode* AssetManager::createAsteroid(double aRadius) {
 		return iResourceFactory->createAsteroidModel(iApplication->getSceneManager(), aRadius);
 	}
+
+	Ogre::SceneNode* AssetManager::createBoundingBox(Ogre::Vector3 aDimensions) {
+		return iResourceFactory->createBoundingBoxModel(iApplication->getSceneManager(), aDimensions);
+	}
 }

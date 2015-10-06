@@ -21,9 +21,11 @@ namespace AsteroidGame {
 		ResourceFactory();
 		virtual ~ResourceFactory();
 
+		//Can we replace these SceneManager params with a call to iApplication->getSceneManager()?
 		Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
 		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
 		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
+		Ogre::SceneNode* createBoundingBoxModel(Ogre::SceneManager*, Ogre::Vector3 aDimensions);
 		
 	private:
 		int iNextAsteroidNum; //Move to asteroid manager later

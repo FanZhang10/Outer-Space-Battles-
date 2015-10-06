@@ -26,6 +26,8 @@ namespace AsteroidGame {
 		Ogre::Vector3 getBounds() { return iBounds; }
 		Ogre::SceneNode* getNode() { return iNode; }
 
+		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
+
 	private:
 		Ogre::Vector3 iBounds;
 		Ogre::SceneNode* iNode;

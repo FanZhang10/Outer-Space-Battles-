@@ -18,6 +18,7 @@ set(HDRS
 	./src/LevelManager.h
 	./src/AssetManager.h
 	./src/SoundManager.h
+	./src/BoundingBox.h
 )
  
 set(SRCS
@@ -36,6 +37,7 @@ set(SRCS
 	./src/LevelManager.cpp
 	./src/AssetManager.cpp
 	./src/SoundManager.cpp
+	./src/BoundingBox.cpp
 )
 
 # The rules here are specific to Windows Systems

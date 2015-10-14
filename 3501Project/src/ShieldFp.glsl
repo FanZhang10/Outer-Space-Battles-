@@ -11,11 +11,15 @@ uniform vec4 ambient_colour;
 uniform vec4 diffuse_colour;
 uniform vec4 specular_colour;
 uniform float phong_exponent;
+uniform float timer;
 
 
 void main() 
 {
     // Blinn–Phong shading
+
+	vec4 alphaAdjustment = vec4(1,1,1,1);
+
 
     vec3 N, // Interpolated normal for fragment
 	     L, // Light-source direction
@@ -28,7 +32,7 @@ void main()
 	L = (light_pos - position_interp);
 	L = normalize(L);
 
-	float Id = max(dot(N, L), 0.0);
+	
 	
 	// Compute specular term for Blinn–Phong shading
 	// Initially: V = (eye_position - position_interp);
@@ -38,11 +42,17 @@ void main()
     H = 0.5*(V + L); // Halfway vector
     H = normalize(H);
 
+	float Id = min(max((.4/(3*dot(V, N))), 0.0),.7) * ((abs(sin(timer)/2)+.5));
+
+	alphaAdjustment.a = Id;
+	
+	
+
     float spec_angle_cos = max(dot(N, H), 0.0);
 	float Is = pow(spec_angle_cos, phong_exponent);
 	    
 	// Assign light to the fragment
-	gl_FragColor = ambient_colour + Id*diffuse_colour + Is*specular_colour;
+	gl_FragColor = (ambient_colour + Id*diffuse_colour) * alphaAdjustment;
 		
 
 	// For debug, we can display the different values

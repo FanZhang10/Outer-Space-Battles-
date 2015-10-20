@@ -28,7 +28,7 @@ namespace AsteroidGame{
 	void AsteroidManager::update() {
 		std::vector<Asteroid*>::iterator itr = iAsteroids.begin();
 		for (; itr != iAsteroids.end(); itr++) {
-			(*itr)->update();
+			(*itr)->update(iApplication->getCollisionManager());
 		}
 	}
 

@@ -358,8 +358,8 @@ namespace AsteroidGame{
 			object->triangle(5,4,0);
 			object->triangle(5,0,1);
 			//Back
-			object->triangle(4,6,2);
-			object->triangle(6,2,0);
+			object->triangle(2,0,4);
+			object->triangle(2,4,6);
 
 			////Outside Rendering
 			//Front
@@ -378,8 +378,8 @@ namespace AsteroidGame{
 			object->triangle(5,1,0);
 			object->triangle(5,0,4);
 			//Back
-			object->triangle(4,0,2);
-			object->triangle(6,2,6);
+			object->triangle(2,6,4);
+			object->triangle(2,4,0);
 
 		
 			/* We finished the object */

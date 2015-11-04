@@ -9,5 +9,7 @@
 */
 #pragma once
 
-extern float GL_ASTEROID_NUM; //Number of starting asteroids
+extern float GL_DEBUG_PRINT;
+
+extern float GL_ASTEROID_NUM;
 

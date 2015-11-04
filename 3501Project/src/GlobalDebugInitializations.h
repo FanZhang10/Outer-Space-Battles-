@@ -29,7 +29,8 @@ using namespace std;
 ///////////////
 //GLOBAL FLOATS
 ///////////////
-float GL_ASTEROID_NUM; //Number of starting asteroids
+float GL_DEBUG_PRINT;	//Debug printing flag
+float GL_ASTEROID_NUM;	//Number of starting asteroids
 
 
 // Helper function; Reads txt stream and returns value after next TILDE, aka '~', character
@@ -56,6 +57,8 @@ void setAllGlobalVars()
 	ifstream varValueFile("../GlobalVariableValues.txt");
 	if (varValueFile.is_open())
 	{
+		GL_DEBUG_PRINT	= getNextFloat(varValueFile);
+
 		GL_ASTEROID_NUM = getNextFloat(varValueFile);
 
 		/*	Example assignments:

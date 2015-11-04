@@ -266,6 +266,7 @@ void AsteroidGame::InitManagers(void) {
 
 	iAssetManager->init(lSceneManager);
 	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
+	iCollisionManager->setBoundingBox(&(iAsteroidManager->iTestBB));
 }
 
 void AsteroidGame::LoadMaterials(void){

@@ -13,7 +13,8 @@
 	3) Add new getNextFloat assignment statement in "setAllGlobalVars()"
 		- It should match the other assignment statements
 */
-#pragma once
+#ifndef GLOB_VAR_LOADING_H
+#define GLOB_VAR_LOADING_H
 
 #include <iostream>
 #include <fstream>
@@ -60,3 +61,6 @@ void setAllGlobalVars()
 		*/
 	}
 }
+
+
+#endif

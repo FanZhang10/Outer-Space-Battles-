@@ -33,6 +33,7 @@ namespace AsteroidGame{
 	}
 
 	void AsteroidManager::createAsteroidField() {
+		printf("GL_ASTEROID_NUM = %f\n", GL_ASTEROID_NUM);
 		for (int i = 0; i < GL_ASTEROID_NUM; i++) {
 			createAsteroid( (i % 4) + 1 );
 		}

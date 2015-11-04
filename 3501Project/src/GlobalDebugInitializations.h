@@ -52,7 +52,8 @@ float getNextFloat(ifstream& in)
 // Add your new gloval var assignment below using getNextFloat
 void setAllGlobalVars()
 {
-	ifstream varValueFile("GlobalVariableValues.txt");
+	printf("Global Runtime Variable Initialization Started!\n");
+	ifstream varValueFile("../GlobalVariableValues.txt");
 	if (varValueFile.is_open())
 	{
 		GL_ASTEROID_NUM = getNextFloat(varValueFile);
@@ -62,4 +63,5 @@ void setAllGlobalVars()
 			GL_PLAYER_SPEED = getNextFloat(varValueFile);
 		*/
 	}
+	printf("Global Runtime Variable Initialization Finished!\n");
 }

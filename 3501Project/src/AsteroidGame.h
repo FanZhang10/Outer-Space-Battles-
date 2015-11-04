@@ -26,7 +26,6 @@
 #include "VFXManager.h"
 
 //Other 
-#include "GlobalExterns.h"
 #include "ResourceFactory.h"
 
 namespace AsteroidGame {

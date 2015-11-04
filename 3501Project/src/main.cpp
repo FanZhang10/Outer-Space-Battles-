@@ -1,8 +1,8 @@
 #include <iostream>
 #include <exception>
 
-#include "AsteroidGame.h"
 #include "GlobalDebugInitializations.h"
+#include "AsteroidGame.h"
 #include "ResourceFactory.h"
 
 /* Macro for printing exceptions */

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <exception>
+
 #include "AsteroidGame.h"
+#include "GlobalDebugInitializations.h"
 #include "ResourceFactory.h"
 
 /* Macro for printing exceptions */
@@ -9,6 +11,9 @@
 
 /* Main function that builds and runs the application */
 int main(void){
+	
+	setAllGlobalVars();
+
     AsteroidGame::AsteroidGame application;
 
 	try {

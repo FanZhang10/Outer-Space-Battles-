@@ -33,7 +33,7 @@ namespace AsteroidGame{
 	}
 
 	void AsteroidManager::createAsteroidField() {
-		for (int i = 0; i < DEFAULT_ASTEROID_NUM; i++) {
+		for (int i = 0; i < GL_ASTEROID_NUM; i++) {
 			createAsteroid( (i % 4) + 1 );
 		}
 

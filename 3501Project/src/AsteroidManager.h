@@ -14,10 +14,9 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
+#include "GlobalDebugInitializations.h"
 #include "Asteroid.h"
 #include "BoundingBox.h"
-
-#define DEFAULT_ASTEROID_NUM 25
 
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
@@ -36,9 +35,6 @@ namespace AsteroidGame{
 	private:
 		std::map<int, double> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
-
-		
-
 
 		//
 		//Public Methods

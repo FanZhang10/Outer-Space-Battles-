@@ -28,12 +28,16 @@ namespace AsteroidGame{
 
 		//printf("boundPos = %d %d %d\n", boundPos.x, boundPos.y, boundPos.z);
 
-		Ogre::Vector3 pl = boundPos + Ogre::Vector3(bounds.x,0,0);
-		Ogre::Vector3 pr = boundPos + Ogre::Vector3 (-bounds.x,0,0);
-		Ogre::Vector3 pu = boundPos + Ogre::Vector3 (bounds.y,0,0);
-		Ogre::Vector3 pd = boundPos + Ogre::Vector3 (-bounds.y,0,0);
-		Ogre::Vector3 pf = boundPos + Ogre::Vector3 (bounds.z,0,0);
-		Ogre::Vector3 pb = boundPos + Ogre::Vector3 (-bounds.z,0,0);
+		float x = bounds.x;
+		float y = bounds.y;
+		float z = bounds.z;
+
+		Ogre::Vector3 pl = boundPos + Ogre::Vector3(x,y,z).midPoint(Ogre::Vector3(x,-y,-z));
+		Ogre::Vector3 pr = boundPos + Ogre::Vector3(-x,-y,-z).midPoint(Ogre::Vector3(-x,y,z));
+		Ogre::Vector3 pu = boundPos + Ogre::Vector3(x,y,z).midPoint(Ogre::Vector3(-x,y,-z));
+		Ogre::Vector3 pd = boundPos + Ogre::Vector3(-x,-y,-z).midPoint(Ogre::Vector3(x,-y,z));
+		Ogre::Vector3 pf = boundPos + Ogre::Vector3(x,y,z).midPoint(Ogre::Vector3(-x,-y,z));
+		Ogre::Vector3 pb = boundPos + Ogre::Vector3(-x,-y,-z).midPoint(Ogre::Vector3(x,y,-z));
 
 		float dl = getDistanceFromPlane(aNewPos, pl, pr);
 		float dr = getDistanceFromPlane(aNewPos, pr, pl);

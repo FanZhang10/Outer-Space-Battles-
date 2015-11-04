@@ -6,13 +6,15 @@
 #include "bin/path_config.h"
 #include "AsteroidGame.h"
 
+#include <random>
+
 namespace AsteroidGame{
 	ResourceFactory::ResourceFactory() :
 	iPlayerName("Player"),
 	iPlayerMaterial("ObjectMaterial"),
 	iShieldName("Target"),
 	iShieldMaterial("ShinyBlueMaterial"),
-	iAsteroidMaterial("AsteroidMaterial"),
+	iAsteroidMaterial("ObjectMaterial"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -332,6 +334,15 @@ namespace AsteroidGame{
 
 						printf("Vertice tracked (x,y,z) = (%f,%f,%f)\n", x, y, z);
 					
+						std::mt19937 rng;
+						rng.seed(std::random_device()());
+						std::uniform_int_distribution<int> randC (0,100);
+						float a = ((float)randC(rng))/100.0f;
+						float b = ((float)randC(rng))/100.0f;
+						float c = ((float)randC(rng))/100.0f;
+
+						lVertexColor = Ogre::ColourValue(a,b,c);
+
 						object->position(lVertexPosition);
 						object->normal(lVertexPosition);
 						object->colour(lVertexColor); 

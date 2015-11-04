@@ -28,6 +28,8 @@ namespace AsteroidGame{
 	public:
 		AsteroidGame* iApplication;
 
+		//Temporary until we find a place to put BoundingBoxes!
+		BoundingBox iTestBB;
 
 		//
 		//Private Variables
@@ -35,8 +37,7 @@ namespace AsteroidGame{
 		std::map<int, double> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
 
-		//Temporary until we find a place to put BoundingBoxes!
-		BoundingBox iTestBB;
+		
 
 
 		//

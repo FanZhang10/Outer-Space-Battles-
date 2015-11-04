@@ -12,9 +12,11 @@
 		- I name these vars similarly to define notations: All caps, starting with GL_ for global
 	3) Add new getNextFloat assignment statement in "setAllGlobalVars()"
 		- It should match the other assignment statements
+	4) Add an extern float of the same name to GlobalExterns.h (should match the global var name you made below)
+		- You should be including that extern file (NOT THIS HEADER) in order to use the global vars
+		- Without these externs, you'll get a whole bunch of linker errors
 */
-#ifndef GLOB_VAR_LOADING_H
-#define GLOB_VAR_LOADING_H
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -61,6 +63,3 @@ void setAllGlobalVars()
 		*/
 	}
 }
-
-
-#endif

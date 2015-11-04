@@ -14,7 +14,7 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
-#include "GlobalDebugInitializations.h"
+#include "GlobalExterns.h"
 #include "Asteroid.h"
 #include "BoundingBox.h"
 

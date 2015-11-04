@@ -20,6 +20,7 @@ set(HDRS
 	./src/SoundManager.h
 	./src/BoundingBox.h
     ./src/GlobalDebugInitializations.h
+    ./src/GlobalExterns.h
 )
  
 set(SRCS

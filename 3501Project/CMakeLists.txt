@@ -19,6 +19,7 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
+    ./src/GlobalDebugInitializations.h
 )
  
 set(SRCS

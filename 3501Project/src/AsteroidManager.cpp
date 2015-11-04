@@ -59,20 +59,24 @@ namespace AsteroidGame{
 			return;
 		}
 
-		Ogre::SceneNode* asteroidNode = iApplication->getAssetManager()->createAsteroid(iTierRadiusMap[aTier]);
-		Asteroid* newAsteroid = new Asteroid(asteroidNode, aTier, iApplication->generateRandomVector3().normalisedCopy());
+		double radius = iTierRadiusMap[aTier];
+		Ogre::SceneNode* asteroidNode = iApplication->getAssetManager()->createAsteroid(radius);
+		Asteroid* newAsteroid = new Asteroid(asteroidNode, iApplication->generateRandomVector3().normalisedCopy(), aTier, radius);
+		//Asteroid* newAsteroid = new Asteroid(asteroidNode, Ogre::Vector3 (1.0,0.0,0.0), aTier, radius);
 
 		iAsteroids.push_back(newAsteroid);
 	}
 
 	void AsteroidManager::placeAsteroid(Asteroid* aAsteroid) {
 		//TODO: Define field bounds somewhere in AsteroidGame and get them during this phase
-		Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(50,50,50), Ogre::Vector3(-50,-50,-50));
+		//Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(50,50,50), Ogre::Vector3(-50,-50,-50));
+		Ogre::Vector3 randomLocationInField (0.0,0.0,0.0);
 		placeAsteroid(aAsteroid, randomLocationInField);
 	}
 
 	void AsteroidManager::placeAsteroid(Asteroid* aAsteroid, Ogre::Vector3 aPosition) {
 		aAsteroid->getNode()->setPosition(aPosition);
+		printf("Asteroid Placed at:    %f %f %f\n", aAsteroid->getNode()->getPosition().x, aAsteroid->getNode()->getPosition().y, aAsteroid->getNode()->getPosition().z);
 	}
 
 	bool AsteroidManager::isLegitimateTier(int aTier) {

@@ -3,6 +3,6 @@ Use surrounding tildes to denote a value you wish to store.
 
 //Valid values: ON, OFF, any float value
 [NAME]                     [VALUE]     DEFAULT
-DEBUG_PRINT                ~ON~        OFF
+DEBUG_PRINT                ~OFF~        OFF
 
-ASTEROID_NUM               ~1~         25
+ASTEROID_NUM               ~5~         25

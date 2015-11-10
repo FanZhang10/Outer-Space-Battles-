@@ -18,7 +18,8 @@ namespace AsteroidGame{
 		iRadius(aRadius),
 		iSpeed(0.1)
 	{
-		printf("Asteroid Created At: %d %d %d\n", aNode->getPosition().x, aNode->getPosition().y, aNode->getPosition().z);
+		printf("Asteroid Created At: %f %f %f\n", aNode->getPosition().x, aNode->getPosition().y, aNode->getPosition().z);
+		printf("Asteroid Direction: (%f %f %f)\n", aDirection.x, aDirection.y, aDirection.z);
 	}
 
 	void Asteroid::update(CollisionManager* aCollisionManager) {
@@ -38,10 +39,6 @@ namespace AsteroidGame{
 		}
 		
 		iNode->setPosition(newPos);
-
-		//if (GL_DEBUG_PRINT == TRUE)
-			//printf ("Asteroid Current Position set to: %f %f %f\n", finalNewPos.x, finalNewPos.y, finalNewPos.z);
-		
 	}
 
 }

@@ -20,6 +20,10 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
+	./src/framework/aldlist.h
+	./src/framework/CWaves.h
+	./src/framework/Framework.h
+	./src/framework/LoadOAL.h
 )
  
 set(SRCS
@@ -27,6 +31,9 @@ set(SRCS
 	./src/ShieldVp.glsl ./src/ShieldFp.glsl ./src/Shield.material
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
 	./src/BoundingBoxVp.glsl ./src/BoundingBoxFp.glsl ./src/BoundingBox.material
+	./src/ProjectileVp.glsl ./src/ProjectileFp.glsl ./src/Projectile.material
+	./src/Projectile_2Vp.glsl ./src/Projectile_2Fp.glsl ./src/Projectile_2.material
+
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp
@@ -41,6 +48,10 @@ set(SRCS
 	./src/AssetManager.cpp
 	./src/SoundManager.cpp
 	./src/BoundingBox.cpp
+	./src/framework/aldlist.cpp
+	./src/framework/CWaves.cpp
+	./src/framework/Framework.cpp
+	./src/framework/LoadOAL.cpp
 )
 
 # The rules here are specific to Windows Systems

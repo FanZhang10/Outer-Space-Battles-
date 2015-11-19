@@ -14,7 +14,8 @@ namespace AsteroidGame{
 	iPlayerMaterial("ObjectMaterial"),
 	iShieldName("Target"),
 	iShieldMaterial("ShinyBlueMaterial"),
-	iAsteroidMaterial("ObjectMaterial"),
+	iAsteroidMaterial("AsteroidMaterial"),
+	iBoundingBoxMaterial("AsteroidMaterial"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -311,7 +312,7 @@ namespace AsteroidGame{
 			object->setDynamic(false);
 
 			/* Create triangle list for the object */
-			object->begin(iAsteroidMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+			object->begin(iBoundingBoxMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 
 			/* Add vertices to the object */
 			Ogre::Vector3 lVertexPosition;

@@ -35,6 +35,7 @@ namespace AsteroidGame {
 		const std::string iShieldName;
 		const std::string iShieldMaterial;
 		const std::string iAsteroidMaterial;
+		const std::string iBoundingBoxMaterial;
 
 		std::string getNewAsteroidName();
 	};

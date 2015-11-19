@@ -16,6 +16,7 @@
 #include "OIS/OIS.h"
 
 namespace AsteroidGame {
+	class CollisionManager;
 
 	class Asteroid{
 
@@ -47,13 +48,14 @@ namespace AsteroidGame {
 		//Constructors
 		Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection);
 
-		void update();
+		void update(CollisionManager* aCollisionManager);
 		
 		Ogre::SceneNode* getNode() { return iNode; }
 		int getTier() { return iTier; }
 		int getValue() { return iValue; }
 		int getHealth() { return iHealth; }
 		double getRadius() { return iRadius; }
+		Ogre::Vector3 getDirection() { return iDirection; }
 		
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
 		void setTier(int aTier) { iTier = aTier; }

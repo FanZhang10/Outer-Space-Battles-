@@ -7,6 +7,7 @@
 #include "bin/path_config.h"
 #include "AsteroidGame.h"
 #include "Asteroid.h"
+#include "Projectile.h"
 
 namespace AsteroidGame{
 

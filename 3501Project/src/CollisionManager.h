@@ -20,6 +20,8 @@
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
 	class Projectile;
+	class Asteroid;
+
 	class CollisionManager{
 		//
 		//Public Variables
@@ -49,6 +51,8 @@ namespace AsteroidGame{
 		//
 		//Private Methods
 	private:
+		float getDistanceFromPlane(Ogre::Vector3 aPoint, Ogre::Vector3 aPlanePoint, Ogre::Vector3 aPlaneNormal);
+		Ogre::Vector3 getReflectionVector(Ogre::Vector3 aDirection, Ogre::Vector3 aNormal);
 	};
 }
 

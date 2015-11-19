@@ -5,6 +5,7 @@
 
 #include "Asteroid.h"
 #include "bin/path_config.h"
+#include "CollisionManager.h"
 
 namespace AsteroidGame{
 
@@ -16,7 +17,7 @@ namespace AsteroidGame{
 	{
 	}
 
-	void Asteroid::update() {
+	void Asteroid::update(CollisionManager* aCollisionManager) {
 		//To Do: Move and Rotate Scene Node
 		bool safeMove = false;
 		Ogre::Vector3 newPos, newDirFinal, newDirBB, newDirP;

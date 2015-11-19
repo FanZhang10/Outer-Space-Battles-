@@ -153,6 +153,7 @@ namespace AsteroidGame{
 		lCameraNode->setOrientation(lPlayerNode->getOrientation());
 		lCameraNode->translate(-5-(iSpeed),1+iCameraDisplacementY/4,-iCameraDisplacementX/4,Ogre::Node::TS_LOCAL);
 		lCameraNode->roll(Ogre::Degree(15));
+		
 
 	}
 
@@ -271,8 +272,19 @@ namespace AsteroidGame{
 
 	}
 
+	Ogre::Vector3  Player::getPostion()
+	{	
+		return iChassisNode->getPosition();
+	}
 
+	Ogre::Vector3  Player::getDirection()
+	{
+		Ogre::Quaternion q = iChassisNode->getOrientation();
+		Ogre::Vector3 dir = Ogre::Vector3(1.0, 0, 0);
+		Ogre::Vector3 newDir = q * dir;
 
+		return newDir;
+	}
 
 
 	void Player::setChassisNode(Ogre::SceneNode* aSceneNode){

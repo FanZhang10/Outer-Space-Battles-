@@ -44,6 +44,7 @@ namespace AsteroidGame{
 		void init(Ogre::SceneManager*);
 		
 		Ogre::SceneNode* createAsteroid(double aRadius);
+		Ogre::SceneNode* createProjectile(long counter, int type);
 		Ogre::SceneNode* createBoundingBox(Ogre::Vector3 aDimensions);
 		Ogre::SceneNode* getPlayerChassis() { return iPlayerChassis; }
 		Ogre::SceneNode* getPlayerShield()  { return iPlayerShield; }

@@ -14,6 +14,14 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
+enum  SoundIndex{
+			BACKGROUND, 
+			SHOOTINGSOUND,
+			COLLISIONSOUND
+
+};
+
+
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
 
@@ -31,7 +39,10 @@ namespace AsteroidGame{
 		//Public Methods
 	public:
 		SoundManager(AsteroidGame* aApplication);
-
+		int init();
+		int closeAllSoundPlay();
+		void audioPlay(int);
+		bool isSoundPlaying(int);
 		//
 		//Private Methods
 	private:

@@ -11,6 +11,7 @@ set(HDRS
 	./src/Player.h
 	./src/PlayerManager.h
 	./src/AsteroidManager.h
+	./src/Projectile.h
 	./src/ProjectileManager.h
 	./src/VFXManager.h
 	./src/MenuManager.h
@@ -19,8 +20,6 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
-    ./src/GlobalDebugInitializations.h
-    ./src/GlobalExterns.h
 )
  
 set(SRCS
@@ -32,6 +31,7 @@ set(SRCS
 	./src/Player.cpp
 	./src/PlayerManager.cpp
 	./src/AsteroidManager.cpp
+	./src/Projectile.cpp
 	./src/ProjectileManager.cpp
 	./src/VFXManager.cpp
 	./src/MenuManager.cpp

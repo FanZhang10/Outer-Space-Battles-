@@ -28,13 +28,12 @@ namespace AsteroidGame{
 	void AsteroidManager::update() {
 		std::vector<Asteroid*>::iterator itr = iAsteroids.begin();
 		for (; itr != iAsteroids.end(); itr++) {
-			(*itr)->update(iApplication->getCollisionManager());
+			(*itr)->update();
 		}
 	}
 
 	void AsteroidManager::createAsteroidField() {
-		printf("GL_ASTEROID_NUM = %f\n", GL_ASTEROID_NUM);
-		for (int i = 0; i < GL_ASTEROID_NUM; i++) {
+		for (int i = 0; i < DEFAULT_ASTEROID_NUM; i++) {
 			createAsteroid( (i % 4) + 1 );
 		}
 
@@ -59,24 +58,20 @@ namespace AsteroidGame{
 			return;
 		}
 
-		double radius = iTierRadiusMap[aTier];
-		Ogre::SceneNode* asteroidNode = iApplication->getAssetManager()->createAsteroid(radius);
-		Asteroid* newAsteroid = new Asteroid(asteroidNode, iApplication->generateRandomVector3().normalisedCopy(), aTier, radius);
-		//Asteroid* newAsteroid = new Asteroid(asteroidNode, Ogre::Vector3 (1.0,0.0,0.0), aTier, radius);
+		Ogre::SceneNode* asteroidNode = iApplication->getAssetManager()->createAsteroid(iTierRadiusMap[aTier]);
+		Asteroid* newAsteroid = new Asteroid(asteroidNode, aTier, iApplication->generateRandomVector3().normalisedCopy());
 
 		iAsteroids.push_back(newAsteroid);
 	}
 
 	void AsteroidManager::placeAsteroid(Asteroid* aAsteroid) {
 		//TODO: Define field bounds somewhere in AsteroidGame and get them during this phase
-		//Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(50,50,50), Ogre::Vector3(-50,-50,-50));
-		Ogre::Vector3 randomLocationInField (0.0,0.0,0.0);
+		Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(50,50,50), Ogre::Vector3(-50,-50,-50));
 		placeAsteroid(aAsteroid, randomLocationInField);
 	}
 
 	void AsteroidManager::placeAsteroid(Asteroid* aAsteroid, Ogre::Vector3 aPosition) {
 		aAsteroid->getNode()->setPosition(aPosition);
-		printf("Asteroid Placed at:    %f %f %f\n", aAsteroid->getNode()->getPosition().x, aAsteroid->getNode()->getPosition().y, aAsteroid->getNode()->getPosition().z);
 	}
 
 	bool AsteroidManager::isLegitimateTier(int aTier) {

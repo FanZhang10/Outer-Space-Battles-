@@ -4,9 +4,8 @@
 //
 #include "ResourceFactory.h"
 #include "bin/path_config.h"
+//#include "../bin/path_config.h"
 #include "AsteroidGame.h"
-
-#include <random>
 
 namespace AsteroidGame{
 	ResourceFactory::ResourceFactory() :
@@ -14,7 +13,9 @@ namespace AsteroidGame{
 	iPlayerMaterial("ObjectMaterial"),
 	iShieldName("Target"),
 	iShieldMaterial("ShinyBlueMaterial"),
-	iAsteroidMaterial("ObjectMaterial"),
+	iAsteroidMaterial("AsteroidMaterial"),
+	iProjectileMaterial_1("ProjectileMaterial"),
+	iProjectileMaterial_2("ProjectileMaterial_2"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -334,15 +335,6 @@ namespace AsteroidGame{
 
 						printf("Vertice tracked (x,y,z) = (%f,%f,%f)\n", x, y, z);
 					
-						std::mt19937 rng;
-						rng.seed(std::random_device()());
-						std::uniform_int_distribution<int> randC (0,100);
-						float a = ((float)randC(rng))/100.0f;
-						float b = ((float)randC(rng))/100.0f;
-						float c = ((float)randC(rng))/100.0f;
-
-						lVertexColor = Ogre::ColourValue(a,b,c);
-
 						object->position(lVertexPosition);
 						object->normal(lVertexPosition);
 						object->colour(lVertexColor); 
@@ -369,8 +361,8 @@ namespace AsteroidGame{
 			object->triangle(5,4,0);
 			object->triangle(5,0,1);
 			//Back
-			object->triangle(2,0,4);
-			object->triangle(2,4,6);
+			object->triangle(4,6,2);
+			object->triangle(6,2,0);
 
 			////Outside Rendering
 			//Front
@@ -389,8 +381,8 @@ namespace AsteroidGame{
 			object->triangle(5,1,0);
 			object->triangle(5,0,4);
 			//Back
-			object->triangle(2,6,4);
-			object->triangle(2,4,0);
+			object->triangle(4,0,2);
+			object->triangle(6,2,6);
 
 		
 			/* We finished the object */
@@ -431,6 +423,41 @@ namespace AsteroidGame{
 		std::string r = ("Asteroid"+ss.str());
 		iNextAsteroidNum++;
 		return r;
+	}
+
+	Ogre::SceneNode* ResourceFactory::createProjectileModel(Ogre::SceneManager* aSceneManager, long counter, int type){
+		try {
+
+			std::stringstream ss;
+			ss << counter;
+			std::string lProjectileName = ("Projectile"+ss.str());
+
+			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
+			
+			Ogre::Entity* entity = aSceneManager->createEntity(lProjectileName,Ogre::SceneManager::PT_SPHERE);
+	
+			if(type == 0)
+			{
+				entity->setMaterialName(iProjectileMaterial_1);
+			}
+			else
+			{
+				entity->setMaterialName(iProjectileMaterial_2);
+			}
+			Ogre::SceneNode* scene_node = root_scene_node->createChildSceneNode(lProjectileName);
+			scene_node->attachObject(entity);
+			scene_node->scale(0.005,0.005,0.005);
+
+			return scene_node;
+		}
+		catch (Ogre::Exception &e){
+			throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
+		}
+		catch(std::exception &e){
+			throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
+		}
+		return NULL;
+
 	}
 
 }

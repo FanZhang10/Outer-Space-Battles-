@@ -3,26 +3,26 @@
 
 * Phase 1 - Basic Tech * 				DONE
 
-- A Player										DONE
-- Stationary Asteroids						DONE
-- Player Movement							DONE
-- Camera tracking							DONE
+- A Player							DONE
+- Stationary Asteroids				DONE
+- Player Movement					DONE
+- Camera tracking					DONE
 
 
 * Phase 2 - Basic Functionality *		IN PROGRESS
 
-- Program Architecture					Max+Jeff
+- Program Architecture				Max+Jeff
 - Asteroid Movement
 - Asteroid/Player Collision				
-- Shooting
-- Shields/Health 
+- Shooting							Fan
+- Shields/Health 					
 - Bounding Cube							
 
 
 * Phase 3 - Expanded Features *
 
 - Player Death
-- Bullet Collision
+- Bullet Collision					Fan
 - Upgrades/Currency
 - Upgrade Menu
 - Main Menu
@@ -36,7 +36,7 @@
 - Mineral Collection
 - Energy System
 - Boost
-- Sounds
+- Sounds							Fan
 - Skybox
 - Meshes
 - Level Select

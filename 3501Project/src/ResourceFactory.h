@@ -26,16 +26,19 @@ namespace AsteroidGame {
 		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
 		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
 		Ogre::SceneNode* createBoundingBoxModel(Ogre::SceneManager*, Ogre::Vector3 aDimensions);
+		Ogre::SceneNode* createProjectileModel(Ogre::SceneManager*, long counter, int type);
 		
 	private:
 		int iNextAsteroidNum; //Move to asteroid manager later
-
+		int iNextProjectileNum;
 		const std::string iPlayerName;
 		const std::string iPlayerMaterial;
 		const std::string iShieldName;
 		const std::string iShieldMaterial;
 		const std::string iAsteroidMaterial;
-
+		const std::string iProjectileMaterial_1;
+		const std::string iProjectileMaterial_2;
+		Ogre::String particle_material_name_;
 		std::string getNewAsteroidName();
 	};
 }

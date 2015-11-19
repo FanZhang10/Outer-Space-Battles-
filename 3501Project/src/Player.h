@@ -51,6 +51,8 @@ namespace AsteroidGame {
 
 	public:
 		//Public Variables
+		Ogre::Vector3 getPostion();
+		Ogre::Vector3 getDirection();
 
 		//
 		//Methods
@@ -71,7 +73,6 @@ namespace AsteroidGame {
 
 		void updateOrientation(OIS::Keyboard* ,OIS::Mouse*);
 		void updatePosition(OIS::Keyboard* ,OIS::Mouse*);
-
 
 	};
 

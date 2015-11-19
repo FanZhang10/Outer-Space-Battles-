@@ -1,6 +1,6 @@
-vertex_program shiny_blue_shader/vs glsl 
+vertex_program boundingbox/vs glsl 
 {
-    source ShieldVp.glsl 
+    source BoundingBoxVp.glsl 
 
     default_params
     {
@@ -9,27 +9,25 @@ vertex_program shiny_blue_shader/vs glsl
         param_named_auto projection_mat projection_matrix
 		param_named_auto normal_mat inverse_transpose_worldview_matrix
 		param_named light_position float3 200 200 200
-		
     }
 }
 
 
-fragment_program shiny_blue_shader/fs glsl 
+fragment_program boundingbox/fs glsl 
 {
-    source ShieldFp.glsl 
+    source BoundingBoxFp.glsl 
 
 	default_params
 	{
-		 param_named ambient_colour float4 0.0 0.0 0.5 0.5
-		 param_named diffuse_colour float4 0.6 0.6 1.0 0.5
-		 param_named specular_colour float4 0.8 0.5 0.9 0.5
-		 param_named phong_exponent float 512.0
-		 param_named_auto timer time
+		 param_named ambient_colour float4 1.0 0.4 0.4 0.2
+		 param_named diffuse_colour float4 1.0 0.5 0.5 0.2
+		 param_named specular_colour float4 1.0 0.5 0.4 1.0
+		 param_named phong_exponent float 2048.0
 	}
 }
 
 
-material ShinyBlueMaterial
+material BoundingBoxMaterial
 {
     technique
     {
@@ -39,14 +37,13 @@ material ShinyBlueMaterial
 			separate_scene_blend_op add max
 			depth_write off
 
-            vertex_program_ref shiny_blue_shader/vs
+            vertex_program_ref boundingbox/vs
             {
             }
 
-            fragment_program_ref shiny_blue_shader/fs
+            fragment_program_ref boundingbox/fs
             {
             }
-			scene_blend alpha_blend
         } 
     }
 }

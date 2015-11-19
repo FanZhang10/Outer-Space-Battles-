@@ -26,6 +26,7 @@ set(SRCS
 	./src/AsteroidGame.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
 	./src/ShieldVp.glsl ./src/ShieldFp.glsl ./src/Shield.material
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
+	./src/BoundingBoxVp.glsl ./src/BoundingBoxFp.glsl ./src/BoundingBox.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp

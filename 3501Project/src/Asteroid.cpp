@@ -25,17 +25,34 @@ namespace AsteroidGame{
 	void Asteroid::update(CollisionManager* aCollisionManager) {
 		//To Do: Move and Rotate Scene Node
 		bool safeMove = false;
-		Ogre::Vector3 newPos, newDir;
+		Ogre::Vector3 newPos, newDirFinal, newDirBB, newDirP;
 
 		while (!safeMove) {
 			newPos = iNode->getPosition() + iDirection*iSpeed;
-			newDir = aCollisionManager->checkAtoBBCollision(this, newPos);
+			newDirBB = aCollisionManager->checkAtoBBCollision(this, newPos);
+			newDirP = aCollisionManager->checkAtoPCollision(this, newPos);
 
-			if (newDir == newPos) {
+			//Collided with Bounding Box
+			if (newDirBB != newPos) {
+				//Also collided with Player
+				if (newDirP != newPos) {
+					newDirFinal = (newDirBB + newDirP).normalisedCopy();
+				}
+				else {
+					newDirFinal = newDirBB;
+				}
+			}
+			//Collided with Player
+			else if (newDirP != newPos) {
+				newDirFinal = newDirP;
+			}
+			//No collisions found
+			else {
 				break;
 			}
 
-			iDirection = newDir;
+			//Set direction and run collision check again for proposed new direction
+			iDirection = newDirFinal;
 		}
 		
 		iNode->setPosition(newPos);

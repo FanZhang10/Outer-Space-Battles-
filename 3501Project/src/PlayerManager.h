@@ -40,6 +40,8 @@ namespace AsteroidGame{
 		void init(Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 		void updateCamera();
+
+		Player* getPlayer() { return iPlayer; }
 		//
 		//Private Methods
 	private:

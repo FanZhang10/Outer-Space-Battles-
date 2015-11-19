@@ -15,6 +15,7 @@
 #include "OIS/OIS.h"
 
 #include "BoundingBox.h"
+#include "Player.h"
 
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
@@ -24,12 +25,13 @@ namespace AsteroidGame{
 		//
 		//Public Variables
 	public:
-
+		
 		//
 		//Private Variables
 	private:
 		AsteroidGame* iApplication;
 		BoundingBox*  iCurrentBoundingBox;
+		Player*		  iPlayer;
 
 		//
 		//Public Methods
@@ -37,8 +39,10 @@ namespace AsteroidGame{
 		CollisionManager(AsteroidGame* aApplication);
 
 		void setBoundingBox(BoundingBox* aBB);
+		void setPlayer(Player* aP);
 
 		Ogre::Vector3 checkAtoBBCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
+		Ogre::Vector3 checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
 
 
 		//

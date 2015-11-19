@@ -35,6 +35,10 @@ material ShinyBlueMaterial
     {
         pass
         {
+			separate_scene_blend src_alpha one src_alpha one_minus_src_alpha
+			separate_scene_blend_op add max
+			depth_write off
+
             vertex_program_ref shiny_blue_shader/vs
             {
             }

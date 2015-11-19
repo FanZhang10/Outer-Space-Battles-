@@ -15,7 +15,7 @@ namespace AsteroidGame{
 	iShieldName("Target"),
 	iShieldMaterial("ShinyBlueMaterial"),
 	iAsteroidMaterial("AsteroidMaterial"),
-	iBoundingBoxMaterial("AsteroidMaterial"),
+	iBoundingBoxMaterial("BoundingBoxMaterial"),
 	iNextAsteroidNum(0)
 	{
 	}

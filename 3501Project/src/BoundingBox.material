@@ -1,6 +1,6 @@
-vertex_program asteroid/vs glsl 
+vertex_program boundingbox/vs glsl 
 {
-    source AsteroidVp.glsl 
+    source BoundingBoxVp.glsl 
 
     default_params
     {
@@ -13,31 +13,35 @@ vertex_program asteroid/vs glsl
 }
 
 
-fragment_program asteroid/fs glsl 
+fragment_program boundingbox/fs glsl 
 {
-    source AsteroidFp.glsl 
+    source BoundingBoxFp.glsl 
 
 	default_params
 	{
-		 param_named ambient_colour float4 0.1 0.1 0.1 1.0
-		 param_named diffuse_colour float4 0.3 0.2 0.1 1.0
-		 param_named specular_colour float4 0.4 0.5 0.4 1.0
+		 param_named ambient_colour float4 1.0 0.4 0.4 0.2
+		 param_named diffuse_colour float4 1.0 0.5 0.5 0.2
+		 param_named specular_colour float4 1.0 0.5 0.4 1.0
 		 param_named phong_exponent float 2048.0
 	}
 }
 
 
-material AsteroidMaterial
+material BoundingBoxMaterial
 {
     technique
     {
         pass
         {
-            vertex_program_ref asteroid/vs
+			separate_scene_blend src_alpha one src_alpha one_minus_src_alpha
+			separate_scene_blend_op add max
+			depth_write off
+
+            vertex_program_ref boundingbox/vs
             {
             }
 
-            fragment_program_ref asteroid/fs
+            fragment_program_ref boundingbox/fs
             {
             }
         } 

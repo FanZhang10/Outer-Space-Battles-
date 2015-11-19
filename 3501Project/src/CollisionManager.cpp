@@ -23,6 +23,33 @@ namespace AsteroidGame{
 		iPlayer = aP;
 	}
 
+	bool CollisionManager::isProjectileHit(Projectile* aProjectile)
+	{
+		std::vector<Asteroid*> iAsteroids = iApplication->getAsteroidManager()->getAsteroids();
+
+		std::vector<Asteroid*>::iterator iAptr = iAsteroids.begin();
+
+		Ogre::AxisAlignedBox projectielBox = aProjectile->getNode()->_getWorldAABB();
+
+		for (; iAptr != iAsteroids.end(); iAptr++)
+		{
+			 Ogre::AxisAlignedBox asteroidBox = (*iAptr)->getNode()->_getWorldAABB();
+			 Ogre::AxisAlignedBox asteroidHalfBox((asteroidBox.getCenter() - asteroidBox.getHalfSize()), (asteroidBox.getCenter() + asteroidBox.getHalfSize()));
+			 if (asteroidHalfBox.intersects(projectielBox)== true)
+			 {
+				 //std::cout <<""<<asteroidBox.getSize()<<std::endl;
+				
+				 std::cout <<"== asteroidBox =="<<asteroidBox.getSize()<<std::endl;
+				 std::cout <<"== asteroidHalfBox =="<<asteroidHalfBox.getSize()<<std::endl;
+				
+				return true;
+			 }
+
+		}
+
+		return false;
+	}
+
 	Ogre::Vector3 CollisionManager::checkAtoBBCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos){
 		if (iCurrentBoundingBox == NULL)
 			return aNewPos;

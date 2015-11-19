@@ -5,7 +5,7 @@
 //
 #include <exception>
 #include <string>
-
+#include <vector>
 #include "OGRE/OgreRoot.h"
 #include "OGRE/OgreRenderSystem.h"
 #include "OGRE/OgreRenderWindow.h"
@@ -16,6 +16,7 @@
 
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
+	class Projectile; 
 
 	class ProjectileManager{
 		//
@@ -26,16 +27,19 @@ namespace AsteroidGame{
 		//Private Variables
 	private:
 		AsteroidGame* iApplication;
-
+		std::vector<Projectile*> iProjectiles;
+		int type; //choose matrial type
+		bool spaceDown;
+		long aCounter;
 		//
 		//Public Methods
 	public:
 		ProjectileManager(AsteroidGame* aApplication);
-		void update(void);
-
+		void update(Ogre::SceneManager* ,OIS::Keyboard*, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection, double iSpeed);
 		//
 		//Private Methods
 	private:
+		
 	};
 }
 

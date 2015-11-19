@@ -11,6 +11,7 @@ set(HDRS
 	./src/Player.h
 	./src/PlayerManager.h
 	./src/AsteroidManager.h
+	./src/Projectile.h
 	./src/ProjectileManager.h
 	./src/VFXManager.h
 	./src/MenuManager.h
@@ -19,20 +20,25 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
-    ./src/GlobalDebugInitializations.h
-    ./src/GlobalExterns.h
+	./src/framework/aldlist.h
+	./src/framework/CWaves.h
+	./src/framework/Framework.h
+	./src/framework/LoadOAL.h
+
 )
  
 set(SRCS
 	./src/AsteroidGame.cpp ./src/main.cpp ./src/MaterialVp.glsl ./src/MaterialFp.glsl ./src/MaterialFile.material
 	./src/ShieldVp.glsl ./src/ShieldFp.glsl ./src/Shield.material
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
-	./src/BoundingBoxVp.glsl ./src/BoundingBoxFp.glsl ./src/BoundingBox.material
+	./src/ProjectileVp.glsl ./src/ProjectileFp.glsl ./src/Projectile.material
+	./src/Projectile_2Vp.glsl ./src/Projectile_2Fp.glsl ./src/Projectile_2.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp
 	./src/PlayerManager.cpp
 	./src/AsteroidManager.cpp
+	./src/Projectile.cpp
 	./src/ProjectileManager.cpp
 	./src/VFXManager.cpp
 	./src/MenuManager.cpp
@@ -41,6 +47,10 @@ set(SRCS
 	./src/AssetManager.cpp
 	./src/SoundManager.cpp
 	./src/BoundingBox.cpp
+	./src/framework/aldlist.cpp
+	./src/framework/CWaves.cpp
+	./src/framework/Framework.cpp
+	./src/framework/LoadOAL.cpp
 )
 
 # The rules here are specific to Windows Systems
@@ -54,12 +64,14 @@ if(WIN32)
         "${OGRE_HOME}/include/OIS"
         "${OGRE_HOME}/include/OGRE"
         "${OGRE_HOME}/boost"
+	   "AL/include"
     )
 
     # Set up Ogre library directories
     link_directories(
         "${OGRE_HOME}/lib/"
         "${OGRE_HOME}/boost/lib"
+	   "../AL/libs/win32"
     )
 
     # Applications using Ogre need to be run from inside the Ogre
@@ -77,6 +89,7 @@ if(WIN32)
         "OgreMain_d.lib"
         "OIS_d.lib"
         "OgreOverlay_d.lib"
+	   "../AL/libs/win32/OpenAL32"
     )
 
     # Avoid ZERO_CHECK target 

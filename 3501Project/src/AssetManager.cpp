@@ -36,4 +36,8 @@ namespace AsteroidGame{
 	Ogre::SceneNode* AssetManager::createBoundingBox(Ogre::Vector3 aDimensions) {
 		return iResourceFactory->createBoundingBoxModel(iApplication->getSceneManager(), aDimensions);
 	}
+
+	Ogre::SceneNode* AssetManager::createProjectile(long counter, int type) {
+		return iResourceFactory->createProjectileModel(iApplication->getSceneManager(), counter, type);
+	}
 }

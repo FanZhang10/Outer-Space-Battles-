@@ -1,7 +1,5 @@
 #include <iostream>
 #include <exception>
-
-#include "GlobalDebugInitializations.h"
 #include "AsteroidGame.h"
 #include "ResourceFactory.h"
 
@@ -11,9 +9,6 @@
 
 /* Main function that builds and runs the application */
 int main(void){
-	
-	setAllGlobalVars();
-
     AsteroidGame::AsteroidGame application;
 
 	try {

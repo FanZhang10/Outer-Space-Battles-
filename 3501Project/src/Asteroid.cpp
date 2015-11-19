@@ -5,24 +5,18 @@
 
 #include "Asteroid.h"
 #include "bin/path_config.h"
-#include "CollisionManager.h"
-
-#include "GlobalExterns.h"
 
 namespace AsteroidGame{
 
-	Asteroid::Asteroid(Ogre::SceneNode* aNode, Ogre::Vector3 aDirection, int aTier, double aRadius)
+	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection)
 	:	iNode(aNode),
 		iDirection(aDirection),
 		iTier(aTier),
-		iRadius(aRadius),
-		iSpeed(0.1)
+		iSpeed(0.01)
 	{
-		printf("Asteroid Created At: %f %f %f\n", aNode->getPosition().x, aNode->getPosition().y, aNode->getPosition().z);
-		printf("Asteroid Direction: (%f %f %f)\n", aDirection.x, aDirection.y, aDirection.z);
 	}
 
-	void Asteroid::update(CollisionManager* aCollisionManager) {
+	void Asteroid::update() {
 		//To Do: Move and Rotate Scene Node
 		bool safeMove = false;
 		Ogre::Vector3 newPos, newDirFinal, newDirBB, newDirP;

@@ -14,9 +14,10 @@
 #include "OGRE/OgreEntity.h"
 #include "OIS/OIS.h"
 
-#include "GlobalExterns.h"
 #include "Asteroid.h"
 #include "BoundingBox.h"
+
+#define DEFAULT_ASTEROID_NUM 25
 
 namespace AsteroidGame{
 	class AsteroidGame; //Forward Declaration
@@ -27,14 +28,16 @@ namespace AsteroidGame{
 	public:
 		AsteroidGame* iApplication;
 
-		//Temporary until we find a place to put BoundingBoxes!
-		BoundingBox iTestBB;
 
 		//
 		//Private Variables
 	private:
 		std::map<int, double> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
+
+		//Temporary until we find a place to put BoundingBoxes!
+		BoundingBox iTestBB;
+
 
 		//
 		//Public Methods
@@ -45,7 +48,7 @@ namespace AsteroidGame{
 		void update();
 
 		void createAsteroidField();
-
+		std::vector<Asteroid*> getAsteroids() { return iAsteroids;}
 		//
 		//Private Methods
 	private:

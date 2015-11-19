@@ -1,5 +1,3 @@
-#include <random>
-
 #include "AsteroidGame.h"
 #include "bin/path_config.h"
 
@@ -270,6 +268,10 @@ void AsteroidGame::InitManagers(void) {
 	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
 	iCollisionManager->setBoundingBox(&(iAsteroidManager->iTestBB));
 	iCollisionManager->setPlayer(iPlayerManager->getPlayer());
+	
+	//init and play background
+	iSoundManager->init();
+	iSoundManager->audioPlay(BACKGROUND);
 }
 
 void AsteroidGame::LoadMaterials(void){
@@ -299,19 +301,10 @@ void AsteroidGame::LoadMaterials(void){
 //Public Helper Functions//
 ///////////////////////////
 Ogre::Vector3 AsteroidGame::createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds) {
-	/*
 	Ogre::Vector3 r = Ogre::Vector3((aPositiveBounds.x - aNegativeBounds.x) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.x,
 									(aPositiveBounds.y - aNegativeBounds.y) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.y,
 									(aPositiveBounds.z - aNegativeBounds.z) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.z);
-	*/
-	std::mt19937 rng;
-	rng.seed(std::random_device()());
-
-	std::uniform_int_distribution<int> randX ((int)aNegativeBounds.x, (int)aPositiveBounds.x);
-	std::uniform_int_distribution<int> randY ((int)aNegativeBounds.y, (int)aPositiveBounds.y);
-	std::uniform_int_distribution<int> randZ ((int)aNegativeBounds.z, (int)aPositiveBounds.z);	
-	
-	return Ogre::Vector3((float)randX(rng), (float)randY(rng), (float)randZ(rng));
+	return r;
 }
 
 Ogre::Vector3 AsteroidGame::generateRandomVector3() {
@@ -367,8 +360,13 @@ bool AsteroidGame::frameRenderingQueued(const Ogre::FrameEvent& fe){
 		Ogre::SceneManager* scene_manager = ogre_root_->getSceneManager("MySceneManager");
 		iPlayerManager->update(scene_manager,keyboard_,mouse_);
 		iAsteroidManager->update();
-		iProjectileManager->update();
+		iProjectileManager->update(scene_manager,keyboard_,iPlayerManager->iPlayer->getPostion(), iPlayerManager->iPlayer->getDirection(), iPlayerManager->iPlayer->getSpeed());
 		iVFXManager->update();
+		if(iSoundManager->isSoundPlaying(BACKGROUND)== false)//check background is playing
+		{
+			iSoundManager->audioPlay(BACKGROUND);
+
+		}
 	}else if(iGameState == GameState::StartMenu){
 		iMenuManager->update();
 	}

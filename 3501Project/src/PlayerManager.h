@@ -23,12 +23,12 @@ namespace AsteroidGame{
 		//
 		//Public Variables
 	public:
-
+		AsteroidGame* iApplication;
+		Player* iPlayer;
 		//
 		//Private Variables
 	private:
-		AsteroidGame* iApplication;
-		Player* iPlayer;
+		
 
 		Ogre::SceneNode* iCameraNode;
 		Ogre::SceneNode* iShieldNode;

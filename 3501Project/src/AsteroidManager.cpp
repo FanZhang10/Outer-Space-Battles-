@@ -67,7 +67,7 @@ namespace AsteroidGame{
 
 	void AsteroidManager::placeAsteroid(Asteroid* aAsteroid) {
 		//TODO: Define field bounds somewhere in AsteroidGame and get them during this phase
-		Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(50.0f,50.0f,50.0f), Ogre::Vector3(-50.0f,-50.0f,-50.0f));
+		Ogre::Vector3 randomLocationInField = iApplication->createVector3InRange(Ogre::Vector3(25.0f,25.0f,25.0f), Ogre::Vector3(-25.0f,-25.0f,-25.0f));
 		placeAsteroid(aAsteroid, randomLocationInField);
 	}
 

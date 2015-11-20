@@ -51,17 +51,19 @@ namespace AsteroidGame {
 		void update(CollisionManager* aCollisionManager);
 		
 		Ogre::SceneNode* getNode() { return iNode; }
+		Ogre::Vector3 getDirection() { return iDirection; }
 		int getTier() { return iTier; }
 		int getValue() { return iValue; }
 		int getHealth() { return iHealth; }
 		float getRadius() { return iRadius; }
-		Ogre::Vector3 getDirection() { return iDirection; }
+		float getSpeed() { return iSpeed; }
 		
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
 		void setTier(int aTier) { iTier = aTier; }
 		void setValue(int aValue) { iValue = aValue; }
 		void setHealth(int aHealth) { iHealth = aHealth; }
 		void setRadius(float aRadius) { iRadius = aRadius; } 
+		void setSpeed(float aSpeed) { iSpeed = aSpeed; }
 		
 
 	};

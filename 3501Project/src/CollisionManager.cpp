@@ -26,17 +26,17 @@ namespace AsteroidGame{
 
 	bool CollisionManager::isProjectileHit(Projectile* aProjectile)
 	{
-		std::vector<Asteroid*> iAsteroids = iApplication->getAsteroidManager()->getAsteroids();
+		std::vector<Asteroid*> asteroids = iApplication->getAsteroidManager()->getAsteroids();
 
-		std::vector<Asteroid*>::iterator iAptr = iAsteroids.begin();
+		std::vector<Asteroid*>::iterator aPtr = asteroids.begin();
 
-		Ogre::AxisAlignedBox projectielBox = aProjectile->getNode()->_getWorldAABB();
+		Ogre::AxisAlignedBox projectileBox = aProjectile->getNode()->_getWorldAABB();
 
-		for (; iAptr != iAsteroids.end(); iAptr++)
+		for (; aPtr != asteroids.end(); aPtr++)
 		{
-			 Ogre::AxisAlignedBox asteroidBox = (*iAptr)->getNode()->_getWorldAABB();
+			 Ogre::AxisAlignedBox asteroidBox = (*aPtr)->getNode()->_getWorldAABB();
 			 Ogre::AxisAlignedBox asteroidHalfBox((asteroidBox.getCenter() - asteroidBox.getHalfSize()), (asteroidBox.getCenter() + asteroidBox.getHalfSize()));
-			 if (asteroidHalfBox.intersects(projectielBox)== true)
+			 if (asteroidHalfBox.intersects(projectileBox) == true)
 			 {
 				 //std::cout <<""<<asteroidBox.getSize()<<std::endl;
 				
@@ -110,6 +110,17 @@ namespace AsteroidGame{
 	Ogre::Vector3 CollisionManager::checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos) {
 		if (iPlayer == NULL)
 			return aAsteroid->getDirection();
+
+		Player* player = iApplication->getPlayerManager()->getPlayer();
+
+		Ogre::Vector3 playerToAsteroidVector = aNewPos - player->getPostion();
+
+		//How big is the player? How can we determine this? This is imprecise as it stands now.
+		if (playerToAsteroidVector.length() <= aAsteroid->getRadius() + 0.5f) {
+			printf("Asteroid reflected off player\n");
+			aAsteroid->setSpeed((aAsteroid->getSpeed() + player->getSpeed())/2);
+			return getReflectionVector(aAsteroid->getDirection(), playerToAsteroidVector);
+		}
 		
 		return aAsteroid->getDirection();
 	}
@@ -122,7 +133,7 @@ namespace AsteroidGame{
 		//aDirection.normalise();
 		Ogre::Vector3 lNormal = aNormal.normalisedCopy();
 
-		printf("New Collision Stats!");
+		printf("New Collision Stats!\n");
 		printf("aDirection = (%f %f %f)\n", aDirection.x, aDirection.y, aDirection.z);
 		printf("lNormal = (%f %f %f)\n", lNormal.x, lNormal.y, lNormal.z);
 

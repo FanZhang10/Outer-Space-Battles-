@@ -4,7 +4,7 @@
 
 namespace AsteroidGame{
 
-	Projectile::Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection,double iSpeed)
+	Projectile::Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection,float iSpeed)
 	:	iNode(aNode),
 		iDirection(aDirection),
 		iPosition(aPosition),
@@ -33,7 +33,7 @@ namespace AsteroidGame{
 	{
 		time_t now = time(0);
 
-		if((now - iStartTime) > 10 || isActive == false)
+		if((now - iStartTime) > 10.0f || isActive == false)
 		{
 			return false;
 		}

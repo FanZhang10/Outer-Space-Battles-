@@ -23,8 +23,8 @@ namespace AsteroidGame {
 
 		//Can we replace these SceneManager params with a call to iApplication->getSceneManager()?
 		Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
-		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, double aRadius);
-		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, double aRadius);
+		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, float aRadius);
+		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, float aRadius);
 		Ogre::SceneNode* createBoundingBoxModel(Ogre::SceneManager*, Ogre::Vector3 aDimensions);
 		Ogre::SceneNode* createProjectileModel(Ogre::SceneManager*, long counter, int type);
 		

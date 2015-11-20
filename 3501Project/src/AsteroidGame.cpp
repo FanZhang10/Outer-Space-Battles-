@@ -301,16 +301,16 @@ void AsteroidGame::LoadMaterials(void){
 //Public Helper Functions//
 ///////////////////////////
 Ogre::Vector3 AsteroidGame::createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds) {
-	Ogre::Vector3 r = Ogre::Vector3((aPositiveBounds.x - aNegativeBounds.x) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.x,
-									(aPositiveBounds.y - aNegativeBounds.y) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.y,
-									(aPositiveBounds.z - aNegativeBounds.z) * ( (double)rand() / (double)RAND_MAX ) + aNegativeBounds.z);
+	Ogre::Vector3 r = Ogre::Vector3((float)((aPositiveBounds.x - aNegativeBounds.x) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.x),
+									(float)((aPositiveBounds.y - aNegativeBounds.y) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.y),
+									(float)((aPositiveBounds.z - aNegativeBounds.z) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.z));
 	return r;
 }
 
 Ogre::Vector3 AsteroidGame::generateRandomVector3() {
-	double randomX = (double)(rand() % 101 - 50) / 50.0;
-	double randomY = (double)(rand() % 101 - 50) / 50.0;
-	double randomZ = (double)(rand() % 101 - 50) / 50.0;
+	float randomX = (float)(rand() % 101 - 50) / 50.0f;
+	float randomY = (float)(rand() % 101 - 50) / 50.0f;
+	float randomZ = (float)(rand() % 101 - 50) / 50.0f;
 
 	return Ogre::Vector3(randomX, randomY, randomZ);
 }

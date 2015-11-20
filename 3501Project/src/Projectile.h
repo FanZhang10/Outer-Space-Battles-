@@ -29,8 +29,8 @@ namespace AsteroidGame {
 		Ogre::Vector3 iPosition;
 		Ogre::Vector3 iCurrPos; //collision
 
-		double iRadius; //collision
-		double iSpeed;
+		float iRadius; //collision
+		float iSpeed;
 		time_t iStartTime;
 		bool isActive;
 
@@ -47,7 +47,7 @@ namespace AsteroidGame {
 		//Public Methods
 
 		//Constructors
-		Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection, double iSpeed);
+		Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection, float iSpeed);
 
 		bool isLive();
 		void detach();
@@ -55,10 +55,10 @@ namespace AsteroidGame {
 		
 		Ogre::SceneNode* getNode() { return iNode; }
 
-		double getRadius() { return iRadius; }
+		float getRadius() { return iRadius; }
 		
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
-		void setRadius(double aRadius) { iRadius = aRadius; } 
+		void setRadius(float aRadius) { iRadius = aRadius; } 
 		
 
 	};

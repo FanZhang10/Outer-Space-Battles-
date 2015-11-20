@@ -15,7 +15,7 @@ namespace AsteroidGame{
 		iApplication = aApplication;
 
 		for (int i = 1; i <= 4; i++) {
-			iTierRadiusMap[i] = (double)(i);
+			iTierRadiusMap[i] = (float)(i);
 		}
 
 		//Temporary until we find a place to put BoundingBoxes!

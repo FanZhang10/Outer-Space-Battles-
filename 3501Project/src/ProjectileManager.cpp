@@ -18,7 +18,7 @@ namespace AsteroidGame{
 		type = 0;
 	}
 
-	void ProjectileManager::update(Ogre::SceneManager* aSceneManager,OIS::Keyboard* aKeyboard, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection,double iSpeed){
+	void ProjectileManager::update(Ogre::SceneManager* aSceneManager,OIS::Keyboard* aKeyboard, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection,float iSpeed){
 		
 		if(aKeyboard->isKeyDown(OIS::KC_SPACE)){
 

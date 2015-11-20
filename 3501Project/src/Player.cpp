@@ -8,29 +8,29 @@
 namespace AsteroidGame{
 
 	Player::Player(){
-		iSpeed = 0;
-		iMaxSpeed = .4;
-		iSpeedDecay = .005;
-		iAcceleration = .02;
+		iSpeed = 0.0f;
+		iMaxSpeed = 0.4f;
+		iSpeedDecay = 0.005f;
+		iAcceleration = 0.02f;
 
-		iRollSpeed = 0;
-		iRollAcceleration = .25;
-		iRollDecay = 0.1;
-		iMaxRollSpeed = 2.0;
+		iRollSpeed = 0.0f;
+		iRollAcceleration = 0.25f;
+		iRollDecay = 0.1f;
+		iMaxRollSpeed = 2.0f;
 
-		iTurnSpeedX = 0;
-		iTurnSpeedY = 0;
-		iTurnAccelerationX = .3;
-		iTurnAccelerationY = .3;
-		iDesiredTurnSpeedX = 0;
-		iDesiredTurnSpeedY = 0;
-		iMaxTurnSpeedX = 2.0;
-		iMaxTurnSpeedY = 2.0;
-		iTurnDecay = .1;
+		iTurnSpeedX = 0.0f;
+		iTurnSpeedY = 0.0f;
+		iTurnAccelerationX = 0.3f;
+		iTurnAccelerationY = 0.3f;
+		iDesiredTurnSpeedX = 0.0f;
+		iDesiredTurnSpeedY = 0.0f;
+		iMaxTurnSpeedX = 2.0f;
+		iMaxTurnSpeedY = 2.0f;
+		iTurnDecay = 0.1f;
 
-		iCameraDisplacementX = 0;
-		iCameraDisplacementY = 0;
-		iCameraDisplacementSpeed = .25;
+		iCameraDisplacementX = 0.0f;
+		iCameraDisplacementY = 0.0f;
+		iCameraDisplacementSpeed = 0.25f;
 	}
 
 	void Player::update(Ogre::SceneManager* aSceneManager, OIS::Keyboard* aKeyboard, OIS::Mouse* aMouse){
@@ -47,8 +47,8 @@ namespace AsteroidGame{
 			}
 		}else{
 			iSpeed -= iSpeedDecay;
-			if(iSpeed < 0){
-				iSpeed = 0;
+			if(iSpeed < 0.0f){
+				iSpeed = 0.0f;
 			}
 		}
 
@@ -81,8 +81,8 @@ namespace AsteroidGame{
 		//End Rolling
 
 		//Turning
-		iDesiredTurnSpeedX = ((double)-aMouse->getMouseState().X.rel);
-		iDesiredTurnSpeedY = ((double)-aMouse->getMouseState().Y.rel);
+		iDesiredTurnSpeedX = ((float)-aMouse->getMouseState().X.rel);
+		iDesiredTurnSpeedY = ((float)-aMouse->getMouseState().Y.rel);
 		//Adjust according to mouse sensitivity
 		iDesiredTurnSpeedX /= 5;
 		iDesiredTurnSpeedY /= 5;
@@ -207,8 +207,8 @@ namespace AsteroidGame{
 		//End Rolling
 
 		//Turning
-		iDesiredTurnSpeedX = ((double)-aMouse->getMouseState().X.rel);
-		iDesiredTurnSpeedY = ((double)-aMouse->getMouseState().Y.rel);
+		iDesiredTurnSpeedX = ((float)-aMouse->getMouseState().X.rel);
+		iDesiredTurnSpeedY = ((float)-aMouse->getMouseState().Y.rel);
 		//Adjust according to mouse sensitivity
 		iDesiredTurnSpeedX /= 5;
 		iDesiredTurnSpeedY /= 5;
@@ -295,7 +295,7 @@ namespace AsteroidGame{
 		return iChassisNode;
 	}
 
-	double Player::getSpeed(){
+	float Player::getSpeed(){
 		return iSpeed;
 	}
 }

@@ -34,7 +34,7 @@ namespace AsteroidGame{
 		//
 		//Private Variables
 	private:
-		std::map<int, double> iTierRadiusMap;
+		std::map<int, float> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
 
 

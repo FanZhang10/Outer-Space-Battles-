@@ -13,7 +13,7 @@ namespace AsteroidGame{
 	:	iNode(aNode),
 		iDirection(aDirection),
 		iTier(aTier),
-		iSpeed(0.01)
+		iSpeed(0.01f)
 	{
 	}
 

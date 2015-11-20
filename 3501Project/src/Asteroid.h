@@ -29,8 +29,8 @@ namespace AsteroidGame {
 		int iTier;
 		int iValue;
 		int iHealth;
-		double iRadius;
-		double iSpeed;
+		float iRadius;
+		float iSpeed;
 
 
 	public:
@@ -54,14 +54,14 @@ namespace AsteroidGame {
 		int getTier() { return iTier; }
 		int getValue() { return iValue; }
 		int getHealth() { return iHealth; }
-		double getRadius() { return iRadius; }
+		float getRadius() { return iRadius; }
 		Ogre::Vector3 getDirection() { return iDirection; }
 		
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
 		void setTier(int aTier) { iTier = aTier; }
 		void setValue(int aValue) { iValue = aValue; }
 		void setHealth(int aHealth) { iHealth = aHealth; }
-		void setRadius(double aRadius) { iRadius = aRadius; } 
+		void setRadius(float aRadius) { iRadius = aRadius; } 
 		
 
 	};

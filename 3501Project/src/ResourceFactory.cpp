@@ -122,7 +122,7 @@ namespace AsteroidGame{
 		}
 	}
 
-	Ogre::SceneNode* ResourceFactory::createShieldModel(Ogre::SceneManager* aSceneManager, double aRadius){
+	Ogre::SceneNode* ResourceFactory::createShieldModel(Ogre::SceneManager* aSceneManager, float aRadius){
 		try {
 		Ogre::SceneNode* lRootSceneNode = aSceneManager->getRootSceneNode();
 
@@ -204,7 +204,7 @@ namespace AsteroidGame{
 	}
 	}
 
-	Ogre::SceneNode* ResourceFactory::createAsteroidModel(Ogre::SceneManager* aSceneManager, double aRadius){
+	Ogre::SceneNode* ResourceFactory::createAsteroidModel(Ogre::SceneManager* aSceneManager, float aRadius){
 		try {
 			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
 			std::string lAsteroidName = getNewAsteroidName();
@@ -447,7 +447,7 @@ namespace AsteroidGame{
 			}
 			Ogre::SceneNode* scene_node = root_scene_node->createChildSceneNode(lProjectileName);
 			scene_node->attachObject(entity);
-			scene_node->scale(0.005,0.005,0.005);
+			scene_node->scale(0.005f,0.005f,0.005f);
 
 			return scene_node;
 		}

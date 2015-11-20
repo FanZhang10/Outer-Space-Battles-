@@ -25,28 +25,28 @@ namespace AsteroidGame {
 		Ogre::Vector3 iVelocity;
 		Ogre::SceneNode* iChassisNode;
 
-		double iMaxRollSpeed;
-		double iRollAcceleration;
-		double iMaxTurnSpeedX;
-		double iMaxTurnSpeedY;
-		double iMaxSpeed;
-		double iTurnDecay;
-		double iRollDecay;
-		double iSpeedDecay;
-		double iAcceleration;
+		float iMaxRollSpeed;
+		float iRollAcceleration;
+		float iMaxTurnSpeedX;
+		float iMaxTurnSpeedY;
+		float iMaxSpeed;
+		float iTurnDecay;
+		float iRollDecay;
+		float iSpeedDecay;
+		float iAcceleration;
 
-		double iTurnAccelerationX;
-		double iTurnAccelerationY;
-		double iDesiredTurnSpeedX;
-		double iDesiredTurnSpeedY;
+		float iTurnAccelerationX;
+		float iTurnAccelerationY;
+		float iDesiredTurnSpeedX;
+		float iDesiredTurnSpeedY;
 
-		double iSpeed;
-		double iRollSpeed;
-		double iTurnSpeedX;
-		double iTurnSpeedY;
-		double iCameraDisplacementX;
-		double iCameraDisplacementY;
-		double iCameraDisplacementSpeed;
+		float iSpeed;
+		float iRollSpeed;
+		float iTurnSpeedX;
+		float iTurnSpeedY;
+		float iCameraDisplacementX;
+		float iCameraDisplacementY;
+		float iCameraDisplacementSpeed;
 
 
 	public:
@@ -67,7 +67,7 @@ namespace AsteroidGame {
 		void setChassisNode(Ogre::SceneNode* aNode);
 		Ogre::SceneNode* getChassisNode();
 
-		double getSpeed();
+		float getSpeed();
 
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 

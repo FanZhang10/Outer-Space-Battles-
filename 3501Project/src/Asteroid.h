@@ -46,7 +46,7 @@ namespace AsteroidGame {
 		//Public Methods
 
 		//Constructors
-		Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection);
+		Asteroid(Ogre::SceneNode* aNode, Ogre::Vector3 aDirection, int aTier, float aRadius);
 
 		void update(CollisionManager* aCollisionManager);
 		

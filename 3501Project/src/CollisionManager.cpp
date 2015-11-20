@@ -53,7 +53,7 @@ namespace AsteroidGame{
 
 	Ogre::Vector3 CollisionManager::checkAtoBBCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos){
 		if (iCurrentBoundingBox == NULL)
-			return aNewPos;
+			return aAsteroid->getDirection();
 
 		Ogre::Vector3 bounds = iCurrentBoundingBox->getBounds();
 		Ogre::Vector3 boundPos = iCurrentBoundingBox->getNode()->getPosition();
@@ -103,15 +103,15 @@ namespace AsteroidGame{
 			return getReflectionVector(aAsteroid->getDirection(), pf);
 		}
 		else {
-			return aNewPos;
+			return aAsteroid->getDirection();
 		}
 	}
 
 	Ogre::Vector3 CollisionManager::checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos) {
 		if (iPlayer == NULL)
-			return aNewPos;
+			return aAsteroid->getDirection();
 		
-		return aNewPos;
+		return aAsteroid->getDirection();
 	}
 
 	float CollisionManager::getDistanceFromPlane(Ogre::Vector3 aPoint, Ogre::Vector3 aPlanePoint, Ogre::Vector3 aPlaneNormal){

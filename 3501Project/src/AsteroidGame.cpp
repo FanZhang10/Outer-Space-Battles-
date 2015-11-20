@@ -1,3 +1,5 @@
+#include <random>
+
 #include "AsteroidGame.h"
 #include "bin/path_config.h"
 
@@ -301,10 +303,21 @@ void AsteroidGame::LoadMaterials(void){
 //Public Helper Functions//
 ///////////////////////////
 Ogre::Vector3 AsteroidGame::createVector3InRange(Ogre::Vector3 aPositiveBounds, Ogre::Vector3 aNegativeBounds) {
+	/*
 	Ogre::Vector3 r = Ogre::Vector3((float)((aPositiveBounds.x - aNegativeBounds.x) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.x),
 									(float)((aPositiveBounds.y - aNegativeBounds.y) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.y),
 									(float)((aPositiveBounds.z - aNegativeBounds.z) * ( (float)rand() / (float)RAND_MAX ) + aNegativeBounds.z));
 	return r;
+	*/
+
+	std::mt19937 rng;
+	rng.seed(std::random_device()());
+
+	std::uniform_int_distribution<int> randX ((int)aNegativeBounds.x, (int)aPositiveBounds.x);
+	std::uniform_int_distribution<int> randY ((int)aNegativeBounds.y, (int)aPositiveBounds.y);
+	std::uniform_int_distribution<int> randZ ((int)aNegativeBounds.z, (int)aPositiveBounds.z);		
+
+	return Ogre::Vector3((float)randX(rng), (float)randY(rng), (float)randZ(rng));
 }
 
 Ogre::Vector3 AsteroidGame::generateRandomVector3() {

@@ -9,11 +9,12 @@
 
 namespace AsteroidGame{
 
-	Asteroid::Asteroid(Ogre::SceneNode* aNode, int aTier, Ogre::Vector3 aDirection)
+	Asteroid::Asteroid(Ogre::SceneNode* aNode, Ogre::Vector3 aDirection,int aTier, float aRadius)
 	:	iNode(aNode),
-		iDirection(aDirection),
+		iDirection(aDirection.normalisedCopy()),
 		iTier(aTier),
-		iSpeed(0.01f)
+		iRadius(aRadius),
+		iSpeed(0.1f)
 	{
 	}
 
@@ -28,21 +29,25 @@ namespace AsteroidGame{
 			newDirP = aCollisionManager->checkAtoPCollision(this, newPos);
 
 			//Collided with Bounding Box
-			if (newDirBB != newPos) {
+			if (newDirBB != iDirection) {
 				//Also collided with Player
-				if (newDirP != newPos) {
+				if (newDirP != iDirection) {
+					printf("Asteroid collided with Bounding Box AND Player!\n");
 					newDirFinal = (newDirBB + newDirP).normalisedCopy();
 				}
 				else {
+					printf("Asteroid collided with Bounding Box!\n");
 					newDirFinal = newDirBB;
 				}
 			}
 			//Collided with Player
-			else if (newDirP != newPos) {
+			else if (newDirP != iDirection) {
+				printf("Asteroid collided with Player!\n");
 				newDirFinal = newDirP;
 			}
 			//No collisions found
 			else {
+				//printf("No collisions found\n");
 				break;
 			}
 

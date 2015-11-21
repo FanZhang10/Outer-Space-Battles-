@@ -20,6 +20,8 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
+    ./src/GlobalDebugInitializations.h
+    ./src/GlobalExterns.h
 	./src/framework/aldlist.h
 	./src/framework/CWaves.h
 	./src/framework/Framework.h

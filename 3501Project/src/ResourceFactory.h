@@ -42,6 +42,7 @@ namespace AsteroidGame {
 		const std::string iBoundingBoxMaterial;
 
 		const std::string iPlayerMeshFile;
+		const std::string iAsteroidMeshFile;
 
 		const std::string iProjectileMaterial_1;
 		const std::string iProjectileMaterial_2;

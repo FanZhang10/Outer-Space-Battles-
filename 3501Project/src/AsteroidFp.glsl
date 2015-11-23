@@ -1,20 +1,20 @@
 #version 400
 
 // Attributes passed from the vertex shader
-in vec3 position_interp;
-in vec3 normal_interp;
-in vec4 colour_interp;
+in vec3 vertex_position;
+in vec3 vertex_normal;
+in vec4 vertex_colour;
+in vec2 vertex_uv;
+in mat3 TBN_mat;
 in vec3 light_pos;
 
 // Attributes passed with the material file
-uniform vec4 ambient_colour;
-uniform vec4 diffuse_colour;
-uniform vec4 specular_colour;
-uniform float phong_exponent;
-
+uniform vec4 object_colour;
+uniform sampler2D texUnit;
 
 void main() 
 {
+
     // Blinn–Phong shading
 
     vec3 N, // Interpolated normal for fragment
@@ -22,35 +22,31 @@ void main()
 		 V, // View direction
 		 H; // Half-way vector
 
-	// Compute Lambertian lighting Id
-    N = normalize(normal_interp);
+	// Get substitute normal in tangent space from the normal map
+	vec2 coord = vertex_uv;
+	//coord.y = 1.0 - coord.y;
+	N = normalize(texture2D(texUnit, coord).rgb*2.0 - 1.0);
 
-	L = (light_pos - position_interp);
-	L = normalize(L);
-
-	float Id = max(dot(N, L), 0.0);
+	// Work in tangent space by multiplying our vectors by TBN_mat	
+    L = TBN_mat * (light_pos - vertex_position);
+    L = normalize(L);
 	
-	// Compute specular term for Blinn–Phong shading
-	// Initially: V = (eye_position - position_interp);
-	V = - position_interp; // Eye position is (0, 0, 0) in view coordinates
-    V = normalize(V);
+	float lambertian = max(dot(N, L), 0.0);
 
-    H = 0.5*(V + L); // Halfway vector
+	//V = TBN_mat * (eye_position - vertex_position);
+	V = TBN_mat * (- vertex_position); // We already applied the view matrix, so the camera is at the origin
+	V = normalize(V);
+	
+    H = 0.5*(V + L);
     H = normalize(H);
-
-    float spec_angle_cos = max(dot(N, H), 0.0);
-	float Is = pow(spec_angle_cos, phong_exponent);
+    
+	float spec_angle = max(dot(N, H), 0.0);
+    float specular = pow(spec_angle, 128.0);
+	
+	
+	vec4 texture_colour = texture(texUnit, vertex_uv);
 	    
-	// Assign light to the fragment
-	gl_FragColor = ambient_colour + Id*diffuse_colour + Is*specular_colour;
-		
-
-	// For debug, we can display the different values
-	//gl_FragColor = ambient_colour;
-	//gl_FragColor = diffuse_colour;
-	//gl_FragColor = specular_colour;
-	//gl_FragColor = colour_interp;
-	//gl_FragColor = vec4(N.xyz, 1.0);
-	//gl_FragColor = vec4(L.xyz, 1.0);
-	//gl_FragColor = vec4(V.xyz, 1.0);
+	// Assume all components have the same colour but with different weights
+	float ambient = .5;
+	gl_FragColor = (0.8*ambient + 0.3*lambertian + 1.0*specular)*texture_colour;
 }

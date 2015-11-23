@@ -19,6 +19,7 @@ namespace AsteroidGame{
 	iProjectileMaterial_1("ProjectileMaterial"),
 	iProjectileMaterial_2("ProjectileMaterial_2"),
 	iPlayerMeshFile("../../media/models/player/ship.mesh"),
+	iAsteroidMeshFile("../../media/models/asteroid.mesh"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -28,13 +29,6 @@ namespace AsteroidGame{
 
 	Ogre::SceneNode* ResourceFactory::createPlayerModel(Ogre::SceneManager* aSceneManager){
 		try {
-			float loop_radius = 0.6f;
-			float circle_radius = 0.2f;
-			int num_loop_samples = 90;
-			int num_circle_samples = 30;
-			/* Create a torus
-				The torus is built from a large loop with small circles around the loop */
-
 
 			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
 			
@@ -177,77 +171,29 @@ namespace AsteroidGame{
 			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
 			std::string lAsteroidName = getNewAsteroidName();
 			/* Create the 3D object */
-			Ogre::ManualObject* object = NULL;
-			object = aSceneManager->createManualObject(lAsteroidName);
-			object->setDynamic(false);
 
-			/* Create triangle list for the object */
-			object->begin(iAsteroidMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+			FILE* lFile = fopen (iAsteroidMeshFile.c_str(), "rb");
 
-			/* Add vertices to the object */
-			Ogre::Vector3 lVertexPosition;
-			Ogre::Vector3 lVertexNormal;
-			Ogre::ColourValue lVertexColor;
+			struct stat tagStat;
+			stat( iAsteroidMeshFile.c_str(), &tagStat );
+			Ogre::MemoryDataStream* memstream = new Ogre::MemoryDataStream( iAsteroidMeshFile, tagStat.st_size, true);
+			fread( (void*)memstream->getPtr(), tagStat.st_size,1, lFile);
+			fclose(lFile);
+
+			Ogre::MeshPtr lMesh = Ogre::MeshManager::getSingleton().createManual(lAsteroidName,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+			Ogre::MeshSerializer lMeshSerializer;
+			Ogre::DataStreamPtr stream(memstream);
 			
-			lVertexColor = Ogre::ColourValue(0.5f,0.4f,0.3f);
-
-
-			lVertexPosition = Ogre::Vector3(aRadius,0,0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(0,0,aRadius);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(-aRadius,0,0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(0,0,-aRadius);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(0,aRadius,0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(0,-aRadius,0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexPosition);
-			object->colour(lVertexColor); 
-
-			object->triangle(5,0,1);
-			object->triangle(5,1,2);
-			object->triangle(5,2,3);
-			object->triangle(5,3,0);
-
-			object->triangle(4,1,0);
-			object->triangle(4,2,1);
-			object->triangle(4,3,2);
-			object->triangle(4,0,3);
-
-		
-			/* We finished the object */
-			object->end();
-		
-			/* Convert triangle list to a mesh */
-			object->convertToMesh(lAsteroidName);
+			lMeshSerializer.importMesh(stream, lMesh.getPointer());
 
 			/* Create one instance of the torus (one entity) */
 			/* The same object can have multiple instances or entities */
 			Ogre::Entity* entity = aSceneManager->createEntity(lAsteroidName);
+
+
+			entity->setMaterialName(iAsteroidMaterial);
 			/* Apply a material to the entity to give it color */
 			/* We already did that above, so we comment it out here */
 			/* entity->setMaterialName(material_name); */
@@ -258,7 +204,13 @@ namespace AsteroidGame{
 			Ogre::SceneNode* scene_node = root_scene_node->createChildSceneNode(lAsteroidName);
 			scene_node->attachObject(entity);
 
+			//scene_node->setFixedYawAxis(true,Ogre::Vector3(0,1,0));
 
+			/* Position and rotate the entity with the scene node */
+			//scene_node->rotate(Ogre::Vector3(0, 1, 0), Ogre::Degree(60));
+			//scene_node->rotate(Ogre::Vector3(1, 0, 0), Ogre::Degree(30));
+			//scene_node->translate(0.0, 0.0, 0.0);
+			scene_node->setPosition(0,0,0);
 			return scene_node;
 		}
 		catch (Ogre::Exception &e){

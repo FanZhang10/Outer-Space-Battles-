@@ -6,6 +6,7 @@
 #include "bin/path_config.h"
 //#include "../bin/path_config.h"
 #include "AsteroidGame.h"
+#include <stdio.h>
 
 namespace AsteroidGame{
 	ResourceFactory::ResourceFactory() :
@@ -17,6 +18,7 @@ namespace AsteroidGame{
 	iBoundingBoxMaterial("BoundingBoxMaterial"),
 	iProjectileMaterial_1("ProjectileMaterial"),
 	iProjectileMaterial_2("ProjectileMaterial_2"),
+	iPlayerMeshFile("../../media/models/player/ship.mesh"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -37,64 +39,30 @@ namespace AsteroidGame{
 			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
 			
 			/* Create the 3D object */
-			Ogre::ManualObject* object = NULL;
-			object = aSceneManager->createManualObject(iPlayerName);
-			object->setDynamic(false);
 
-			/* Create triangle list for the object */
-			object->begin(iPlayerMaterial, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 
-			/* Add vertices to the object */
-			Ogre::Vector3 lVertexPosition;
-			Ogre::Vector3 lVertexNormal;
-			Ogre::ColourValue lVertexColor;
+			FILE* lFile = fopen (iPlayerMeshFile.c_str(), "rb");
+
+			struct stat tagStat;
+			stat( iPlayerMeshFile.c_str(), &tagStat );
+			Ogre::MemoryDataStream* memstream = new Ogre::MemoryDataStream( iPlayerMeshFile, tagStat.st_size, true);
+			fread( (void*)memstream->getPtr(), tagStat.st_size,1, lFile);
+			fclose(lFile);
+
+			Ogre::MeshPtr lMesh = Ogre::MeshManager::getSingleton().createManual(iPlayerName,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+			Ogre::MeshSerializer lMeshSerializer;
+			Ogre::DataStreamPtr stream(memstream);
 			
-			lVertexNormal = Ogre::Vector3(0,0,1);
-			lVertexColor = Ogre::ColourValue(0.8f,0.0,0.0);
-
-			lVertexPosition = Ogre::Vector3(1,0,0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
-			object->colour(lVertexColor); 
-
-			lVertexColor = Ogre::ColourValue(0.7f,0.7f,0.7f);
-
-			lVertexPosition = Ogre::Vector3(-1,0.5,0.0);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
-			object->colour(lVertexColor); 
-
-			lVertexColor = Ogre::ColourValue(0.5f,0.5f,0.5f);
-
-			lVertexPosition = Ogre::Vector3(-1,0,1);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
-			object->colour(lVertexColor); 
-
-			lVertexPosition = Ogre::Vector3(-1,0,-1);
-
-			object->position(lVertexPosition);
-			object->normal(lVertexNormal);
-			object->colour(lVertexColor); 
-
-			object->triangle(0,1,2);
-			object->triangle(0,3,1);
-			object->triangle(0,2,3);
-			object->triangle(1,3,2);
-
-		
-			/* We finished the object */
-			object->end();
-		
-			/* Convert triangle list to a mesh */
-			object->convertToMesh(iPlayerName);
+			lMeshSerializer.importMesh(stream, lMesh.getPointer());
 
 			/* Create one instance of the torus (one entity) */
 			/* The same object can have multiple instances or entities */
 			Ogre::Entity* entity = aSceneManager->createEntity(iPlayerName);
+
+
+			entity->setMaterialName("shipMaterial");
 			/* Apply a material to the entity to give it color */
 			/* We already did that above, so we comment it out here */
 			/* entity->setMaterialName(material_name); */

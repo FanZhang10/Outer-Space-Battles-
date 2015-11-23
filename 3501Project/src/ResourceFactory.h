@@ -10,6 +10,9 @@
 #include "OGRE/OgreWindowEventUtilities.h"
 #include "OGRE/OgreManualObject.h"
 #include "OGRE/OgreEntity.h"
+#include "OGRE/OgreMeshManager.h"
+#include "OGRE/OgreMeshSerializer.h"
+#include "OGRE/OgreException.h"
 #include "OIS/OIS.h"
 
 
@@ -37,6 +40,8 @@ namespace AsteroidGame {
 		const std::string iShieldMaterial;
 		const std::string iAsteroidMaterial;
 		const std::string iBoundingBoxMaterial;
+
+		const std::string iPlayerMeshFile;
 
 		const std::string iProjectileMaterial_1;
 		const std::string iProjectileMaterial_2;

@@ -16,6 +16,7 @@ uniform vec3 light_position;
 out vec3 position_interp;
 out vec3 normal_interp;
 out vec3 light_pos;
+out vec3 world_interp;
 
 
 void main()
@@ -27,4 +28,6 @@ void main()
 	normal_interp = vec3(normal_mat * vec4(normal, 0.0));
 
     light_pos = vec3(view_mat * vec4(light_position, 1.0));
+
+	world_interp = vec3(world_mat * vec4(vertex, 1.0));
 }

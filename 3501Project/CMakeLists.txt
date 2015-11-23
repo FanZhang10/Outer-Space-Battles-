@@ -35,6 +35,7 @@ set(SRCS
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
 	./src/ProjectileVp.glsl ./src/ProjectileFp.glsl ./src/Projectile.material
 	./src/Projectile_2Vp.glsl ./src/Projectile_2Fp.glsl ./src/Projectile_2.material
+	./src/BoundingBoxVp.glsl ./src/BoundingBoxFp.glsl ./src/BoundingBox.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp

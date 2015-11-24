@@ -3,49 +3,49 @@
 
 * Phase 1 - Basic Tech * 				DONE
 
-- A Player							DONE
+- A Player							         DONE
 - Stationary Asteroids				DONE
-- Player Movement					DONE
-- Camera tracking					DONE
+- Player Movement					    DONE
+- Camera tracking				    	DONE
 
 
 * Phase 2 - Basic Functionality *		IN PROGRESS
 
-- Program Architecture				Max+Jeff
-- Asteroid Movement
-- Asteroid/Player Collision				
-- Shooting							Fan
-- Shields/Health 					
-- Bounding Cube							
+- Program Architecture				   DONE
+- Asteroid Movement          DONE
+- Asteroid/Player Collision 	Max (Almost done)	
+- Shooting							            DONE
+- Shields/Health 					       Jeff
+- Bounding Cube							       DONE
 
 
 * Phase 3 - Expanded Features *
 
-- Player Death
-- Bullet Collision					Fan
-- Upgrades/Currency
-- Upgrade Menu
-- Main Menu
-- Multi-Tiered Asteroids
+- Player Death            Max
+- Bullet Collision					   DONE
+- Upgrades/Currency       ???
+- Upgrade Menu            ???
+- Main Menu               ???
+- Multi-Tiered Asteroids  Max
 
 
 * Phase 4 - Optional Expanded Features *
 
-- Multiple Levels
-- Mining weapons
-- Mineral Collection
-- Energy System
-- Boost
-- Sounds							Fan
-- Skybox
-- Meshes
-- Level Select
+- Multiple Levels     ???
+- Mining weapons      ???
+- Mineral Collection  ???
+- Energy System       ???
+- Boost               ???
+- Sounds							       DONE
+- Skybox              ???
+- Meshes              DONE
+- Level Select        ???
 
 
 * Phase 5 - Other *
 
 - Saving and loading
-- runtime configs
+- runtime configs      DONE
 - Controller input
 - Pause/controls menu
 

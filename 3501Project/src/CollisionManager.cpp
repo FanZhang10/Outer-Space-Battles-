@@ -107,9 +107,9 @@ namespace AsteroidGame{
 		}
 	}
 
-	Ogre::Vector3 CollisionManager::checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos) {
+	bool CollisionManager::checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos) {
 		if (iPlayer == NULL)
-			return aAsteroid->getDirection();
+			return false;
 
 		Player* player = iApplication->getPlayerManager()->getPlayer();
 
@@ -119,10 +119,10 @@ namespace AsteroidGame{
 		if (playerToAsteroidVector.length() <= aAsteroid->getRadius() + 0.5f) {
 			printf("Asteroid reflected off player\n");
 			aAsteroid->setSpeed((aAsteroid->getSpeed() + player->getSpeed())/2);
-			return getReflectionVector(aAsteroid->getDirection(), playerToAsteroidVector);
+			return true;
 		}
 		
-		return aAsteroid->getDirection();
+		return false;
 	}
 
 	float CollisionManager::getDistanceFromPlane(Ogre::Vector3 aPoint, Ogre::Vector3 aPlanePoint, Ogre::Vector3 aPlaneNormal){

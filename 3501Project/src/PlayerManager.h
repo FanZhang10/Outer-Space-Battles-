@@ -34,6 +34,9 @@ namespace AsteroidGame{
 		Ogre::SceneNode* iShieldNode;
 		Ogre::SceneNode* iSkybox;
 
+		float iHealth;
+		float iMaxHealth;
+		float iHealthRegen;
 		//
 		//Public Methods
 	public:
@@ -41,6 +44,7 @@ namespace AsteroidGame{
 		void init(Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 		void updateCamera();
+		void updateHealth();
 		void setSkybox(Ogre::SceneNode*);
 
 		Player* getPlayer() { return iPlayer; }

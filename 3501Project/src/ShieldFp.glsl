@@ -7,12 +7,15 @@ in vec4 colour_interp;
 in vec3 light_pos;
 
 // Attributes passed with the material file
-uniform vec4 ambient_colour;
-uniform vec4 diffuse_colour;
+uniform vec4 ambient_colour_1;
+uniform vec4 diffuse_colour_1;
+uniform vec4 ambient_colour_2;
+uniform vec4 diffuse_colour_2;
 uniform vec4 specular_colour;
 uniform float phong_exponent;
 uniform float timer;
-
+uniform float health;
+uniform float maxhealth;
 
 void main() 
 {
@@ -52,15 +55,6 @@ void main()
 	float Is = pow(spec_angle_cos, phong_exponent);
 	    
 	// Assign light to the fragment
-	gl_FragColor = (ambient_colour + Id*diffuse_colour) * alphaAdjustment;
-		
+	gl_FragColor = (((ambient_colour_2 + Id*diffuse_colour_2)*(1-(health/maxhealth))) +((ambient_colour_1 + Id*diffuse_colour_1)*health/maxhealth))* alphaAdjustment;
 
-	// For debug, we can display the different values
-	//gl_FragColor = ambient_colour;
-	//gl_FragColor = diffuse_colour;
-	//gl_FragColor = specular_colour;
-	//gl_FragColor = colour_interp;
-	//gl_FragColor = vec4(N.xyz, 1.0);
-	//gl_FragColor = vec4(L.xyz, 1.0);
-	//gl_FragColor = vec4(V.xyz, 1.0);
 }

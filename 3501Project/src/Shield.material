@@ -20,11 +20,14 @@ fragment_program shiny_blue_shader/fs glsl
 
 	default_params
 	{
-		 param_named ambient_colour float4 0.0 0.0 0.5 0.5
-		 param_named diffuse_colour float4 0.6 0.6 1.0 0.5
+		 param_named ambient_colour_1 float4 0.0 0.0 0.8 0.5
+		 param_named diffuse_colour_1 float4 0.4 0.4 1.0 0.5
+		 param_named ambient_colour_2 float4 0.8 0.0 0.0 0.5
+		 param_named diffuse_colour_2 float4 1 0.0 0.0 0.5
 		 param_named specular_colour float4 0.8 0.5 0.9 0.5
 		 param_named phong_exponent float 512.0
 		 param_named_auto timer time
+		 
 	}
 }
 

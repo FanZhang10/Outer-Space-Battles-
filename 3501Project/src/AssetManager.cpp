@@ -26,11 +26,16 @@ namespace AsteroidGame{
 
 		iPlayerChassis = iResourceFactory->createPlayerModel(iSceneManager);
 		iPlayerShield = iResourceFactory->createShieldModel(iSceneManager, 1.5);
+		iSkybox = createSkybox();
 		//Max Note: Magic number above. Do we just want shield to have a default radius value?
 	}
 
 	Ogre::SceneNode* AssetManager::createAsteroid(float aRadius) {
 		return iResourceFactory->createAsteroidModel(iApplication->getSceneManager(), aRadius);
+	}
+
+	Ogre::SceneNode* AssetManager::createSkybox() {
+		return iResourceFactory->createSkyboxModel(iApplication->getSceneManager());
 	}
 
 	Ogre::SceneNode* AssetManager::createBoundingBox(Ogre::Vector3 aDimensions) {

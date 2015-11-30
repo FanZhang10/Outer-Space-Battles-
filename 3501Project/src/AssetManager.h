@@ -34,6 +34,7 @@ namespace AsteroidGame{
 
 		Ogre::SceneNode* iPlayerChassis;
 		Ogre::SceneNode* iPlayerShield;
+		Ogre::SceneNode* iSkybox;
 
 		//
 		//Public Methods
@@ -44,10 +45,12 @@ namespace AsteroidGame{
 		void init(Ogre::SceneManager*);
 		
 		Ogre::SceneNode* createAsteroid(float aRadius);
+		Ogre::SceneNode* createSkybox();
 		Ogre::SceneNode* createProjectile(long counter, int type);
 		Ogre::SceneNode* createBoundingBox(Ogre::Vector3 aDimensions);
 		Ogre::SceneNode* getPlayerChassis() { return iPlayerChassis; }
 		Ogre::SceneNode* getPlayerShield()  { return iPlayerShield; }
+		Ogre::SceneNode* getSkybox() { return iSkybox; }
 
 		//
 		//Private Methods

@@ -41,6 +41,10 @@ namespace AsteroidGame{
 	}
 
 
+	void PlayerManager::setSkybox(Ogre::SceneNode* aSkybox){
+		iSkybox = aSkybox;
+	}
+
 
 
 	void PlayerManager::updateCamera(){
@@ -51,6 +55,8 @@ namespace AsteroidGame{
 		iCameraNode->setOrientation(lPlayerNode->getOrientation());
 		iCameraNode->translate(-5-(iPlayer->getSpeed()),1,0,Ogre::Node::TS_LOCAL);
 		iCameraNode->roll(Ogre::Degree(15));
+
+		iSkybox->setPosition(iCameraNode->getPosition());
 
 	}
 

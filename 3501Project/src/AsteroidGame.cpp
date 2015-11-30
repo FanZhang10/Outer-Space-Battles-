@@ -60,6 +60,8 @@ void AsteroidGame::Init(void){
 	LoadMaterials();
 
 	InitManagers();
+	
+
 
 	iAsteroidManager->createAsteroidField();
 
@@ -268,8 +270,11 @@ void AsteroidGame::InitManagers(void) {
 
 	iAssetManager->init(lSceneManager);
 	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
+	iPlayerManager->setSkybox(iAssetManager->getSkybox());
 	iCollisionManager->setBoundingBox(&(iAsteroidManager->iTestBB));
 	iCollisionManager->setPlayer(iPlayerManager->getPlayer());
+
+	
 	
 	//init and play background
 	iSoundManager->init();

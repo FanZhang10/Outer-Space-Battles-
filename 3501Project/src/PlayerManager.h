@@ -32,6 +32,7 @@ namespace AsteroidGame{
 
 		Ogre::SceneNode* iCameraNode;
 		Ogre::SceneNode* iShieldNode;
+		Ogre::SceneNode* iSkybox;
 
 		//
 		//Public Methods
@@ -40,6 +41,7 @@ namespace AsteroidGame{
 		void init(Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 		void updateCamera();
+		void setSkybox(Ogre::SceneNode*);
 
 		Player* getPlayer() { return iPlayer; }
 		//

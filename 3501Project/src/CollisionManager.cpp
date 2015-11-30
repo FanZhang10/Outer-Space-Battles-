@@ -43,6 +43,8 @@ namespace AsteroidGame{
 				 std::cout <<"== asteroidBox =="<<asteroidBox.getSize()<<std::endl;
 				 std::cout <<"== asteroidHalfBox =="<<asteroidHalfBox.getSize()<<std::endl;
 				
+				 iApplication->getAsteroidManager()->markAsteroidForSplit(*aPtr);
+
 				return true;
 			 }
 

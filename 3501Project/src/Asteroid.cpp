@@ -5,6 +5,7 @@
 
 #include "Asteroid.h"
 #include "bin/path_config.h"
+#include "AsteroidManager.h"
 #include "CollisionManager.h"
 
 namespace AsteroidGame{
@@ -18,41 +19,36 @@ namespace AsteroidGame{
 	{
 	}
 
-	void Asteroid::update(CollisionManager* aCollisionManager) {
+	Asteroid::~Asteroid() {
+		iNode->setVisible(false);
+	}
+
+	void Asteroid::update(AsteroidManager* aAsteroidManager, CollisionManager* aCollisionManager) {
 		//To Do: Move and Rotate Scene Node
 		bool safeMove = false;
-		Ogre::Vector3 newPos, newDirFinal, newDirBB, newDirP;
+		Ogre::Vector3 newPos = iNode->getPosition();
+		Ogre::Vector3 newDir;
 
 		while (!safeMove) {
-			newPos = iNode->getPosition() + iDirection*iSpeed;
-			newDirBB = aCollisionManager->checkAtoBBCollision(this, newPos);
-			newDirP = aCollisionManager->checkAtoPCollision(this, newPos);
+			//Player collision tests
+			if (aCollisionManager->checkAtoPCollision(this, newPos)) {
+				aAsteroidManager->markAsteroidForSplit(this);
+				return;
+			}
+
+
+			//Bounding Box collision tests
+			newPos += iDirection*iSpeed;
+			newDir = aCollisionManager->checkAtoBBCollision(this, newPos);
 
 			//Collided with Bounding Box
-			if (newDirBB != iDirection) {
-				//Also collided with Player
-				if (newDirP != iDirection) {
-					printf("Asteroid collided with Bounding Box AND Player!\n");
-					newDirFinal = (newDirBB + newDirP).normalisedCopy();
-				}
-				else {
-					printf("Asteroid collided with Bounding Box!\n");
-					newDirFinal = newDirBB;
-				}
+			if (newDir != iDirection) {
+				printf("Asteroid collided with Bounding Box!\n");
+				iDirection = newDir;
 			}
-			//Collided with Player
-			else if (newDirP != iDirection) {
-				printf("Asteroid collided with Player!\n");
-				newDirFinal = newDirP;
-			}
-			//No collisions found
 			else {
-				//printf("No collisions found\n");
-				break;
-			}
-
-			//Set direction and run collision check again for proposed new direction
-			iDirection = newDirFinal;
+				safeMove = true;
+			}			
 		}
 		
 		iNode->setPosition(newPos);

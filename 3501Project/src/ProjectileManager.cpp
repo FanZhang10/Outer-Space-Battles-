@@ -65,6 +65,7 @@ namespace AsteroidGame{
 					(*itr)->detach();
 					printf("Bullet hit the asteroid\n");
 
+
 				}
 
 			}

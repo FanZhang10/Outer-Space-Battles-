@@ -49,8 +49,10 @@ namespace AsteroidGame{
 		void updateCamera();
 		void updateHealth();
 		void setSkybox(Ogre::SceneNode*);
+		void setHealth(float aHealth) { iHealth = aHealth; }
 
 		Player* getPlayer() { return iPlayer; }
+		float getCurrentHealth() { return iHealth; }
 		//
 		//Private Methods
 	private:

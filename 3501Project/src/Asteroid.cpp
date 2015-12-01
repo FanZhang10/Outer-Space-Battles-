@@ -15,7 +15,8 @@ namespace AsteroidGame{
 		iDirection(aDirection.normalisedCopy()),
 		iTier(aTier),
 		iRadius(aRadius),
-		iSpeed(0.1f)
+		iSpeed(0.1f),
+		iInvulnTimer(0.0f)
 	{
 	}
 
@@ -31,9 +32,11 @@ namespace AsteroidGame{
 
 		while (!safeMove) {
 			//Player collision tests
-			if (aCollisionManager->checkAtoPCollision(this, newPos)) {
-				aAsteroidManager->markAsteroidForSplit(this);
-				return;
+			if (!isInvulnerable()) {
+				if (aCollisionManager->checkAtoPCollision(this, newPos)) {
+					aAsteroidManager->markAsteroidForSplit(this);
+					return;
+				}
 			}
 
 
@@ -52,6 +55,10 @@ namespace AsteroidGame{
 		}
 		
 		iNode->setPosition(newPos);
+
+		if (isInvulnerable()) {
+			iInvulnTimer -= 0.1f;
+		}
 	}
 
 }

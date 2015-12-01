@@ -368,6 +368,7 @@ namespace AsteroidGame{
 			//scene_node->rotate(Ogre::Vector3(1, 0, 0), Ogre::Degree(30));
 			//scene_node->translate(0.0, 0.0, 0.0);
 			scene_node->setPosition(0,0,0);
+			scene_node->scale(aRadius, aRadius, aRadius);
 			return scene_node;
 		}
 		catch (Ogre::Exception &e){

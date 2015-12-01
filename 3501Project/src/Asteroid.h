@@ -32,6 +32,7 @@ namespace AsteroidGame {
 		int iHealth;
 		float iRadius;
 		float iSpeed;
+		float iInvulnTimer;
 
 
 	public:
@@ -59,6 +60,8 @@ namespace AsteroidGame {
 		int getHealth() { return iHealth; }
 		float getRadius() { return iRadius; }
 		float getSpeed() { return iSpeed; }
+		float getInvulnTimer() { return iInvulnTimer; }
+		bool isInvulnerable() { return iInvulnTimer > 0.0f; }
 		
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
 		void setTier(int aTier) { iTier = aTier; }
@@ -66,6 +69,7 @@ namespace AsteroidGame {
 		void setHealth(int aHealth) { iHealth = aHealth; }
 		void setRadius(float aRadius) { iRadius = aRadius; } 
 		void setSpeed(float aSpeed) { iSpeed = aSpeed; }
+		void setInvulnTimer(float aTimer) { iInvulnTimer = aTimer; }
 		
 
 	};

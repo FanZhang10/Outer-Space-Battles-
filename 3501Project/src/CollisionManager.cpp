@@ -34,6 +34,9 @@ namespace AsteroidGame{
 
 		for (; aPtr != asteroids.end(); aPtr++)
 		{
+			if ((*aPtr)->isInvulnerable())
+				continue;
+
 			 Ogre::AxisAlignedBox asteroidBox = (*aPtr)->getNode()->_getWorldAABB();
 
 			 Ogre::AxisAlignedBox asteroidHalfBox((asteroidBox.getCenter() - asteroidBox.getHalfSize() / 2.0f), (asteroidBox.getCenter() + asteroidBox.getHalfSize() / 2.0f));
@@ -66,6 +69,9 @@ namespace AsteroidGame{
 
 		for (; aPtr != asteroids.end(); aPtr++)
 		{
+			if ((*aPtr)->isInvulnerable())
+				continue;
+
 			float radius = (*aPtr)->getRadius();
 			Ogre::Vector3 nodePos = (*aPtr)->getNode()->getPosition();
 			float dist = laserDir.crossProduct(nodePos - laserPos).length();
@@ -74,6 +80,8 @@ namespace AsteroidGame{
 
 			if(dist < radius )
 			{
+				iApplication->getAsteroidManager()->markAsteroidForSplit(*aPtr);
+
 				return true;
 			}
 
@@ -142,7 +150,8 @@ namespace AsteroidGame{
 		if (iPlayer == NULL)
 			return false;
 
-		Player* player = iApplication->getPlayerManager()->getPlayer();
+		PlayerManager* playerManager = iApplication->getPlayerManager();
+		Player* player = playerManager->getPlayer();
 
 		Ogre::Vector3 playerToAsteroidVector = aNewPos - player->getPostion();
 
@@ -150,6 +159,7 @@ namespace AsteroidGame{
 		if (playerToAsteroidVector.length() <= aAsteroid->getRadius() + 0.5f) {
 			printf("Asteroid reflected off player\n");
 			aAsteroid->setSpeed((aAsteroid->getSpeed() + player->getSpeed())/2);
+			playerManager->setHealth(playerManager->getCurrentHealth() - 40.0f);
 			return true;
 		}
 		

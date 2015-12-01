@@ -128,8 +128,11 @@ namespace AsteroidGame{
 				placeAsteroid(splitA, asteroidMatch->getNode()->getPosition() + newDirection);
 				placeAsteroid(splitB, asteroidMatch->getNode()->getPosition() + newDirection);
 
-				splitA->setSpeed(asteroidMatch->getSpeed() * 2);
-				splitB->setSpeed(asteroidMatch->getSpeed() * 2);
+				splitA->setSpeed(asteroidMatch->getSpeed() * 1.5);
+				splitB->setSpeed(asteroidMatch->getSpeed() * 1.5);
+
+				splitA->setInvulnTimer(3.0f);
+				splitB->setInvulnTimer(3.0f);
 
 				iAsteroids.push_back(splitA);
 				iAsteroids.push_back(splitB);

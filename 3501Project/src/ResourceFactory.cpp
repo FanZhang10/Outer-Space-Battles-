@@ -17,11 +17,15 @@ namespace AsteroidGame{
 	iAsteroidMaterial("AsteroidMaterial"),
 	iBoundingBoxMaterial("BoundingBoxMaterial"),
 	iSkyboxMaterial("SkyboxMaterial"),
+	iEngineMaterial("EngineMaterial"),
+	iTurbineMaterial("TurbineMaterial"),
 	iProjectileMaterial_1("ProjectileMaterial"),
 	iProjectileMaterial_2("ProjectileMaterial_2"),
 	iPlayerMeshFile("../../media/models/player/ship.mesh"),
 	iAsteroidMeshFile("../../media/models/asteroid.mesh"),
 	iSkyboxMeshFile("../../media/models/Skybox.mesh"),
+	iEngineMeshFile("../../media/models/Engine.mesh"),
+	iTurbineMeshFile("../../media/models/Turbine.mesh"),
 	iNextAsteroidNum(0)
 	{
 	}
@@ -76,6 +80,98 @@ namespace AsteroidGame{
 			//scene_node->rotate(Ogre::Vector3(1, 0, 0), Ogre::Degree(30));
 			//scene_node->translate(0.0, 0.0, 0.0);
 			scene_node->setPosition(0,0,0);
+			return scene_node;
+		}
+		catch (Ogre::Exception &e){
+			throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
+		}
+		catch(std::exception &e){
+			throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
+		}
+	}
+
+		Ogre::SceneNode* ResourceFactory::createTurbineModel(Ogre::SceneManager* aSceneManager, Ogre::SceneNode* aSceneNode){
+		try {
+
+			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
+			
+			/* Create the 3D object */
+
+			FILE* lFile = fopen (iTurbineMeshFile.c_str(), "rb");
+
+			struct stat tagStat;
+			stat( iTurbineMeshFile.c_str(), &tagStat );
+			Ogre::MemoryDataStream* memstream = new Ogre::MemoryDataStream( iTurbineMeshFile, tagStat.st_size, true);
+			fread( (void*)memstream->getPtr(), tagStat.st_size,1, lFile);
+			fclose(lFile);
+
+			Ogre::MeshPtr lMesh = Ogre::MeshManager::getSingleton().createManual("TurbineMesh",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+			Ogre::MeshSerializer lMeshSerializer;
+			Ogre::DataStreamPtr stream(memstream);
+			
+			lMeshSerializer.importMesh(stream, lMesh.getPointer());
+
+			Ogre::Entity* entity = aSceneManager->createEntity("TurbineMesh");
+
+
+			entity->setMaterialName(iTurbineMaterial);
+
+			Ogre::SceneNode* scene_node = aSceneNode->createChildSceneNode("TurbineMesh");
+			scene_node->attachObject(entity);
+
+			scene_node->setPosition(0,0,0);
+			scene_node->scale(.5,.9,.9);
+
+			return scene_node;
+		}
+		catch (Ogre::Exception &e){
+			throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
+		}
+		catch(std::exception &e){
+			throw(OgreAppException(std::string("std::Exception: ") + std::string(e.what())));
+		}
+	}
+
+
+	Ogre::SceneNode* ResourceFactory::createEngineModel(Ogre::SceneManager* aSceneManager){
+		try {
+
+			Ogre::SceneNode* root_scene_node = aSceneManager->getRootSceneNode();
+			
+			/* Create the 3D object */
+
+			FILE* lFile = fopen (iEngineMeshFile.c_str(), "rb");
+
+			struct stat tagStat;
+			stat( iEngineMeshFile.c_str(), &tagStat );
+			Ogre::MemoryDataStream* memstream = new Ogre::MemoryDataStream( iEngineMeshFile, tagStat.st_size, true);
+			fread( (void*)memstream->getPtr(), tagStat.st_size,1, lFile);
+			fclose(lFile);
+
+			Ogre::MeshPtr lMesh = Ogre::MeshManager::getSingleton().createManual("EngineMesh",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+			Ogre::MeshSerializer lMeshSerializer;
+			Ogre::DataStreamPtr stream(memstream);
+			
+			lMeshSerializer.importMesh(stream, lMesh.getPointer());
+
+			Ogre::Entity* entity = aSceneManager->createEntity("EngineMesh");
+
+
+			entity->setMaterialName(iEngineMaterial);
+
+			Ogre::SceneNode* scene_node = root_scene_node->createChildSceneNode("EngineMesh");
+			scene_node->attachObject(entity);
+
+			scene_node->setPosition(0,0,0);
+			scene_node->scale(.4,.4,.4);
+
+
+
+
 			return scene_node;
 		}
 		catch (Ogre::Exception &e){

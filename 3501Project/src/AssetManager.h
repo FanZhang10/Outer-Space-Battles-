@@ -36,6 +36,9 @@ namespace AsteroidGame{
 		Ogre::SceneNode* iPlayerShield;
 		Ogre::SceneNode* iSkybox;
 
+		Ogre::SceneNode* iEngine;
+		Ogre::SceneNode* iTurbine;
+
 		//
 		//Public Methods
 	public:
@@ -51,6 +54,8 @@ namespace AsteroidGame{
 		Ogre::SceneNode* getPlayerChassis() { return iPlayerChassis; }
 		Ogre::SceneNode* getPlayerShield()  { return iPlayerShield; }
 		Ogre::SceneNode* getSkybox() { return iSkybox; }
+		Ogre::SceneNode* getTurbine() { return iTurbine; }
+		Ogre::SceneNode* getEngine() { return iEngine; }
 
 		//
 		//Private Methods

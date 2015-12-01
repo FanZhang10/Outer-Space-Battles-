@@ -27,10 +27,13 @@ namespace AsteroidGame {
 		//Can we replace these SceneManager params with a call to iApplication->getSceneManager()?
 		Ogre::SceneNode* createPlayerModel(Ogre::SceneManager*);
 		Ogre::SceneNode* createSkyboxModel(Ogre::SceneManager*);
+		Ogre::SceneNode* createEngineModel(Ogre::SceneManager*);
+		Ogre::SceneNode* createTurbineModel(Ogre::SceneManager*, Ogre::SceneNode*);
 		Ogre::SceneNode* createAsteroidModel(Ogre::SceneManager*, float aRadius);
 		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, float aRadius);
 		Ogre::SceneNode* createBoundingBoxModel(Ogre::SceneManager*, Ogre::Vector3 aDimensions);
 		Ogre::SceneNode* createProjectileModel(Ogre::SceneManager*, long counter, int type);
+
 		
 	private:
 		int iNextAsteroidNum; //Move to asteroid manager later
@@ -42,8 +45,13 @@ namespace AsteroidGame {
 		const std::string iAsteroidMaterial;
 		const std::string iBoundingBoxMaterial;
 		const std::string iSkyboxMaterial;
+		const std::string iEngineMaterial;
+		const std::string iTurbineMaterial;
+
 
 		const std::string iPlayerMeshFile;
+		const std::string iEngineMeshFile;
+		const std::string iTurbineMeshFile;
 		const std::string iAsteroidMeshFile;
 		const std::string iSkyboxMeshFile;
 

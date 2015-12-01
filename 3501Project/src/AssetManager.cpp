@@ -27,6 +27,11 @@ namespace AsteroidGame{
 		iPlayerChassis = iResourceFactory->createPlayerModel(iSceneManager);
 		iPlayerShield = iResourceFactory->createShieldModel(iSceneManager, 1.5);
 		iSkybox = createSkybox();
+		
+		iEngine = iResourceFactory->createEngineModel(iSceneManager);
+		
+		iTurbine = iResourceFactory->createTurbineModel(iSceneManager, iEngine);
+		
 		//Max Note: Magic number above. Do we just want shield to have a default radius value?
 	}
 

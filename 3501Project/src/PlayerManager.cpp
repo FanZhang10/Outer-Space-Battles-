@@ -24,8 +24,11 @@ namespace AsteroidGame{
 		iPlayer->setChassisNode(lNewPlayerNode);
 
 		iShieldNode = iApplication->getAssetManager()->getPlayerShield();
+		iEngine = iApplication->getAssetManager()->getEngine();
+		iTurbine = iApplication->getAssetManager()->getTurbine();
 
 		iCameraNode = aCameraNode;
+		iPlayer->getChassisNode()->setPosition(-150,0,0);
 	}
 
 
@@ -36,6 +39,10 @@ namespace AsteroidGame{
 		iPlayer->updateOrientation(aKeyboard, aMouse);
 		iPlayer->updatePosition(aKeyboard, aMouse);//to be replaced by //Movement
 		
+		iEngine->setPosition(iPlayer->getChassisNode()->getPosition());
+		iEngine->setOrientation(iPlayer->getChassisNode()->getOrientation());
+		iEngine->translate(-.3,-.1,0, Ogre::Node::TS_LOCAL);
+		iTurbine->pitch(Ogre::Degree(10));
 
 		updateHealth();
 

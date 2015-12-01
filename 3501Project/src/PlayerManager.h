@@ -33,6 +33,8 @@ namespace AsteroidGame{
 		Ogre::SceneNode* iCameraNode;
 		Ogre::SceneNode* iShieldNode;
 		Ogre::SceneNode* iSkybox;
+		Ogre::SceneNode* iEngine;
+		Ogre::SceneNode* iTurbine;
 
 		float iHealth;
 		float iMaxHealth;

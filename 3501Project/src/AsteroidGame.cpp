@@ -30,7 +30,6 @@ const Ogre::ColourValue viewport_background_color_g(0.0, 0.0, 0.0);
 float camera_near_clip_distance_g = 0.01f;
 float camera_far_clip_distance_g = 10000.0;
 Ogre::Vector3 camera_position_g(-5.0, 2.0, 0.0);
-Ogre::Vector3 camera_position_g_2(-25.0, 2.0, 0.0);
 Ogre::Vector3 camera_look_at_g(0.0, 0.0, 0.0);
 Ogre::Vector3 camera_up_g(0.0, 1.0, 0.0);
 
@@ -189,7 +188,7 @@ void AsteroidGame::InitViewport(void){
         camera_2->setNearClipDistance(camera_near_clip_distance_g);
         camera_2->setFarClipDistance(camera_far_clip_distance_g); 
 
-		camera_2->setPosition(camera_position_g_2);
+		camera_2->setPosition(camera_position_g);
 		camera_2->lookAt(camera_look_at_g);
 		//camera->setFixedYawAxis(true, camera_up_g);
 

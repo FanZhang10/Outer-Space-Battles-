@@ -81,10 +81,12 @@ namespace AsteroidGame{
 		iCameraNode->translate(-5-(iPlayer->getSpeed()),1,0,Ogre::Node::TS_LOCAL);
 		iCameraNode->roll(Ogre::Degree(15));
 
-		iCameraNode_2->setPosition(lPlayerNode->getPosition() - Ogre::Vector3(0.0, 0.0, 25.0));
+		iCameraNode_2->setPosition(lPlayerNode->getPosition());
+		iCameraNode_2->setOrientation(lPlayerNode->getOrientation());
+		iCameraNode_2->translate(5,0,0,Ogre::Node::TS_LOCAL);
+		iCameraNode_2->roll(Ogre::Degree(15));
+		//iCameraNode_2->setPosition(lPlayerNode->getPosition() - Ogre::Vector3(0.0, 0.0, 25.0));
 		iSkybox->setPosition(iCameraNode->getPosition());
-
-		((Ogre::Camera*) iCameraNode_2->getAttachedObject("MyCamera_2"))->lookAt(lPlayerNode->getPosition());
 	}
 
 }

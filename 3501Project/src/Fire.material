@@ -67,7 +67,7 @@ material FireMaterial
 
 			texture_unit {
 				texture_alias tex_samp
-			    texture flame4x4orig.png 2d
+			    texture flare.png 2d
 		    }
         } 
     }

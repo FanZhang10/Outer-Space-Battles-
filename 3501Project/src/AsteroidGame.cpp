@@ -28,7 +28,7 @@ float viewport_top_g = (1.0f - viewport_height_g) * 0.5f;
 unsigned short viewport_z_order_g = 100;
 const Ogre::ColourValue viewport_background_color_g(0.0, 0.0, 0.0);
 float camera_near_clip_distance_g = 0.01f;
-float camera_far_clip_distance_g = 100.0;
+float camera_far_clip_distance_g = 10000.0;
 Ogre::Vector3 camera_position_g(-5.0, 2.0, 0.0);
 Ogre::Vector3 camera_position_g_2(-25.0, 2.0, 0.0);
 Ogre::Vector3 camera_look_at_g(0.0, 0.0, 0.0);
@@ -62,6 +62,8 @@ void AsteroidGame::Init(void){
 	LoadMaterials();
 
 	InitManagers();
+	
+
 
 	iAsteroidManager->createAsteroidField();
 
@@ -284,8 +286,11 @@ void AsteroidGame::InitManagers(void) {
 
 	iAssetManager->init(lSceneManager);
 	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"),lSceneManager->getSceneNode("MyCameraNode_2"));
+	iPlayerManager->setSkybox(iAssetManager->getSkybox());
 	iCollisionManager->setBoundingBox(&(iAsteroidManager->iTestBB));
 	iCollisionManager->setPlayer(iPlayerManager->getPlayer());
+
+	
 	
 	//init and play background
 	iSoundManager->init();

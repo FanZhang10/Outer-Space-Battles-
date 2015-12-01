@@ -37,6 +37,8 @@ namespace AsteroidGame{
 		std::map<int, float> iTierRadiusMap;
 		std::vector<Asteroid*> iAsteroids;
 
+		Asteroid* markedForSplit;
+
 
 
 		//
@@ -49,12 +51,15 @@ namespace AsteroidGame{
 
 		void createAsteroidField();
 		std::vector<Asteroid*> getAsteroids() { return iAsteroids;}
+		void markAsteroidForSplit(Asteroid* aAsteroid);
 		//
 		//Private Methods
 	private:
-		void createAsteroid(int aTier);
+		Asteroid* createAsteroid(int aTier);
+		Asteroid* createAsteroid(int aTier, Ogre::Vector3 aDirection);
 		void placeAsteroid(Asteroid* aAsteroid);
 		void placeAsteroid(Asteroid* aAsteroid, Ogre::Vector3 aPosition);
+		void splitAsteroid(Asteroid* aAsteroid);
 
 		bool isLegitimateTier(int aTier);
 

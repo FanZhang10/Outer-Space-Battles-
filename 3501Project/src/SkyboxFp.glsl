@@ -48,5 +48,5 @@ void main()
 	    
 	// Assume all components have the same colour but with different weights
 	float ambient = .5;
-	gl_FragColor = (0.8*ambient + 0.3*lambertian + 1.0*specular)*texture_colour;
+	gl_FragColor = .5 *texture_colour;
 }

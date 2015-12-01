@@ -20,6 +20,8 @@ set(HDRS
 	./src/AssetManager.h
 	./src/SoundManager.h
 	./src/BoundingBox.h
+    ./src/GlobalDebugInitializations.h
+    ./src/GlobalExterns.h
 	./src/framework/aldlist.h
 	./src/framework/CWaves.h
 	./src/framework/Framework.h
@@ -33,6 +35,7 @@ set(SRCS
 	./src/AsteroidVp.glsl ./src/AsteroidFp.glsl ./src/Asteroid.material
 	./src/ProjectileVp.glsl ./src/ProjectileFp.glsl ./src/Projectile.material
 	./src/Projectile_2Vp.glsl ./src/Projectile_2Fp.glsl ./src/Projectile_2.material
+	./src/BoundingBoxVp.glsl ./src/BoundingBoxFp.glsl ./src/BoundingBox.material
 	./src/ResourceFactory.cpp
 	./src/Asteroid.cpp
 	./src/Player.cpp

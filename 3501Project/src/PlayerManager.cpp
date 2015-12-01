@@ -12,6 +12,10 @@ namespace AsteroidGame{
 
 	PlayerManager::PlayerManager(AsteroidGame* aApplication){
 		iApplication = aApplication;
+
+		iHealth = 10;
+		iMaxHealth = 100;
+		iHealthRegen = .1;
 	}
 
 	void PlayerManager::init(Ogre::SceneNode* aCameraNode, Ogre::SceneNode* aCameraNode_2){
@@ -34,6 +38,7 @@ namespace AsteroidGame{
 		iPlayer->updatePosition(aKeyboard, aMouse);//to be replaced by //Movement
 		
 
+		updateHealth();
 
 		updateCamera();
 
@@ -41,6 +46,22 @@ namespace AsteroidGame{
 		iShieldNode->setOrientation(iPlayer->getChassisNode()->getOrientation());
 	}
 
+
+	void PlayerManager::setSkybox(Ogre::SceneNode* aSkybox){
+		iSkybox = aSkybox;
+	}
+
+
+	void PlayerManager::updateHealth(){
+		iHealth += iHealthRegen;
+		if(iHealth > iMaxHealth){
+			iHealth = iMaxHealth;
+		}
+		
+		Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().getByName("ShinyBlueMaterial");
+		material->getTechnique(0)->getPass(0)->getFragmentProgramParameters()->setNamedConstant("health",iHealth);
+		material->getTechnique(0)->getPass(0)->getFragmentProgramParameters()->setNamedConstant("maxhealth",iMaxHealth);
+	}
 
 
 
@@ -54,6 +75,8 @@ namespace AsteroidGame{
 		iCameraNode->roll(Ogre::Degree(15));
 
 		iCameraNode_2->setPosition(lPlayerNode->getPosition() - Ogre::Vector3(0.0, 0.0, 25.0));
+		iSkybox->setPosition(iCameraNode->getPosition());
+
 		((Ogre::Camera*) iCameraNode_2->getAttachedObject("MyCamera_2"))->lookAt(lPlayerNode->getPosition());
 	}
 

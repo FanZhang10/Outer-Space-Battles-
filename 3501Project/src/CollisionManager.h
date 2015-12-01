@@ -43,7 +43,7 @@ namespace AsteroidGame{
 		void setPlayer(Player* aP);
 
 		Ogre::Vector3 checkAtoBBCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
-		Ogre::Vector3 checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
+		bool checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
 
 		bool isProjectileHit(Projectile*);
 		bool isLaserAndAsteroidHit(Projectile*);

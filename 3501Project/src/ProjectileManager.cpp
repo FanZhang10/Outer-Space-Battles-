@@ -90,6 +90,7 @@ namespace AsteroidGame{
 
 					}
 
+
 				}
 				else if ((*itr)->getType() == 2 || (*itr)->getType() == 3) {
 					isCollision = iApplication->getCollisionManager()->isLaserAndAsteroidHit((*itr));

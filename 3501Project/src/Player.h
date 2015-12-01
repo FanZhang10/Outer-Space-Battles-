@@ -52,7 +52,7 @@ namespace AsteroidGame {
 	public:
 		//Public Variables
 		Ogre::Vector3 getPostion();
-		Ogre::Vector3 getDirection();
+		Ogre::Quaternion getDirection();
 
 		//
 		//Methods

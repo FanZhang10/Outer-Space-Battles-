@@ -18,23 +18,29 @@ namespace AsteroidGame{
 		type = 0;
 	}
 
-	void ProjectileManager::update(Ogre::SceneManager* aSceneManager,OIS::Keyboard* aKeyboard, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection,float iSpeed){
+	void ProjectileManager::update(Ogre::SceneManager* aSceneManager,OIS::Keyboard* aKeyboard, Ogre::Vector3 aPosition, Ogre::Quaternion aDirection,float iSpeed){
 		
-		if(aKeyboard->isKeyDown(OIS::KC_SPACE)){
+		if (aKeyboard->isKeyDown(OIS::KC_SPACE)){
 
 			if (spaceDown == false) {
 				printf("fire  ");// insert function to implement shooting
 				Ogre::SceneNode* lNewProjectNode = iApplication->getAssetManager()->createProjectile(aCounter, type);
-				Projectile* aProjectile = new Projectile(lNewProjectNode, aPosition, aDirection, iSpeed);
+				Player* aPlayer = iApplication->getPlayerManager()->getPlayer();
+				Projectile* aProjectile = new Projectile(lNewProjectNode, aPosition, aDirection, iSpeed, type, aPlayer);
 
 				aCounter++;
 				iProjectiles.push_back(aProjectile);
-				iApplication->getSoundManager()->audioPlay(SHOOTINGSOUND);
-
+				if(type == 2 || type == 3)
+				{
+					iApplication->getSoundManager()->audioPlay(LASERSOUND);
+				}else{
+					iApplication->getSoundManager()->audioPlay(SHOOTINGSOUND);
+				}
 	
 			}
 			spaceDown = true;
-		}else {
+		}
+		else {
 			spaceDown = false;
 		}
 		//change material
@@ -44,12 +50,22 @@ namespace AsteroidGame{
 			
 		}
 		//change material
-		if(aKeyboard->isKeyDown(OIS::KC_2))
+		else if(aKeyboard->isKeyDown(OIS::KC_2))
 		{
 			type = 1;
 			
 		}
-		
+		//change material laser
+		else if(aKeyboard->isKeyDown(OIS::KC_3))
+		{
+			type = 2;
+			
+		}
+		else if(aKeyboard->isKeyDown(OIS::KC_4))
+		{
+			type = 3;
+			
+		}
 		
 		std::vector<Projectile*>::iterator itr = iProjectiles.begin();
 
@@ -59,13 +75,33 @@ namespace AsteroidGame{
 			if((*itr)->isLive() == true)
 			{
 				(*itr)->update();
-				if (iApplication->getCollisionManager()->isProjectileHit((*itr)))
+
+				bool isCollision = false;
+
+				if((*itr)->getType() == 0 || (*itr)->getType() == 1)
 				{
-					iApplication->getSoundManager()->audioPlay(COLLISIONSOUND);
-					(*itr)->detach();
-					printf("Bullet hit the asteroid\n");
+					isCollision = iApplication->getCollisionManager()->isProjectileHit((*itr));
+
+					if (isCollision)
+					{
+						iApplication->getSoundManager()->audioPlay(COLLISIONSOUND);
+						(*itr)->detach();
+						printf("Bullet hit the asteroid\n");
+
+					}
 
 				}
+				else if ((*itr)->getType() == 2 || (*itr)->getType() == 3) {
+					isCollision = iApplication->getCollisionManager()->isLaserAndAsteroidHit((*itr));
+
+					if (isCollision)
+					{
+						iApplication->getSoundManager()->audioPlay(COLLISIONSOUND);
+						(*itr)->updateLaser();
+						printf("Bullet hit the Laser\n");
+					}
+				}
+
 
 			}
 			else 
@@ -74,8 +110,7 @@ namespace AsteroidGame{
 				(*itr)->detach();
 			}
 		}
-			
-		/// remove the timeout item from the vector iProjectiles
+
 	}
 
 }

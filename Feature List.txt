@@ -32,7 +32,7 @@
 * Phase 4 - Optional Expanded Features *
 
 - Multiple Levels
-- Mining weapons
+- Mining weapons					Fan
 - Mineral Collection
 - Energy System
 - Boost
@@ -40,7 +40,7 @@
 - Skybox
 - Meshes
 - Level Select
-
+- Third person camera					Fan
 
 * Phase 5 - Other *
 

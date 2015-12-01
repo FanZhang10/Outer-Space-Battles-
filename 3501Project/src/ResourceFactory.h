@@ -10,6 +10,7 @@
 #include "OGRE/OgreWindowEventUtilities.h"
 #include "OGRE/OgreManualObject.h"
 #include "OGRE/OgreEntity.h"
+#include "OGRE/OgreParticleSystem.h"
 #include "OIS/OIS.h"
 
 
@@ -27,7 +28,8 @@ namespace AsteroidGame {
 		Ogre::SceneNode* createShieldModel(Ogre::SceneManager*, float aRadius);
 		Ogre::SceneNode* createBoundingBoxModel(Ogre::SceneManager*, Ogre::Vector3 aDimensions);
 		Ogre::SceneNode* createProjectileModel(Ogre::SceneManager*, long counter, int type);
-		
+		Ogre::SceneNode* createProjectileLaserModel(Ogre::SceneManager* aSceneManager, long counter, int type);
+		Ogre::SceneNode* CreateParticleGeometry(Ogre::SceneManager* aSceneManager, long counter,  int type);
 	private:
 		int iNextAsteroidNum; //Move to asteroid manager later
 		int iNextProjectileNum;

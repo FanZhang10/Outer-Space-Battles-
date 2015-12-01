@@ -30,12 +30,14 @@ const Ogre::ColourValue viewport_background_color_g(0.0, 0.0, 0.0);
 float camera_near_clip_distance_g = 0.01f;
 float camera_far_clip_distance_g = 100.0;
 Ogre::Vector3 camera_position_g(-5.0, 2.0, 0.0);
+Ogre::Vector3 camera_position_g_2(-25.0, 2.0, 0.0);
 Ogre::Vector3 camera_look_at_g(0.0, 0.0, 0.0);
 Ogre::Vector3 camera_up_g(0.0, 1.0, 0.0);
 
 /* Materials */
 const Ogre::String material_directory_g = (MATERIAL_DIRECTORY  "/src");
 
+int cameraPositionIndex  = 0;
 
 AsteroidGame::AsteroidGame(void){
    iGameState = GameState::Loading;
@@ -101,6 +103,7 @@ void AsteroidGame::InitPlugins(void){
             ogre_root_->loadPlugin(plugin_name);
         }
 
+		ogre_root_->loadPlugin("Plugin_ParticleFX_d");
     }
     catch (Ogre::Exception &e){
 		throw(OgreAppException(std::string("Ogre::Exception: ") + std::string(e.what())));
@@ -165,7 +168,7 @@ void AsteroidGame::InitViewport(void){
         Ogre::SceneNode* root_scene_node = scene_manager->getRootSceneNode();
 
         /* Create camera object */
-        Ogre::Camera* camera = scene_manager->createCamera("MyCamera");
+        camera = scene_manager->createCamera("MyCamera");
         Ogre::SceneNode* camera_scene_node = root_scene_node->createChildSceneNode("MyCameraNode");
         camera_scene_node->attachObject(camera);
 
@@ -176,7 +179,19 @@ void AsteroidGame::InitViewport(void){
 		camera->lookAt(camera_look_at_g);
 		//camera->setFixedYawAxis(true, camera_up_g);
 
-        /* Create viewport */
+        /* Create second camera object */
+        camera_2 = scene_manager->createCamera("MyCamera_2");
+        Ogre::SceneNode* camera_scene_node_2 = root_scene_node->createChildSceneNode("MyCameraNode_2");
+        camera_scene_node_2->attachObject(camera_2);
+
+        camera_2->setNearClipDistance(camera_near_clip_distance_g);
+        camera_2->setFarClipDistance(camera_far_clip_distance_g); 
+
+		camera_2->setPosition(camera_position_g_2);
+		camera_2->lookAt(camera_look_at_g);
+		//camera->setFixedYawAxis(true, camera_up_g);
+
+		/*Create viewport */
         Ogre::Viewport *viewport = ogre_window_->addViewport(camera, viewport_z_order_g, viewport_left_g, viewport_top_g, viewport_width_g, viewport_height_g);
 
         viewport->setAutoUpdated(true);
@@ -185,6 +200,7 @@ void AsteroidGame::InitViewport(void){
 		/* Set aspect ratio */
 		float ratio = float(viewport->getActualWidth()) / float(viewport->getActualHeight());
         camera->setAspectRatio(ratio);
+		camera_2->setAspectRatio(ratio);
 
     }
     catch (Ogre::Exception &e){
@@ -267,7 +283,7 @@ void AsteroidGame::InitManagers(void) {
 	Ogre::SceneManager* lSceneManager = ogre_root_->getSceneManager("MySceneManager");
 
 	iAssetManager->init(lSceneManager);
-	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"));
+	iPlayerManager->init(lSceneManager->getSceneNode("MyCameraNode"),lSceneManager->getSceneNode("MyCameraNode_2"));
 	iCollisionManager->setBoundingBox(&(iAsteroidManager->iTestBB));
 	iCollisionManager->setPlayer(iPlayerManager->getPlayer());
 	
@@ -329,6 +345,32 @@ Ogre::Vector3 AsteroidGame::generateRandomVector3() {
 }
 
 
+//// NEW FEATHER
+
+void AsteroidGame::switchCamera(int index)
+{
+	if (cameraPositionIndex != index) {
+
+		Ogre::SceneManager* scene_manager = ogre_root_->getSceneManager("MySceneManager");
+		Ogre::Viewport *viewport = ogre_window_->getViewport(0);
+
+		if (index == 0){
+			Ogre::Camera* camera = scene_manager->getCamera("MyCamera");
+			viewport->setCamera(camera);
+		}
+		else if(index == 1) {		
+			Ogre::Camera* camera_2 = scene_manager->getCamera("MyCamera_2");
+			viewport->setCamera(camera_2);
+		}
+
+		cameraPositionIndex = index;
+	}
+
+}
+
+
+
+
 ///////////////////////
 //Main Game Functions//
 ///////////////////////
@@ -367,6 +409,16 @@ bool AsteroidGame::frameRenderingQueued(const Ogre::FrameEvent& fe){
 	/* Capture input */
 	keyboard_->capture();
 	mouse_->capture();
+	
+	//switch camera
+	if (keyboard_->isKeyDown(OIS::KC_V))
+	{
+		switchCamera(0);
+	}
+	else if(keyboard_->isKeyDown(OIS::KC_C))
+	{
+		switchCamera(1);
+	}
 
 	//Update Managers
 	if(iGameState == GameState::Running){
@@ -398,6 +450,12 @@ void AsteroidGame::windowResized(Ogre::RenderWindow* rw){
 
 	if (camera != NULL){
 		camera->setAspectRatio(Ogre::Real(width/height));
+    }
+
+    Ogre::Camera* camera_2 = scene_manager->getCamera("MyCamera_2");
+
+	if (camera_2 != NULL){
+		camera_2->setAspectRatio(Ogre::Real(width/height));
     }
 
 	const OIS::MouseState &ms = mouse_->getMouseState();

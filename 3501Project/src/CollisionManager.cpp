@@ -35,7 +35,8 @@ namespace AsteroidGame{
 		for (; aPtr != asteroids.end(); aPtr++)
 		{
 			 Ogre::AxisAlignedBox asteroidBox = (*aPtr)->getNode()->_getWorldAABB();
-			 Ogre::AxisAlignedBox asteroidHalfBox((asteroidBox.getCenter() - asteroidBox.getHalfSize()), (asteroidBox.getCenter() + asteroidBox.getHalfSize()));
+
+			 Ogre::AxisAlignedBox asteroidHalfBox((asteroidBox.getCenter() - asteroidBox.getHalfSize() / 2.0f), (asteroidBox.getCenter() + asteroidBox.getHalfSize() / 2.0f));
 			 if (asteroidHalfBox.intersects(projectileBox) == true)
 			 {
 				 //std::cout <<""<<asteroidBox.getSize()<<std::endl;
@@ -47,6 +48,34 @@ namespace AsteroidGame{
 
 				return true;
 			 }
+
+		}
+
+		return false;
+	}
+
+	bool CollisionManager::isLaserAndAsteroidHit(Projectile* aProjectile)
+	{
+		// methode 1 use OGRE3d Ray
+
+		// methode 2 use distance calc
+		std::vector<Asteroid*> asteroids = iApplication->getAsteroidManager()->getAsteroids();
+		std::vector<Asteroid*>::iterator aPtr = asteroids.begin();
+		Ogre::Vector3 laserPos = aProjectile->getPostion();
+		Ogre::Vector3 laserDir = aProjectile->getDirection();
+
+		for (; aPtr != asteroids.end(); aPtr++)
+		{
+			float radius = (*aPtr)->getRadius();
+			Ogre::Vector3 nodePos = (*aPtr)->getNode()->getPosition();
+			float dist = laserDir.crossProduct(nodePos - laserPos).length();
+		    float laserLength = (nodePos - laserPos).length();
+			aProjectile->setLaserLength(laserLength);
+
+			if(dist < radius )
+			{
+				return true;
+			}
 
 		}
 

@@ -18,7 +18,7 @@ namespace AsteroidGame{
 		iHealthRegen = .1;
 	}
 
-	void PlayerManager::init(Ogre::SceneNode* aCameraNode){
+	void PlayerManager::init(Ogre::SceneNode* aCameraNode, Ogre::SceneNode* aCameraNode_2){
 		iPlayer = new Player();
 		Ogre::SceneNode* lNewPlayerNode = iApplication->getAssetManager()->getPlayerChassis();
 		iPlayer->setChassisNode(lNewPlayerNode);
@@ -29,6 +29,7 @@ namespace AsteroidGame{
 
 		iCameraNode = aCameraNode;
 		iPlayer->getChassisNode()->setPosition(-150,0,0);
+		iCameraNode_2 = aCameraNode_2;
 	}
 
 
@@ -80,8 +81,10 @@ namespace AsteroidGame{
 		iCameraNode->translate(-5-(iPlayer->getSpeed()),1,0,Ogre::Node::TS_LOCAL);
 		iCameraNode->roll(Ogre::Degree(15));
 
+		iCameraNode_2->setPosition(lPlayerNode->getPosition() - Ogre::Vector3(0.0, 0.0, 25.0));
 		iSkybox->setPosition(iCameraNode->getPosition());
 
+		((Ogre::Camera*) iCameraNode_2->getAttachedObject("MyCamera_2"))->lookAt(lPlayerNode->getPosition());
 	}
 
 }

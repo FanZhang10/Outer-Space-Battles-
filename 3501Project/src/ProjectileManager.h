@@ -35,7 +35,7 @@ namespace AsteroidGame{
 		//Public Methods
 	public:
 		ProjectileManager(AsteroidGame* aApplication);
-		void update(Ogre::SceneManager* ,OIS::Keyboard*, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection, float iSpeed);
+		void update(Ogre::SceneManager* ,OIS::Keyboard*, Ogre::Vector3 aPosition, Ogre::Quaternion aDirection, float iSpeed);
 		//
 		//Private Methods
 	private:

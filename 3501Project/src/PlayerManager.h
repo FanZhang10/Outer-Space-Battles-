@@ -31,6 +31,7 @@ namespace AsteroidGame{
 		
 
 		Ogre::SceneNode* iCameraNode;
+		Ogre::SceneNode* iCameraNode_2;
 		Ogre::SceneNode* iShieldNode;
 		Ogre::SceneNode* iSkybox;
 		Ogre::SceneNode* iEngine;
@@ -43,7 +44,7 @@ namespace AsteroidGame{
 		//Public Methods
 	public:
 		PlayerManager(AsteroidGame* aApplication);
-		void init(Ogre::SceneNode*);
+		void init(Ogre::SceneNode*,Ogre::SceneNode*);
 		void update(Ogre::SceneManager* ,OIS::Keyboard* ,OIS::Mouse* );
 		void updateCamera();
 		void updateHealth();

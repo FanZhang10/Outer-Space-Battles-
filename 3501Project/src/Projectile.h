@@ -18,6 +18,7 @@
 #include <iostream>
 
 namespace AsteroidGame {
+	class Player;
 
 	class Projectile{
 
@@ -26,6 +27,7 @@ namespace AsteroidGame {
 		//Private Variables
 		Ogre::SceneNode* iNode;
 		Ogre::Vector3 iDirection;
+		Ogre::Quaternion iQuaternion;
 		Ogre::Vector3 iPosition;
 		Ogre::Vector3 iCurrPos; //collision
 
@@ -33,7 +35,9 @@ namespace AsteroidGame {
 		float iSpeed;
 		time_t iStartTime;
 		bool isActive;
-
+		int iType;
+		float iLaserLength;
+		Player* iPlayer;
 	public:
 		//Public Variables
 
@@ -47,20 +51,22 @@ namespace AsteroidGame {
 		//Public Methods
 
 		//Constructors
-		Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Vector3 aDirection, float iSpeed);
+		Projectile(Ogre::SceneNode* aNode, Ogre::Vector3 aPosition, Ogre::Quaternion aDirection, float iSpeed, int type, Player* aplayer);
 
 		bool isLive();
 		void detach();
 		void update();
-		
+		void updateLaser();
+
 		Ogre::SceneNode* getNode() { return iNode; }
 
 		float getRadius() { return iRadius; }
-		
+		int  getType() {return iType;}
 		void setNode(Ogre::SceneNode* aNode) { iNode = aNode; }
 		void setRadius(float aRadius) { iRadius = aRadius; } 
-		
-
+		Ogre::Vector3 getDirection() {return iDirection;}
+		Ogre::Vector3 getPostion()  {return  iPosition;}
+		void setLaserLength(float aLaserLength) { iLaserLength = aLaserLength;}
 	};
 
 }

@@ -84,11 +84,14 @@ namespace AsteroidGame {
 			//Even Handler Functions
 			bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 			void windowResized(Ogre::RenderWindow* rw);
+			void switchCamera(int index);
 
 			//Ogre command root
             std::auto_ptr<Ogre::Root> ogre_root_;
             //Main Ogre window
             Ogre::RenderWindow* ogre_window_;
+			Ogre::Camera* camera;
+			Ogre::Camera* camera_2;
 
 			//Input
 			OIS::InputManager *input_manager_;

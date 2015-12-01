@@ -48,6 +48,17 @@ namespace AsteroidGame{
 	}
 
 	Ogre::SceneNode* AssetManager::createProjectile(long counter, int type) {
-		return iResourceFactory->createProjectileModel(iApplication->getSceneManager(), counter, type);
+		if(type == 0 || type == 1)
+		{
+			return iResourceFactory->createProjectileModel(iApplication->getSceneManager(), counter, type);
+		}
+		else if(type == 2)
+		{
+			return iResourceFactory->createProjectileLaserModel(iApplication->getSceneManager(), counter, type);
+		}
+		else if(type == 3)
+		{
+			return iResourceFactory->CreateParticleGeometry(iApplication->getSceneManager(), counter, type);
+		}
 	}
 }

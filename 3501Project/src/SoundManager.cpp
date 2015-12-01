@@ -9,10 +9,10 @@
 
 #include"framework/Framework.h"
 #define NUMBER_OF_AUDIO		7
-#define	BACKGOUND_FILE		"backgroundMusic.wav"
-#define	EFFECT_FILE_1		"keyeffectMusic2.wav"
-#define	EFFECT_FILE_2		"keyeffectMusic2.wav"
-#define	EFFECT_FILE_3		"keyeffectMusic2.wav"
+#define	BACKGOUND_FILE		"backgroundMusic.wav"	//BACKGROUND
+#define	EFFECT_FILE_1		"shooting.wav"			//SHOOTINGSOUND
+#define	EFFECT_FILE_2		"Atomic_Bomb-Sound.wav"		//COLLISIONSOUND
+#define	EFFECT_FILE_3		"Lazer.wav"				//LASERSOUND
 #define	EFFECT_FILE_4		"keyeffectMusic2.wav"
 #define	EFFECT_FILE_5		"keyeffectMusic2.wav"
 #define	EFFECT_FILE_6		"keyeffectMusic2.wav"
@@ -142,9 +142,10 @@ namespace AsteroidGame{
 		alSourceStop(uiSource[0]);
 		alSourceStop(uiSource[1]);
 		alSourceStop(uiSource[2]);
+		alSourceStop(uiSource[3]);
 
-		alDeleteSources(3, uiSource);
-		alDeleteBuffers(3, uiBuffer);
+		alDeleteSources(4, uiSource);
+		alDeleteBuffers(4, uiBuffer);
 
 		ALFWShutdownOpenAL();
 

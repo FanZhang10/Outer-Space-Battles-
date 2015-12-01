@@ -31,16 +31,16 @@
 
 * Phase 4 - Optional Expanded Features *
 
-- Multiple Levels     ???
-- Mining weapons      ???
-- Mineral Collection  ???
-- Energy System       ???
-- Boost               ???
-- Sounds							       DONE
-- Skybox              ???
-- Meshes              DONE
-- Level Select        ???
-
+- Multiple Levels
+- Mining weapons					Fan
+- Mineral Collection
+- Energy System
+- Boost
+- Sounds							Fan
+- Skybox
+- Meshes
+- Level Select
+- Third person camera					Fan
 
 * Phase 5 - Other *
 

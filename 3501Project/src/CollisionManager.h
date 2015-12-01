@@ -46,7 +46,7 @@ namespace AsteroidGame{
 		bool checkAtoPCollision(Asteroid* aAsteroid, Ogre::Vector3 aNewPos);
 
 		bool isProjectileHit(Projectile*);
-
+		bool isLaserAndAsteroidHit(Projectile*);
 
 		//
 		//Private Methods

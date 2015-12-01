@@ -277,13 +277,16 @@ namespace AsteroidGame{
 		return iChassisNode->getPosition();
 	}
 
-	Ogre::Vector3  Player::getDirection()
+	Ogre::Quaternion  Player::getDirection()
 	{
+		/*
 		Ogre::Quaternion q = iChassisNode->getOrientation();
 		Ogre::Vector3 dir = Ogre::Vector3(1.0, 0, 0);
 		Ogre::Vector3 newDir = q * dir;
 
 		return newDir;
+		*/
+		return iChassisNode->getOrientation();
 	}
 
 
